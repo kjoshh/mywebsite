@@ -1,0 +1,1 @@
+import{g as t}from"./index-Brfk6Bdo.js";document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll("[data-click-effect]").forEach(e=>{e.addEventListener("click",function(){t.to(e,{scale:.82,duration:.1,yoyo:!0,repeat:1})})})});
