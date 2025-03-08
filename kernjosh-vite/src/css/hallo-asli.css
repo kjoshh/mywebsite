@@ -1,0 +1,81 @@
+body {
+  overscroll-behavior: none;
+}
+
+.imageetry[data-status='inactive'] {
+  display: none;
+}
+
+.imageetry[data-status='active'] {
+  display: block;
+}
+
+.interface.asli.combo-interface {
+  display: flex;
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.counter-wrapper.combo-counter {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 50%);
+  z-index: 9998;
+  display: none;
+}
+
+.overlay.active {
+  display: block;
+}
+
+.imageetry.zoomed {
+  transition: all 0.5s ease-in-out;
+}
+
+.track-name {
+  pointer-events: none;
+}
+
+.track-artist {
+  pointer-events: none;
+}
+
+.track-info {
+  pointer-events: none;
+}
+
+#videoclose,
+#closebook,
+.backlink,
+#openbook,
+#backk {
+  opacity: 0.75;
+  transition: opacity 0.15s ease-in-out;
+}
+
+#videoclose:hover,
+#closebook:hover,
+.backlink:hover,
+#openbook:hover,
+#backk:hover {
+  opacity: 1;
+}
+
+.lightbox-overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: none;
+  z-index: 999;
+  pointer-events: auto;
+}
