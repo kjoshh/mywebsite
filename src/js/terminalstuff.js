@@ -133,7 +133,7 @@ function getUptime() {
 const commands = {
   inspect: () => {
     const uptime = getUptime();
-    const inspectText = `– Url: www.kernjosh.com\n– Version: 1.3\n- Uptime: ${uptime}\n- Framework: HTML, CSS, JavaScript, GSAP, Three.js`;
+    const inspectText = `– Url: www.kernjosh.com\n– Version: 2.0\n- Uptime: ${uptime}\n- Framework: HTML, CSS, JavaScript, GSAP, Three.js`;
     appendOutputWithTyping(inspectText, null);
   },
   whois:
@@ -159,7 +159,7 @@ const commands = {
   inspira: 'Type: books, photobooks or films',
   friends:
     '– Asli Oezcelik\n– Jule Wild\n– Ülgen Atakman\n– Max Knoll\n– Fotobus Society',
-  help: 'Some available commands(6/24):\n- whois\n- whoami\n– contact\n- copyright\n- desktop\n- inspect',
+  help: 'Some available commands(6/24):\n- whois\n- whoami\n– contact\n- copyright\n- desktop\n- inspect\n- fixme',
   morecommands: '– friends\n– inspira\n– camera\n– film',
   books:
     '– Eigensinn Macht Spaß by Hermann Hesse\n– Steal Like An Artist by Austion Kleon\n– Big Magic by Elizabeth Gilbert',
@@ -167,9 +167,15 @@ const commands = {
     '– Winterreise by Luc Delahaye\n– Looking for love on the left bank by Ed Van Der Elsken\n– Wires Crossed by Ed Templeton',
   films: '– Beautiful Losers by Aaron Rose',
   desktop: () => {
-    appendOutputWithTyping(`...`);
+    appendOutputWithTyping(`opening desktop...`);
     setTimeout(() => {
       window.location = '/desktop';
+    }, 1000);
+  },
+  fixme: () => {
+    appendOutputWithTyping(`opening github...`);
+    setTimeout(() => {
+      window.open('https://github.com/kjoshh/mywebsite.git', '_blank');
     }, 1000);
   },
 
@@ -249,7 +255,7 @@ export function initializeTerminalScript() {
 
   appendOutputWithTyping(banner, () => {
     const initialMessage =
-      "\nLast login by kernjosh.com: 10th Feb 2025, 14:53 CET\n\n**********************************************************\n*****  Type 'help' for a list of available commands  *****\n*****  Type 'exit' to return to the previous screen  *****\n**********************************************************\n\n";
+      "\nLast login by kernjosh.com: 09th Mar 2025, 18:23 CET\n\n**********************************************************\n*****  Type 'help' for a list of available commands  *****\n*****  Type 'exit' to return to the previous screen  *****\n**********************************************************\n\n";
     appendOutputWithTyping(initialMessage, () => {
       inputField.focus(); // Focus the input field
       updateCursorPosition();
