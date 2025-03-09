@@ -7,7 +7,7 @@ const __dirname = dirname(__filename);
 
 export default defineConfig({
   root: resolve(__dirname),
-  base: '/',
+  base: '/newhostedsite/', // VERY IMPORTANT
   build: {
     rollupOptions: {
       input: {
