@@ -197,23 +197,20 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.to(year, {
         y: -1.5,
         duration: 0.1,
-        yoyo: true, 
-        repeat: 1, 
+        yoyo: true,
+        repeat: 1,
         ease: 'power1.out',
       });
 
-      
       document
         .querySelectorAll('.year-link')
         .forEach((link) => link.classList.remove('active'));
       year.classList.add('active');
 
-      
       document
         .querySelectorAll('.year-section')
         .forEach((section) => (section.style.display = 'none'));
 
-      
       const yearSection = document.querySelector(
         `#section-${year.dataset.year}`
       );
@@ -221,13 +218,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const visibleMonthLinks = yearSection.querySelectorAll('.month-link');
       if (visibleMonthLinks.length > 0) {
-        
         gsap.set(visibleMonthLinks, {
           opacity: 0,
           y: 2.5,
         });
 
-        
         gsap.to(visibleMonthLinks, {
           opacity: 1,
           y: 0,
@@ -239,34 +234,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  
   const loaderPath = document.querySelector('#svg-loader .cls-1');
   const loaderContainer = document.getElementById('svg-loader');
 
   loaderPath.style.display = 'block';
 
-  
   const pathLength = loaderPath.getTotalLength();
 
-  
   loaderPath.style.strokeDasharray = pathLength;
   loaderPath.style.strokeDashoffset = pathLength;
 
-  
   loaderPath.dataset.pathLength = pathLength;
 
   function showLoader() {
-    
     resetLoader();
 
-    
     loaderContainer.style.display = 'block';
-    loaderContainer.style.opacity = '1'; 
+    loaderContainer.style.opacity = '1';
 
-    
     gsap.to(loaderPath, {
       strokeDashoffset: 0,
-      duration: 10, 
+      duration: 10,
       ease: 'power1.out',
     });
   }
@@ -275,24 +263,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const newDashOffset = pathLength * (1 - progressPercentage / 100);
     gsap.to(loaderPath, {
       strokeDashoffset: newDashOffset,
-      duration: 0.5, 
+      duration: 0.5,
       ease: 'power1.out',
       overwrite: true,
     });
 
-    
     loaderContainer.setAttribute('aria-valuenow', progressPercentage);
   }
 
   function hideLoader() {
     gsap.to(loaderContainer, {
-      opacity: 0, 
-      duration: 0.2, 
+      opacity: 0,
+      duration: 0.2,
       ease: 'power1.in',
       onComplete: () => {
-        loaderContainer.style.display = 'none'; 
+        loaderContainer.style.display = 'none';
 
-        
         resetLoader();
       },
     });
@@ -304,12 +290,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  
   async function loadImagesSequentially(images, onImageLoad) {
     const total = images.length;
     let loaded = 0;
 
-    
     showLoader();
 
     for (let i = 0; i < total; i++) {
@@ -317,20 +301,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const dataSrc = img.dataset.src;
       if (!dataSrc) continue;
 
-      
       img.src = dataSrc;
       img.removeAttribute('data-src');
 
-      
       await new Promise((resolve, reject) => {
         img.onload = () => {
           loaded++;
           const progress = (loaded / total) * 100;
 
-          
           updateLoader(progress);
 
-          
           if (onImageLoad) onImageLoad(img, i, total);
           resolve();
         };
@@ -340,35 +320,29 @@ document.addEventListener('DOMContentLoaded', () => {
           loaded++;
           const progress = (loaded / total) * 100;
 
-          
           updateLoader(progress);
 
-          
           if (onImageLoad) onImageLoad(img, i, total);
-          resolve(); 
+          resolve();
         };
       });
     }
 
     setTimeout(() => {
-      
       hideLoader();
     }, 400);
   }
 
-  
   document.querySelectorAll('.month-link').forEach((month) => {
     month.addEventListener('click', async () => {
-      
       gsap.to(month, {
         y: -1.5,
         duration: 0.1,
-        yoyo: true, 
-        repeat: 1, 
+        yoyo: true,
+        repeat: 1,
         ease: 'power1.out',
       });
 
-      
       document.querySelectorAll('.month-section').forEach((sec) => {
         sec.style.display = 'none';
       });
@@ -378,18 +352,16 @@ document.addEventListener('DOMContentLoaded', () => {
         .forEach((link) => link.classList.remove('active'));
       month.classList.add('active');
 
-      
       const monthSection = document.querySelector(
         `#month-${month.dataset.year}-${month.dataset.month}`
       );
-      if (!monthSection) return; 
+      if (!monthSection) return;
 
       if (monthSection.dataset.loaded === 'true') {
-        
         monthSection.style.display = 'block';
 
-        
-        const alreadyImages = monthSection.querySelectorAll('img'); images
+        const alreadyImages = monthSection.querySelectorAll('img');
+        images;
         gsap.to(alreadyImages, {
           opacity: 1,
           duration: 0.3,
@@ -398,11 +370,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      
-      
       monthSection.dataset.loaded = 'true';
 
-      
       const monthImages = Array.from(
         monthSection.querySelectorAll('img.lazy-image')
       );
@@ -411,30 +380,25 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      
       monthSection.style.display = 'block';
 
-      
       gsap.set(monthImages, {
         opacity: 0,
       });
 
-      
       const onImageLoad = (img, index, total) => {
         gsap.to(img, {
           opacity: 1,
           duration: 0.5,
           delay: index * 0.05,
         });
-        img.classList.remove('lazy-image'); loading
+        img.classList.remove('lazy-image');
       };
 
-      
       await loadImagesSequentially(monthImages, onImageLoad);
     });
   });
 
-  
   const imgContainers = document.querySelectorAll('.image-container');
   let firstClick = true;
 
@@ -453,7 +417,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
 
 const cross = document.getElementById('cross');
 
@@ -474,7 +437,6 @@ cross.addEventListener('click', function (e) {
 if (sessionStorage.getItem('isInternalNavigation') === 'true') {
 }
 
-
 const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightbox-image');
 const interfaceElement = document.getElementById('interface');
@@ -483,9 +445,8 @@ const monthNavigation = document.querySelectorAll('.month-navigation');
 let currentImages = [];
 let currentIndex = 0;
 
-
 const counterElement = document.createElement('div');
-counterElement.style.position = 'fixed'; 
+counterElement.style.position = 'fixed';
 counterElement.style.bottom = '20px';
 counterElement.style.right = '20px';
 counterElement.style.color = '#ffffffd6';
@@ -514,18 +475,16 @@ function updateCounter() {
   });
 }
 
-
 function handleKeyDown(event) {
-  
   if (lightbox.style.display === 'flex') {
     switch (event.key) {
-      case 'ArrowRight': 
+      case 'ArrowRight':
         showNextImage();
         break;
-      case 'ArrowLeft': 
+      case 'ArrowLeft':
         showPreviousImage();
         break;
-      case 'Escape': 
+      case 'Escape':
         closeLightbox();
         break;
       default:
@@ -533,7 +492,6 @@ function handleKeyDown(event) {
     }
   }
 }
-
 
 document.querySelectorAll('.image-container img').forEach((img) => {
   img.addEventListener('click', (e) => {
@@ -552,7 +510,6 @@ document.querySelectorAll('.image-container img').forEach((img) => {
       },
     });
 
-    
     const clonedImage = e.target.cloneNode(true);
     const rect = e.target.getBoundingClientRect();
     clonedImage.style.position = 'fixed';
@@ -588,7 +545,6 @@ document.querySelectorAll('.image-container img').forEach((img) => {
     });
   });
 });
-
 
 function closeLightbox() {
   const rect = lightboxImage.getBoundingClientRect();
@@ -643,7 +599,6 @@ function closeLightbox() {
   document.removeEventListener('keydown', handleKeyDown);
 }
 
-
 function showNextImage() {
   if (currentImages.length > 0) {
     currentImages[currentIndex].style.visibility = 'visible';
@@ -670,10 +625,9 @@ lightbox.addEventListener('click', (e) => {
     closeLightbox();
     return;
   }
-  const lightboxImage = lightbox.querySelector('img'); 
+  const lightboxImage = lightbox.querySelector('img');
   const rect = lightboxImage.getBoundingClientRect();
 
-  
   const imageWidth = rect.width;
   const imageHeight = rect.height;
   const naturalWidth = lightboxImage.naturalWidth;
@@ -695,29 +649,24 @@ lightbox.addEventListener('click', (e) => {
     xOffset = (imageWidth - visibleWidth) / 2;
   }
 
-  
   const clickX = e.clientX - rect.left - xOffset;
   const clickY = e.clientY - rect.top - yOffset;
 
-  
   if (
     clickX >= 0 &&
     clickX <= visibleWidth &&
     clickY >= 0 &&
     clickY <= visibleHeight
   ) {
-    
     if (clickX > visibleWidth / 2) {
-      showNextImage(); 
+      showNextImage();
     } else {
-      showPreviousImage(); 
+      showPreviousImage();
     }
   } else {
-    closeLightbox(); 
+    closeLightbox();
   }
 });
-
-
 
 cross.addEventListener('click', function (e) {
   e.preventDefault();
