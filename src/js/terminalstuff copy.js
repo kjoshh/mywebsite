@@ -230,7 +230,7 @@ function getBrowserName() {
 }
 
 export function initializeTerminalScript() {
-  // Check for existing banner
+  // Add a check for existing banner
   const existingBanner = outputDiv.querySelector('.terminal-banner');
   if (existingBanner) {
     return; // Exit if banner already exists
@@ -249,26 +249,22 @@ export function initializeTerminalScript() {
   if (!commandCounter) {
     commandCounter = document.createElement('div');
     commandCounter.id = 'command-counter';
+    commandCounter.style.cssText = `...`;
     commandCounter.textContent = `commands: 0/${Object.keys(commands).length}`;
     terminal.appendChild(commandCounter);
   }
-  gsap.to(commandCounter, {
-    opacity: 1,
-    duration: 0.25,
-    delay: 2,
-  });
+
   terminal.style.display = 'block';
+  const banner = '';
 
-  // Create banner div first
-  const bannerDiv = document.createElement('div');
-  bannerDiv.classList.add('terminal-banner');
-  outputDiv.appendChild(bannerDiv);
-
-  // Use appendOutputWithTyping with the banner div
-  const initialMessage =
-    "\nLast login: 17th Mar 2025, 14:03 CET\n\n**********************************************************\n*****  Type 'help' for a list of available commands  *****\n*****  Type 'exit' to return to the previous screen  *****\n**********************************************************\n\n";
-
-  typeText(bannerDiv, initialMessage, () => {
+  appendOutputWithTyping(banner, () => {
+    const initialMessage =
+      "\nLast login by kernjosh.com: 10th Mar 2025, 15:33 CET\n\n**********************************************************\n*****  Type 'help' for a list of available commands  *****\n*****  Type 'exit' to return to the previous screen  *****\n**********************************************************\n\n";
+    // Add a class to the banner message
+    const bannerDiv = document.createElement('div');
+    bannerDiv.classList.add('terminal-banner');
+    bannerDiv.textContent = initialMessage;
+    outputDiv.appendChild(bannerDiv);
     inputField.focus();
     updateCursorPosition();
     startLetterGlitch();

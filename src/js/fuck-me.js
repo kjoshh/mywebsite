@@ -12,7 +12,7 @@ import {
 document.addEventListener('DOMContentLoaded', function () {
   initializeVimeoPlayer('lovememvid', 'closevid');
 
-  // Generate the image URLs
+ 
   const imageUrls = Array.from(
     {
       length: 88,
@@ -22,14 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
       full: `images/Fuck-Me/fuck-me-full/fuck-me-full-${i + 1}.jpg`,
     })
   );
-  // Shuffle function to randomize the indices
+ 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
   }
-  // Shuffle the image URLs
+ 
   const shuffledIndices = Array.from(
     {
       length: imageUrls.length,
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     (_, i) => i
   );
   shuffleArray(shuffledIndices);
-  // Create a preloader element
+ 
   const preloader = document.createElement('div');
   preloader.id = 'preloader';
   preloader.style.cssText = `
@@ -57,21 +57,20 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
   preloader.innerHTML = `<span id="progress-text" style=" margin:2.5vmin; transition: opacity 0.3s ease;">loading... 0/88</span>`;
   document.body.appendChild(preloader);
-  // Track loaded images
+ 
   let imagesLoadedCount = 0;
-  // Select all image elements (the imgfuck-me elements)
+ 
   const imgElements = document.querySelectorAll('.fuck-me-img');
-  // Load images in random order and assign them to the image elements based on the original index
   shuffledIndices.forEach((shuffledIndex) => {
     const imgData = imageUrls[shuffledIndex];
     const img = new Image();
-    img.src = imgData.thumb; // Load only the thumbnail
+    img.src = imgData.thumb;
     img.onload = () => {
       const targetImg = imgElements[shuffledIndex];
       if (targetImg) {
-        targetImg.src = img.src; // Assign the thumbnail
-        targetImg.dataset.full = imgData.full; // Store full image in data attribute
-        // Use GSAP to animate opacity and scale
+        targetImg.src = img.src;
+        targetImg.dataset.full = imgData.full;
+       
         gsap.fromTo(
           targetImg,
           {
@@ -84,21 +83,21 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         );
       }
-      // Update preloader count
+     
       imagesLoadedCount++;
       const progressText = document.getElementById('progress-text');
 
       progressText.textContent = `loading... ${imagesLoadedCount}/88`;
-      // Hide preloader when all images are loaded
+     
       if (imagesLoadedCount === imgElements.length) {
-        // Step 1: Fade out the text
+       
         gsap.to(progressText, {
           opacity: 0,
           duration: 0.5,
           ease: 'power2.inOut',
         });
         setTimeout(() => {
-          // Step 2: Fade out the overlay
+         
           gsap.to(preloader, {
             opacity: 0,
             duration: 0.4,
@@ -107,11 +106,11 @@ document.addEventListener('DOMContentLoaded', function () {
               preloader.style.display = 'none';
             },
           });
-        }, 400); // Delay after text fade-out
+        }, 400);
       }
     };
   });
-  //   const navigalast = document.getElementById("navigalast");
+ 
   function typeWriterEffect(element, text, speed = 35) {
     element.innerHTML = '';
     let i = 0;
@@ -129,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     type();
   }
-  // const secretSection = document.getElementById("secretSection");
+ 
   const passwordInput = document.getElementById('passwordInput');
   const checkPasswordBtn = document.getElementById('checkPasswordBtn');
   const firsthint = document.getElementById('firsthint');
@@ -205,16 +204,16 @@ document.addEventListener('DOMContentLoaded', function () {
       secondhint.classList.add('hidden');
     }
   });
-  // ============= 7) Lightbox Functionality (unchanged) =============
+ 
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightbox-image');
   const interfaceElement = document.getElementById('naviga');
   let currentImages = [];
   let currentIndex = 0;
-  // Existing counterElement styles
+ 
 
   const counterElement = document.createElement('div');
-  counterElement.style.position = 'fixed'; // Changed from "absolute" to "fixed"
+  counterElement.style.position = 'fixed';
   counterElement.style.bottom = '20px';
   counterElement.style.right = '20px';
   counterElement.style.color = '#ffffffd6';
@@ -243,22 +242,22 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: 'power2.in',
     });
   }
-  // JavaScript
-  // Function to handle keyboard events
+ 
+ 
   function handleKeyDown(event) {
-    // Check if the lightbox is currently displayed
+   
     if (lightbox.style.display === 'flex') {
       switch (event.key) {
         case 'ArrowRight':
-          // Navigate to the next image
+         
           showNextImage();
           break;
         case 'ArrowLeft':
-          // Navigate to the previous image
+         
           showPreviousImage();
           break;
         case 'Escape':
-          // Close the lightbox
+         
           closeLightbox();
           break;
         default:
@@ -268,43 +267,43 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   document.querySelectorAll('.image-container img').forEach((img) => {
-    // Preload high-res image on hover
+   
     img.addEventListener('mouseover', (e) => {
       const highResSrc = e.target.src.replace(
         '/fuck-me-thumb/fuck-me-thumb-',
         '/fuck-me-full/fuck-me-full-'
       );
-      // Create a new image element to load the high-res image in the background
+     
       const backgroundImage = new Image();
-      backgroundImage.src = highResSrc; // Start loading the high-res image
-      // Wait for the image to load fully before doing anything
+      backgroundImage.src = highResSrc;
+     
       backgroundImage.onload = () => {
-        // Clone the high-res image and add it to the DOM
+       
         const clonedImage = e.target.cloneNode(true);
-        clonedImage.src = highResSrc; // Make sure it's the high-res version
+        clonedImage.src = highResSrc;
         clonedImage.style.position = 'absolute';
-        clonedImage.style.top = '-9999px'; // Hide it off-screen
+        clonedImage.style.top = '-9999px';
         clonedImage.style.left = '-9999px';
         clonedImage.style.width = 'auto';
         clonedImage.style.height = 'auto';
-        clonedImage.style.visibility = 'hidden'; // Make sure it's hidden initially
-        clonedImage.style.pointerEvents = 'none'; // Prevent interaction
-        // Append the cloned image to the body, but keep it hidden
+        clonedImage.style.visibility = 'hidden';
+        clonedImage.style.pointerEvents = 'none';
+       
         document.body.appendChild(clonedImage);
       };
     });
-    // Click event to open the lightbox and show the image
+   
     img.addEventListener('click', (e) => {
-      e.target.style.visibility = 'hidden'; // Hide the clicked thumbnail
+      e.target.style.visibility = 'hidden';
       const container = e.target.closest('.image-container');
-      // Populate currentImages with image elements inside the same container
+     
       currentImages = Array.from(container.querySelectorAll('img'));
-      // Get the high-res URL for the clicked image
+     
       const highResSrc = e.target.src.replace(
         '/fuck-me-thumb/fuck-me-thumb-',
         '/fuck-me-full/fuck-me-full-'
       );
-      // Get the index of the clicked high-res image
+     
       currentIndex = currentImages
         .map((img) =>
           img.src.replace(
@@ -313,11 +312,11 @@ document.addEventListener('DOMContentLoaded', function () {
           )
         )
         .indexOf(highResSrc);
-      // Update the counter
+     
       updateCounter();
-      // Set the lightbox image to the high-res image
+     
       lightboxImage.src = highResSrc;
-      // Hide interfaceElement
+     
       gsap.to(interfaceElement, {
         opacity: 0,
         duration: 0.5,
@@ -326,9 +325,9 @@ document.addEventListener('DOMContentLoaded', function () {
           interfaceElement.style.display = 'none';
         },
       });
-      // Clone the clicked image and animate it
+     
       const clonedImage = e.target.cloneNode(true);
-      clonedImage.src = highResSrc; // Ensure it's high-res
+      clonedImage.src = highResSrc;
       const rect = e.target.getBoundingClientRect();
       clonedImage.style.position = 'fixed';
       clonedImage.style.top = `${rect.top}px`;
@@ -361,21 +360,21 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
-  // Close Lightbox
+ 
   function closeLightbox() {
-    // Get the rect of the lightbox image
+   
     const rect = lightboxImage.getBoundingClientRect();
-    // Clone the lightbox image, and ensure it has the high-res path
+   
     const clonedImage = lightboxImage.cloneNode(true);
-    // Replace the thumbnail path with the high-res path
+   
     const highResSrc = lightboxImage.src.replace(
       '/fuck-me-thumb/fuck-me-Thumb-',
       '/fuck-me-full/fuck-me-full-'
     );
-    clonedImage.src = highResSrc; // Ensure cloned image is high-res
-    // Append the cloned image to the body
+    clonedImage.src = highResSrc;
+   
     document.body.appendChild(clonedImage);
-    // Set styles for cloned image (position, dimensions, etc.)
+   
     clonedImage.style.position = 'fixed';
     clonedImage.style.top = `${rect.top}px`;
     clonedImage.style.left = `${rect.left}px`;
@@ -384,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function () {
     clonedImage.style.zIndex =
       '999999999999999999999999999999999999999999999999991';
     clonedImage.style.objectFit = 'contain';
-    // Find the corresponding image element in the container (not just the URL)
+   
     const originalImage = Array.from(
       document.querySelectorAll('.image-container img')
     ).find(
@@ -395,7 +394,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ) === highResSrc
     );
     const originalRect = originalImage.getBoundingClientRect();
-    // Animate the cloned image
+   
     gsap.to(clonedImage, {
       top: `${originalRect.top}px`,
       left: `${originalRect.left}px`,
@@ -413,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
         originalImage.style.opacity = '1';
       },
     });
-    // Fade out the counter element
+   
     gsap.to(counterElement, {
       opacity: 0,
       duration: 0.5,
@@ -422,50 +421,50 @@ document.addEventListener('DOMContentLoaded', function () {
         counterElement.style.display = 'none';
       },
     });
-    // Show the interface element again
+   
     interfaceElement.style.display = 'flex';
     gsap.to(interfaceElement, {
       opacity: 1,
       duration: 0.5,
       ease: 'power2.in',
     });
-    // Hide the lightbox
+   
     lightbox.style.display = 'none';
-    // Remove the keydown event listener
+   
     document.removeEventListener('keydown', handleKeyDown);
   }
   function showNextImage() {
     if (currentImages.length > 0) {
-      // Fade out the current image (with a smooth transition)
-      // Ensure the next image is visible before fading in
+     
+     
       currentImages[currentIndex].style.visibility = 'visible';
-      // Fade in the next image
+     
       gsap.to(currentImages[currentIndex], {
         opacity: 1,
-        duration: 0.2, // Adjust the duration as needed
+        duration: 0.2,
         ease: 'power2.inOut',
       });
-      // Move to the next image
+     
       currentIndex = (currentIndex + 1) % currentImages.length;
       gsap.to(currentImages[currentIndex], {
         opacity: 0,
-        duration: 0.2, // Adjust the duration as needed
+        duration: 0.2,
         ease: 'power2.inOut',
         onComplete: () => {
-          // After fading out, hide it and reset visibility
+         
           currentImages[currentIndex].style.visibility = 'hidden';
         },
       });
-      // Update the counter
+     
       updateCounter();
-      // Get the high-res URL for the current image
+     
       const currentHighResSrc = currentImages[currentIndex].src.replace(
         '/fuck-me-thumb/fuck-me-thumb-',
         '/fuck-me-full/fuck-me-full-'
       );
-      // Set the high-res image to the lightbox
+     
       lightboxImage.src = currentHighResSrc;
-      // Clone the next image with high-res and animate (if needed)
+     
       const clonedNextImage = document.createElement('img');
       clonedNextImage.src = currentImages[
         (currentIndex + 1) % currentImages.length
@@ -474,7 +473,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '/fuck-me-full/fuck-me-full-'
       );
       document.body.appendChild(clonedNextImage);
-      // Optional animation code for the cloned image...
+     
       gsap.to(clonedNextImage, {
         top: '50%',
         left: '50%',
@@ -494,35 +493,35 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   function showPreviousImage() {
     if (currentImages.length > 0) {
-      // Move to the previous image
+     
       currentImages[currentIndex].style.visibility = 'visible';
-      // Fade in the next image
+     
       gsap.to(currentImages[currentIndex], {
         opacity: 1,
-        duration: 0.2, // Adjust the duration as needed
+        duration: 0.2,
         ease: 'power2.inOut',
       });
-      // Move to the next image
+     
       currentIndex =
         (currentIndex - 1 + currentImages.length) % currentImages.length;
       gsap.to(currentImages[currentIndex], {
         opacity: 0,
-        duration: 0.2, // Adjust the duration as needed
+        duration: 0.2,
         ease: 'power2.inOut',
         onComplete: () => {
-          // After fading out, hide it and reset visibility
+         
           currentImages[currentIndex].style.visibility = 'hidden';
         },
       });
       updateCounter();
-      // Get the high-res URL for the current image
+     
       const currentHighResSrc = currentImages[currentIndex].src.replace(
         '/fuck-me-thumb/fuck-me-thumb-',
         '/fuck-me-full/fuck-me-full-'
       );
-      // Set the high-res image to the lightbox
+     
       lightboxImage.src = currentHighResSrc;
-      // Clone the previous image with high-res and animate (if needed)
+     
       const clonedPrevImage = document.createElement('img');
       clonedPrevImage.src = currentImages[
         (currentIndex - 1 + currentImages.length) % currentImages.length
@@ -531,7 +530,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '/fuck-me-full/fuck-me-full-'
       );
       document.body.appendChild(clonedPrevImage);
-      // Optional animation code for the cloned image...
+     
       gsap.to(clonedPrevImage, {
         top: '50%',
         left: '50%',
@@ -556,10 +555,10 @@ document.addEventListener('DOMContentLoaded', function () {
       closeLightbox();
       return;
     }
-    const lightboxImage = lightbox.querySelector('img'); // Get the lightbox image
+    const lightboxImage = lightbox.querySelector('img');
     const rect = lightboxImage.getBoundingClientRect();
 
-    // Calculate visible image dimensions and offsets
+   
     const imageWidth = rect.width;
     const imageHeight = rect.height;
     const naturalWidth = lightboxImage.naturalWidth;
@@ -581,30 +580,30 @@ document.addEventListener('DOMContentLoaded', function () {
       xOffset = (imageWidth - visibleWidth) / 2;
     }
 
-    // Calculate click positions relative to the image, accounting for scaling and offset
+   offset
     const clickX = e.clientX - rect.left - xOffset;
     const clickY = e.clientY - rect.top - yOffset;
 
-    // Check if the click is within the visible image
+   
     if (
       clickX >= 0 &&
       clickX <= visibleWidth &&
       clickY >= 0 &&
       clickY <= visibleHeight
     ) {
-      // Determine which half of the visible image was clicked
+     
       if (clickX > visibleWidth / 2) {
-        showNextImage(); // Clicked on the right half
+        showNextImage();
       } else {
-        showPreviousImage(); // Clicked on the left half
+        showPreviousImage();
       }
     } else {
-      closeLightbox(); // Clicked outside the visible image
+      closeLightbox();
     }
   });
 
-  //   const passwordmain = document.querySelector(".passwordmain");
-  //   const submitform = document.querySelector(".submitform");
+ 
+ 
   const navigalast = document.getElementById('navigalast');
   const pwembed = document.getElementById('pwembed');
   const textDiv = document.getElementById('textdiv');
@@ -622,7 +621,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeVid = document.getElementById('closevid');
   const mainInterface = document.getElementById('naviga');
   const secondInterface = document.getElementById('navigalast');
-  //   const grainiwrapppp = document.getElementById("grainiwrapppp");
+ 
   const backStuff = document.querySelector('.blurbackstuff');
   gsap.set(textInside, {
     opacity: 0,
@@ -793,16 +792,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   const cross = document.getElementById('cross');
-  //   const navigalast = document.getElementById("navigalast");
-  //   const pwembed = document.getElementById("pwembed");
+ 
+ 
   const onloadDiv = document.querySelector('.onload-div');
   if (!cross) {
     console.warn("Element with ID 'cross' not found.");
     return;
   }
   cross.addEventListener('click', function (e) {
-    e.preventDefault(); // Prevent immediate navigation
-    const href = '/'; // Real URL
+    e.preventDefault();
+    const href = '/';
     sessionStorage.setItem('isInternalNavigation', 'true');
     console.log('Internal navigation state set in sessionStorage.');
     fetch(href, {
@@ -810,7 +809,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
       .then(() => console.log('Page preloaded:', href))
       .catch(() => console.warn('Failed to preload page:', href));
-    cross.style.pointerEvents = 'none'; // Prevent multiple clicks
+    cross.style.pointerEvents = 'none';
     onloadDiv.style.display = 'block';
     gsap.set(onloadDiv, {
       top: 'auto',
@@ -857,14 +856,14 @@ document.addEventListener('DOMContentLoaded', function () {
   if (sessionStorage.getItem('isInternalNavigation') === 'true') {
     console.log('Page loaded via internal navigation.');
   }
-  // Utility function to get mouse position relative to the window
+ 
   function getMousePos(ev) {
     return {
       x: ev.clientX,
       y: ev.clientY,
     };
   }
-  // Utility function for linear interpolation (lerp)
+ 
   function lerp(start, end, amt) {
     return (1 - amt) * start + amt * end;
   }
@@ -876,7 +875,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('mousemove', (ev) => (mouse = getMousePos(ev)));
   class Cursor {
     constructor() {
-      // Grab the image with the ID #handyyo
+     
       this.image = document.querySelector('#handyyo');
       this.cursorConfigs = {
         x: {
@@ -890,18 +889,18 @@ document.addEventListener('DOMContentLoaded', function () {
           amt: 0.2,
         },
       };
-      // Initialize mouse movement listener
+     
       window.addEventListener('mousemove', this.onMouseMoveEv.bind(this));
     }
     onMouseMoveEv() {
-      // Update current mouse position
+     
       this.cursorConfigs.x.current = mouse.x;
       this.cursorConfigs.y.current = mouse.y;
-      // Start the animation loop
+     
       requestAnimationFrame(() => this.render());
     }
     render() {
-      // Apply lerp to smooth the mouse movement
+     
       for (const key in this.cursorConfigs) {
         this.cursorConfigs[key].previous = lerp(
           this.cursorConfigs[key].previous,
@@ -909,23 +908,22 @@ document.addEventListener('DOMContentLoaded', function () {
           this.cursorConfigs[key].amt
         );
       }
-      // Check if the image exists
+     
       if (this.image) {
         const imgWidth = this.image.offsetWidth;
         const imgHeight = this.image.offsetHeight;
-        // Use GSAP to animate the image's position, adjusting for its width and height
         gsap.to(this.image, {
-          duration: 0.2, // Smooth transition duration
-          x: this.cursorConfigs.x.previous - imgWidth / 2, // Offset by half the image's width
-          y: this.cursorConfigs.y.previous - imgHeight / 2, // Offset by half the image's height
-          ease: 'power3.out', // Easing for smooth motion
+          duration: 0.2,
+          x: this.cursorConfigs.x.previous - imgWidth / 2,
+          y: this.cursorConfigs.y.previous - imgHeight / 2,
+          ease: 'power3.out',
         });
       }
-      // Keep the animation going
+     
       requestAnimationFrame(() => this.render());
     }
   }
-  // Initialize the Cursor class
+ 
   const cursor = new Cursor();
 
   import('lottie-web')
@@ -955,19 +953,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
       initializeVideoStateManager(player1);
 
-      // Call initializeFirstSlider when the openbook button is clicked
+     
       const triggerElement1 = document.getElementById('openbook');
       triggerElement1.addEventListener('click', () => {
         initializeFirstSlider();
       });
 
-      // Get the openvid and closeVid elements
+     
       const openVid = document.getElementById('openvid');
       const closeVid = document.getElementById('closevid');
 
-      // Attach the event listener to the openvid
+     
       openVid.addEventListener('click', () => {
-        handleVideoStateChange(true); // Call the local function
+        handleVideoStateChange(true);
         gsap.to(vidDiv, {
           y: '0vh',
           duration: 0.65,
@@ -983,9 +981,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
 
-      // Attach the event listener to the closeVid button
+     
       closeVid.addEventListener('click', () => {
-        handleVideoStateChange(false); // Call the local function
+        handleVideoStateChange(false);
         naviga.style.display = 'flex';
         gsap.to(vidDiv, {
           y: '101vh',

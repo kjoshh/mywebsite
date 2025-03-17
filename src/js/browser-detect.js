@@ -1,6 +1,4 @@
-//browser-detect v3
-
-import Typed from 'typed.js'; // Import Typed.js
+import Typed from 'typed.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   const overlay = document.getElementById('device-check-overlay');
@@ -17,60 +15,50 @@ document.addEventListener('DOMContentLoaded', function () {
     );
   }
 
-  function isDesktopSafari() {
+  function isNotChromeOrFirefox() {
     const userAgent = navigator.userAgent;
-    return (
-      userAgent.indexOf('Safari') > -1 &&
-      userAgent.indexOf('Chrome') == -1 &&
-      !isMobileDevice()
-    );
+    const isChrome = userAgent.indexOf('Chrome') > -1;
+    const isFirefox = userAgent.indexOf('Firefox') > -1;
+    return !isChrome && !isFirefox;
   }
 
   if (isMobileDevice()) {
     console.log('ismobileeee');
-    const mobileText =
+    const mobileBrowserText =
       'oh no, you are using a phone :( you need a larger device, like a laptop with chrome in order to enter this page';
     overlay.classList.remove('hidden');
     content.classList.add('mobile');
+    message.textContent = mobileBrowserText;
     setTimeout(() => {
       mobileWhyLink.classList.remove('hidden');
       setTimeout(() => {
         mobileWhyLink.style.opacity = '1';
       }, 200);
-    }, 4500);
+    }, 10);
+  } else if (isNotChromeOrFirefox()) {
+    console.log('isnotchromeorfirefox');
+    const browserText =
+      'oh no, you are using safari :( you need chrome or firefox in order to enter this page.';
+    overlay.classList.remove('hidden');
+    whyLink.classList.remove('hidden');
 
-    // Typewriter effect for mobile message
     new Typed('#device-check-message', {
-      strings: [mobileText],
+      strings: [browserText],
       typeSpeed: 25,
       backSpeed: 25,
       loop: false,
-      showCursor: false, // Disable the cursor
+      showCursor: false,
     });
-  } else if (isDesktopSafari()) {
-    console.log('issafariiiiii');
-    const browserText =
-      'oh no, you are using safari :( you need a different browser like chrome in order to enter this page.';
-    overlay.classList.remove('hidden');
-    whyLink.classList.remove('hidden');
+
     setTimeout(() => {
       whyLink.classList.remove('hidden');
       setTimeout(() => {
         whyLink.style.opacity = '1';
       }, 200);
     }, 3700);
-
-    // Typewriter effect for browser message
-    new Typed('#device-check-message', {
-      strings: [browserText],
-      typeSpeed: 25,
-      backSpeed: 25,
-      loop: false,
-      showCursor: false, // Disable the cursor
-    });
   } else {
     console.log('isnohtinginging');
-    // If it's not a mobile device and not desktop Safari, hide the overlay
+
     overlay.classList.add('hidden');
   }
 
@@ -81,57 +69,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const browserdevicecheckoverlay = document.getElementById(
       'browser-check-explanation'
     );
-    event.preventDefault(); // Prevent the default link behavior
-    browserdevicecheckoverlay.classList.toggle('show'); // Toggle the explanation visibility
+    event.preventDefault();
+    browserdevicecheckoverlay.classList.toggle('show');
+    visibility;
 
     if (browserdevicecheckoverlay.classList.contains('show')) {
-      const bexplanationText = browserExplanation.textContent; // Get the text content
-      console.log('Explanation text:', bexplanationText); // Log the explanation text
-      browserExplanation.innerHTML = ''; // Clear existing content
+      const bexplanationText = browserExplanation.textContent;
+      console.log('Explanation text:', bexplanationText);
+      browserExplanation.innerHTML = '';
 
-      // Ensure Typed is initialized after clearing content
       new Typed(browserExplanation, {
         strings: [bexplanationText],
         typeSpeed: 25,
         backSpeed: 25,
         loop: false,
-        showCursor: false, // Disable the cursor
+        showCursor: false,
       });
     } else {
-      browserExplanation.innerHTML = ''; // Clear content if hidden
+      browserExplanation.innerHTML = '';
     }
   });
 
   mobileWhyLink.addEventListener('click', function (event) {
-    const mobileExplanation = document.querySelector(
-      '.mobile-check-explanation-text'
-    );
     const devicecheckoverlay = document.getElementById(
       'mobile-check-explanation'
     );
-    const weirdbrowser = document.getElementById('weirdbrowservideo');
-    event.preventDefault(); // Prevent the default link behavior
-    devicecheckoverlay.classList.toggle('show'); // Toggle the explanation visibility
-
-    // Add typewriter effect for mobile explanation text
-    if (devicecheckoverlay.classList.contains('show')) {
-      const explanationText = mobileExplanation.textContent; // Get the text content
-      console.log('Explanation text:', explanationText); // Log the explanation text
-      mobileExplanation.innerHTML = ''; // Clear existing content
-      new Typed(mobileExplanation, {
-        strings: [explanationText],
-        typeSpeed: 25,
-        backSpeed: 25,
-        loop: false,
-        showCursor: false, // Disable the cursor
-      });
-    } else {
-      mobileExplanation.innerHTML = ''; // Clear content if hidden
-    }
-    setTimeout(() => {
-      weirdbrowser.style.visibility = 'visible'; // Make the video visible
-
-      weirdbrowser.play(); // Start playing the video
-    }, 4000);
+    event.preventDefault();
+    devicecheckoverlay.classList.toggle('show');
   });
 });

@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeBook = document.getElementById('closebook');
   const vidDiv = document.getElementById('viddiv');
   const openVid = document.getElementById('openvid');
-  // const closeVid = document.getElementById("videoclose");
+
   const mainInterface = document.getElementById('naviga');
   const secondInterface = document.getElementById('navigalast');
-  //   const texttti = document.querySelector(".preloader-text");
+
   gsap.to(onloadDiv, {
     opacity: 0,
-    // height: "0%",
+
     duration: 1,
     ease: 'power4.inOut',
     onComplete: () => {
@@ -72,9 +72,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const counterWrapper = document.querySelector('.counter-wrapper');
   const preloader = document.getElementById('preloader');
   const totalImages = images.length;
-  let loadedImages = 0; // Counter for loaded images
-  let preloaderTimeout; // Declare preloaderTimeout here
-  let preloaderStartTime = Date.now(); // Track the time when images start loading
+  let loadedImages = 0;
+  let preloaderTimeout;
+  let preloaderStartTime = Date.now();
   const typewriterEffect = (element, text, delay, callback) => {
     let index = text.length;
     const deleteLetter = () => {
@@ -87,9 +87,8 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     deleteLetter();
   };
-  let isGoVisible = false; // Erst false, bis "GO" erscheint
+  let isGoVisible = false;
   const updatePreloader = () => {
-    // Ensure the preloader text element exists
     const textElement = document.querySelector('.preloader-text');
     const secondtextElement = document.querySelector('.preloader-text-two');
     const divi = document.querySelector('.preloader-text-two');
@@ -114,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
           ease: 'power2.inOut',
         });
         setTimeout(() => {
-          isGoVisible = true; // Hier aktivieren wir das Mousemove-Event erst nach "GO"
+          isGoVisible = true;
         }, 250);
       }, 250);
       setTimeout(() => {
@@ -159,8 +158,8 @@ document.addEventListener('DOMContentLoaded', function () {
     x: 0,
     y: 0,
   };
-  let isZoomed = false; // Track zoom state
-  let zoomedImage = null; // Store the zoomed image
+  let isZoomed = false;
+  let zoomedImage = null;
   let originalPosition = {
     left: 0,
     top: 0,
@@ -169,16 +168,15 @@ document.addEventListener('DOMContentLoaded', function () {
   let originalHeight = 0;
   let originalZIndex = 0;
   const activate = (image, x, y) => {
-    // Set the size of the image
     const size = 300;
     image.style.width = `${size}px`;
     image.style.height = `${size}px`;
     image.style.position = 'absolute';
     image.style.cursor = 'default';
     image.style.pointerEvents = 'none';
-    // Center the image around the mouse position
-    image.style.left = `${x - size / 2}px`; // Subtract half the size of the image
-    image.style.top = `${y - size / 2}px`; // Subtract half the size of the image
+
+    image.style.left = `${x - size / 2}px`;
+    image.style.top = `${y - size / 2}px`;
     image.style.zIndex = globalIndex;
     image.style.display = 'block';
     last = {
@@ -234,11 +232,10 @@ document.addEventListener('DOMContentLoaded', function () {
         duration: 1.5,
         ease: 'expo.inOut',
         onComplete: () => {
-          // Include both elements in gsap.set to set display to block
           gsap.set([interfaceElement, audioElement], {
             display: 'block',
           });
-          // Animate opacity for both elements
+
           gsap.to([interfaceElement, audioElement], {
             opacity: 1,
             duration: 0.5,
@@ -261,7 +258,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   };
   const handleOnMove = (e) => {
-    if (!isGoVisible || globalIndex >= images.length) return; // Stoppt Event, wenn "GO" noch nicht erschienen ist
+    if (!isGoVisible || globalIndex >= images.length) return;
+    ('GO');
     if (distanceFromLast(e.clientX, e.clientY) > window.innerWidth / 25) {
       activate(images[globalIndex], e.clientX, e.clientY);
     }
@@ -303,16 +301,16 @@ document.addEventListener('DOMContentLoaded', function () {
       enableScroll();
     });
   });
-  // ============= 7) Lightbox Functionality (unchanged) =============
+
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightbox-image');
   const interfaceElementtttt = document.getElementById('naviga');
   const secondmainInterface = document.getElementById('navigalast');
   let currentImages = [];
   let currentIndex = 0;
-  // Existing counterElement styles
+
   const counterElement = document.createElement('div');
-  counterElement.style.position = 'fixed'; // Changed from "absolute" to "fixed"
+  counterElement.style.position = 'fixed';
   counterElement.style.bottom = '20px';
   counterElement.style.right = '20px';
   counterElement.style.color = '#ffffffd6';
@@ -344,28 +342,19 @@ document.addEventListener('DOMContentLoaded', function () {
       opacity: 0,
       duration: 0.5,
       ease: 'power2.in',
-      onComplete: () => {
-        interfaceElementtttt.style.display = 'none';
-        secondmainInterface.style.display = 'none';
-      },
     });
   }
-  // JavaScript
-  // Function to handle keyboard events
+
   function handleKeyDown(event) {
-    // Check if the lightbox is currently displayed
     if (lightbox.style.display === 'flex') {
       switch (event.key) {
         case 'ArrowRight':
-          // Navigate to the next image
           showNextImage();
           break;
         case 'ArrowLeft':
-          // Navigate to the previous image
           showPreviousImage();
           break;
         case 'Escape':
-          // Close the lightbox
           closeLightbox();
           break;
         default:
@@ -373,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   }
-  // Click image -> open lightbox
+
   document.querySelectorAll('.image-container img').forEach((img) => {
     img.addEventListener('click', (e) => {
       e.target.style.visibility = 'hidden';
@@ -412,12 +401,14 @@ document.addEventListener('DOMContentLoaded', function () {
             lightbox.style.opacity = '1';
             document.body.removeChild(clonedImage);
             document.addEventListener('keydown', handleKeyDown);
+            interfaceElementtttt.style.display = 'none';
+            secondmainInterface.style.display = 'none';
           },
         });
       });
     });
   });
-  // Close Lightbox
+
   function closeLightbox() {
     const lightboxOverlay = document.querySelector('.lightbox-overlay');
     lightboxOverlay.style.display = 'none';
@@ -468,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function () {
     lightbox.style.display = 'none';
     document.removeEventListener('keydown', handleKeyDown);
   }
-  // Next/Prev
+
   function showNextImage() {
     if (currentImages.length > 0) {
       currentImages[currentIndex].style.visibility = 'visible';
@@ -495,10 +486,9 @@ document.addEventListener('DOMContentLoaded', function () {
       closeLightbox();
       return;
     }
-    const lightboxImage = lightbox.querySelector('img'); // Get the lightbox image
+    const lightboxImage = lightbox.querySelector('img');
     const rect = lightboxImage.getBoundingClientRect();
 
-    // Calculate visible image dimensions and offsets
     const imageWidth = rect.width;
     const imageHeight = rect.height;
     const naturalWidth = lightboxImage.naturalWidth;
@@ -520,29 +510,26 @@ document.addEventListener('DOMContentLoaded', function () {
       xOffset = (imageWidth - visibleWidth) / 2;
     }
 
-    // Calculate click positions relative to the image, accounting for scaling and offset
+    // offset;
     const clickX = e.clientX - rect.left - xOffset;
     const clickY = e.clientY - rect.top - yOffset;
 
-    // Check if the click is within the visible image
     if (
       clickX >= 0 &&
       clickX <= visibleWidth &&
       clickY >= 0 &&
       clickY <= visibleHeight
     ) {
-      // Determine which half of the visible image was clicked
       if (clickX > visibleWidth / 2) {
-        showNextImage(); // Clicked on the right half
+        showNextImage();
       } else {
-        showPreviousImage(); // Clicked on the left half
+        showPreviousImage();
       }
     } else {
-      closeLightbox(); // Clicked outside the visible image
+      closeLightbox();
     }
   });
 
-  // Add event listener to the overlay
   const overlay = document.querySelector('.lightbox-overlay');
   overlay.addEventListener('click', closeLightbox);
 
@@ -551,8 +538,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeFirstSlider();
   });
   const cross = document.getElementById('cross');
-  //   const navigalast = document.getElementById("navigalast");
-  //   const onloadDiv = document.querySelector(".onload-div");
+
   if (!cross) {
     console.warn("Element with ID 'cross' not found.");
     return;
@@ -582,6 +568,13 @@ document.addEventListener('DOMContentLoaded', function () {
       onComplete: () => {
         cross.style.display = 'none';
       },
+    });
+    const wholeplayer = document.getElementById('wholeplayer');
+    gsap.to(wholeplayer, {
+      opacity: 0,
+      y: -17,
+      duration: 0.5,
+      ease: 'power3.inOut',
     });
     const naviga = document.getElementById('naviga');
     gsap.to(naviga, {
@@ -634,25 +627,18 @@ import('lottie-web')
       bodymovin
     );
 
-    // Assign handleVideoStateChange to the actual function
-    // handleVideoStateChange = function (videoIsPlaying) {
-    //   player1.handleVideoStateChange(videoIsPlaying);
-    // };
     initializeVideoStateManager(player1);
 
-    // Call initializeFirstSlider when the openbook button is clicked
     const triggerElement1 = document.getElementById('openbook');
     triggerElement1.addEventListener('click', () => {
       initializeFirstSlider();
     });
 
-    // Get the openVid and closeVid elements
     const openVid = document.getElementById('openvid');
     const closeVid = document.getElementById('closevid');
 
-    // Attach the event listener to the openVid
     openVid.addEventListener('click', () => {
-      handleVideoStateChange(true); // Call the local function
+      handleVideoStateChange(true);
       gsap.to(vidDiv, {
         y: '0vh',
         duration: 0.65,
@@ -668,9 +654,8 @@ import('lottie-web')
       });
     });
 
-    // Attach the event listener to the closeVid button
     closeVid.addEventListener('click', () => {
-      handleVideoStateChange(false); // Call the local function
+      handleVideoStateChange(false);
       naviga.style.display = 'flex';
       gsap.to(vidDiv, {
         y: '101vh',
@@ -688,4 +673,4 @@ import('lottie-web')
     console.error('Error loading lottie-web library:', error);
   });
 
-export {}; // Add an empty export statement
+export {};

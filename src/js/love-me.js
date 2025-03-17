@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       imagesLoadedCount++;
       const progressText = document.getElementById('progress-text');
-      // const naviga = document.getElementById("naviga");
+
       progressText.textContent = `loading... ${imagesLoadedCount}/224`;
       if (imagesLoadedCount === imgElements.length) {
         gsap.to(progressText, {
@@ -100,9 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     };
   });
-  // const headertext = document.querySelector(".headertext");
-  // const passwordmain = document.querySelector(".passwordmain");
-  // const submitform = document.querySelector(".submitform");
+
   const navigalast = document.getElementById('navigalast');
   function typeWriterEffect(element, text, speed = 35) {
     element.innerHTML = '';
@@ -121,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     type();
   }
-  // const secretSection = document.getElementById("secretSection");
+
   const passwordInput = document.getElementById('passwordInput');
   const checkPasswordBtn = document.getElementById('checkPasswordBtn');
   const firsthint = document.getElementById('firsthint');
@@ -492,14 +490,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) {
-      //Handle Click to close on the parent, in the case of an overlay
       closeLightbox();
       return;
     }
-    const lightboxImage = lightbox.querySelector('img'); // Get the lightbox image
+    const lightboxImage = lightbox.querySelector('img');
     const rect = lightboxImage.getBoundingClientRect();
 
-    // Calculate visible image dimensions and offsets
     const imageWidth = rect.width;
     const imageHeight = rect.height;
     const naturalWidth = lightboxImage.naturalWidth;
@@ -521,25 +517,22 @@ document.addEventListener('DOMContentLoaded', function () {
       xOffset = (imageWidth - visibleWidth) / 2;
     }
 
-    // Calculate click positions relative to the image, accounting for scaling and offset
     const clickX = e.clientX - rect.left - xOffset;
     const clickY = e.clientY - rect.top - yOffset;
 
-    // Check if the click is within the visible image
     if (
       clickX >= 0 &&
       clickX <= visibleWidth &&
       clickY >= 0 &&
       clickY <= visibleHeight
     ) {
-      // Determine which half of the visible image was clicked
       if (clickX > visibleWidth / 2) {
-        showNextImage(); // Clicked on the right half
+        showNextImage();
       } else {
-        showPreviousImage(); // Clicked on the left half
+        showPreviousImage();
       }
     } else {
-      closeLightbox(); // Clicked outside the visible image
+      closeLightbox();
     }
   });
   const buchDiv = document.querySelector('.buchhh');
@@ -859,10 +852,8 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('Opening modal...');
     modal.style.display = 'flex';
 
-    // Dynamically import Three.js
     import('three')
       .then((THREE) => {
-        // Dynamically import GLTFLoader and OrbitControls
         return Promise.all([
           import('three/addons/loaders/GLTFLoader.js').then(
             (module) => module.GLTFLoader
@@ -871,7 +862,6 @@ document.addEventListener('DOMContentLoaded', function () {
             (module) => module.OrbitControls
           ),
         ]).then(([GLTFLoader, OrbitControls]) => {
-          // Function to initialize the Three.js scene
           function initializeScene(THREE, GLTFLoader, OrbitControls) {
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(
@@ -882,11 +872,9 @@ document.addEventListener('DOMContentLoaded', function () {
             );
             const renderer = new THREE.WebGLRenderer();
 
-            // Set up your scene, camera, and renderer here
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.body.appendChild(renderer.domElement);
 
-            // Add objects to the scene, etc.
             const geometry = new THREE.BoxGeometry();
             const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
             const cube = new THREE.Mesh(geometry, material);
@@ -894,25 +882,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
             camera.position.z = 5;
 
-            // Initialize OrbitControls
             const controls = new OrbitControls(camera, renderer.domElement);
 
-            // Animation loop
             function animate() {
               requestAnimationFrame(animate);
               cube.rotation.x += 0.01;
               cube.rotation.y += 0.01;
-              controls.update(); // Update controls
+              controls.update();
               renderer.render(scene, camera);
             }
             animate();
           }
-          // Call your function to initialize the Three.js scene
+
           initializeScene(THREE, GLTFLoader, OrbitControls);
         });
       })
       .catch((err) => {
-        console.error('Error loading Three.js or its modules:', err);
+        console.error('Error loading Three.js or its moduless:', err);
       });
   });
 
@@ -921,7 +907,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     import('three')
       .then((THREE) => {
-        // Dynamically import GLTFLoader and OrbitControls
         return Promise.all([
           import('three/addons/loaders/GLTFLoader.js').then(
             (module) => module.GLTFLoader
@@ -967,7 +952,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 model.position.sub(center);
                 model.scale.set(1, 1, 1);
                 scene.add(model);
-                console.log('Model loaded successfully!'); // Add this line
+                console.log('Model loaded ssss!');
                 gsap.to(preloaderThree, {
                   opacity: 0,
                   duration: 0.5,
@@ -994,7 +979,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             animate();
           }
-          // Call your function to initialize the Three.js scene
+
           initializeScene(THREE);
         });
       })
@@ -1070,7 +1055,6 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('Page loaded via internal navigation.');
   }
 });
-// Define the track list for this page
 
 const pwembed = document.getElementById('pwembed');
 const navigalast = document.getElementById('navigalast');
@@ -1113,25 +1097,18 @@ import('lottie-web')
       bodymovin
     );
 
-    // Assign handleVideoStateChange to the actual function
-    // handleVideoStateChange = function (videoIsPlaying) {
-    //   player1.handleVideoStateChange(videoIsPlaying);
-    // };
     initializeVideoStateManager(player1);
 
-    // Call initializeFirstSlider when the openbook button is clicked
     const triggerElement1 = document.getElementById('openbook');
     triggerElement1.addEventListener('click', () => {
       initializeFirstSlider();
     });
 
-    // Get the vidButton and closeVid elements
     const vidButton = document.getElementById('vidbutton');
     const closeVid = document.getElementById('closevid');
 
-    // Attach the event listener to the vidButton
     vidButton.addEventListener('click', () => {
-      handleVideoStateChange(true); // Call the local function
+      handleVideoStateChange(true);
       gsap.to(vidDiv, {
         y: '0vh',
         duration: 0.65,
@@ -1147,9 +1124,8 @@ import('lottie-web')
       });
     });
 
-    // Attach the event listener to the closeVid button
     closeVid.addEventListener('click', () => {
-      handleVideoStateChange(false); // Call the local function
+      handleVideoStateChange(false);
       naviga.style.display = 'flex';
       gsap.to(vidDiv, {
         y: '101vh',
@@ -1164,7 +1140,7 @@ import('lottie-web')
     });
   })
   .catch((error) => {
-    console.error('Error loading lottie-web library:', error);
+    console.error('Error loading lottie-web :', error);
   });
 
-export {}; // Add an empty export statement
+export {};

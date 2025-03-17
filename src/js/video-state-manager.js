@@ -1,6 +1,4 @@
-// video-state-manager.js
-
-import AudioPlayer from "./audio.js"; // Adjust path if needed
+import AudioPlayer from './audio.js';
 
 let handleVideoStateChange;
 

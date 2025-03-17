@@ -1,5 +1,4 @@
-// vimeo-helper.js
-import { handleVideoStateChange } from "../../src/js/video-state-manager.js"; // Import handleVideoStateChange
+import { handleVideoStateChange } from '../../src/js/video-state-manager.js'; // Import handleVideoStateChange
 
 function initializeVimeoPlayer(iframeId, closeButtonId) {
   const videoIframe = document.getElementById(iframeId);
@@ -13,20 +12,20 @@ function initializeVimeoPlayer(iframeId, closeButtonId) {
       }
       videoIframe.contentWindow.postMessage(
         JSON.stringify(data),
-        "https://player.vimeo.com"
+        'https://player.vimeo.com'
       );
     }
 
     if (videoCloseButton) {
-      videoCloseButton.addEventListener("click", function () {
-        handleVideoStateChange(false); // Call the imported function
-        postMessageToVimeo("pause");
+      videoCloseButton.addEventListener('click', function () {
+        handleVideoStateChange(false);
+        postMessageToVimeo('pause');
       });
     } else {
-      console.error(`Error: #${closeButtonId} button not found in the DOM.`);
+      console.error(`Error: #${closeButtonId} button not found.`);
     }
   } else {
-    console.error(`Error: #${iframeId} iframe not found in the DOM.`);
+    console.error(`Error: #${iframeId} iframe not found.`);
   }
 }
 

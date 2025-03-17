@@ -1,11 +1,8 @@
-// index.js
 import { initializeTerminalScript } from './terminalstuff.js';
 import './hover-effects.js';
 import './home-loading-animations.js';
 import './home-exit-animation.js';
 import './browser-detect.js';
-
-// index.js
 
 let terminalInitialized = false;
 

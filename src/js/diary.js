@@ -1,7 +1,5 @@
-// src/js/diary.js
-import gsap from 'gsap'; // Import GSAP
+import gsap from 'gsap';
 
-// --- Browser Detection ---
 document.addEventListener('DOMContentLoaded', function () {
   const overlay = document.getElementById('device-check-overlay');
   const message = document.getElementById('device-check-message');
@@ -41,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     whyLink.classList.remove('hidden');
   } else {
     console.log('isnohtinginging');
-    // If it's not a mobile device and not desktop Safari, hide the overlay
+
     overlay.classList.add('hidden');
   }
 
@@ -55,9 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// --- Main Diary Functionality ---
 document.addEventListener('DOMContentLoaded', () => {
-  // Select all <a> elements
   const crossi = document.getElementById('cross');
   const headerImg = document.getElementById('header-img');
   const yearNavvv = document.getElementById('year-navigation');
@@ -67,32 +63,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   interfaceElement.style.display = 'flex';
 
-  // Set initial opacity using GSAP
   gsap.set(hoverButtons, {
     opacity: 0.75,
   });
 
-  // Iterate over each button to attach event listeners
   hoverButtons.forEach((button) => {
-    // Define the hover-in animation
     const hoverIn = () => {
       gsap.to(button, {
-        duration: 0.3, // Duration of the animation in seconds
-        opacity: 1, // Target opacity on hover
-        ease: 'power1.out', // Easing function for smooth transition
-      });
-    };
-
-    // Define the hover-out animation
-    const hoverOut = () => {
-      gsap.to(button, {
         duration: 0.3,
-        opacity: 0.75, // Revert to original opacity when not hovered
+        opacity: 1,
         ease: 'power1.out',
       });
     };
 
-    // Attach event listeners for mouseenter and mouseleave
+    const hoverOut = () => {
+      gsap.to(button, {
+        duration: 0.3,
+        opacity: 0.75,
+        ease: 'power1.out',
+      });
+    };
+
     button.addEventListener('mouseenter', hoverIn);
     button.addEventListener('mouseleave', hoverOut);
   });
@@ -103,22 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const monthSectionnn = document.querySelectorAll('.year-section');
       const imgContainer = document.querySelectorAll('.image-container');
 
-      // Check if href is a valid URL and not a hash link or JavaScript link
       const isHashLink = href.startsWith('#');
       const isJavaScriptLink = href.startsWith('javascript:');
       const hasTargetBlank = this.getAttribute('target') === '_blank';
       const isDownloadLink = this.hasAttribute('download');
 
-      // If it's a hash link, JavaScript link, download link, or opens in a new tab, do not apply the transition
       if (isHashLink || isJavaScriptLink || hasTargetBlank || isDownloadLink) {
-        return; // Allow default behavior
+        return;
       }
 
-      // Prevent default navigation
       event.preventDefault();
-      const destination = this.href; // Absolute URL
+      const destination = this.href;
 
-      // triggerBlock.style.display = "block";
       gsap.to([headerImg, yearNavvv, monthSectionnn], {
         y: -50,
         opacity: 0,
@@ -135,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 0.15,
         ease: 'power3.inOut',
         onComplete: () => {
-          // Hide the links and 'crossi' after the animation
           links.forEach((btn) => {
             btn.style.display = 'none';
           });
@@ -147,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ============= 1) Convert <img src="..."> to lazy approach (except #lightbox-image) ==========
   const allImages = document.querySelectorAll('img');
   allImages.forEach((img) => {
     if (
@@ -163,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ============= 2) GSAP transitions for .header-diary and .year-links, etc. =============
   const ease = 'power4.inOut';
   const yearLink = document.querySelectorAll('.year-link');
   const yearNav = document.querySelector('.header-diary');
@@ -182,14 +166,14 @@ document.addEventListener('DOMContentLoaded', () => {
     opacity: 1,
     y: 0,
     duration: 1,
-    // delay: 0.2,
+
     ease: 'power3.out',
   });
 
   gsap.to(crossi, {
     opacity: 1,
     y: 0,
-    // delay: 0.2,
+
     duration: 0.3,
     ease: 'power2.out',
   });
@@ -208,31 +192,28 @@ document.addEventListener('DOMContentLoaded', () => {
     ease: 'power2.out',
   });
 
-  // ============= 3) Year Link Logic: Hide all sections, show clicked year =============
   document.querySelectorAll('.year-link').forEach((year) => {
     year.addEventListener('click', () => {
-      // Animate only the visible active month links
-      // 1. Animate only this clicked year link itself
       gsap.to(year, {
         y: -1.5,
         duration: 0.1,
-        yoyo: true, // go back to original
-        repeat: 1, // do it twice
+        yoyo: true, 
+        repeat: 1, 
         ease: 'power1.out',
       });
 
-      // Remove active class from all year links
+      
       document
         .querySelectorAll('.year-link')
         .forEach((link) => link.classList.remove('active'));
       year.classList.add('active');
 
-      // Hide all year sections
+      
       document
         .querySelectorAll('.year-section')
         .forEach((section) => (section.style.display = 'none'));
 
-      // Show the selected year's section
+      
       const yearSection = document.querySelector(
         `#section-${year.dataset.year}`
       );
@@ -240,13 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const visibleMonthLinks = yearSection.querySelectorAll('.month-link');
       if (visibleMonthLinks.length > 0) {
-        // Set initial animation state
+        
         gsap.set(visibleMonthLinks, {
           opacity: 0,
           y: 2.5,
         });
 
-        // Animate active month links
+        
         gsap.to(visibleMonthLinks, {
           opacity: 1,
           y: 0,
@@ -258,34 +239,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ============= 4) Sequential Image Loading Function =============
+  
   const loaderPath = document.querySelector('#svg-loader .cls-1');
   const loaderContainer = document.getElementById('svg-loader');
 
   loaderPath.style.display = 'block';
 
-  // Calculate the total length of the path
+  
   const pathLength = loaderPath.getTotalLength();
 
-  // Set the dasharray and dashoffset to the path length
+  
   loaderPath.style.strokeDasharray = pathLength;
   loaderPath.style.strokeDashoffset = pathLength;
 
-  // Store the path length for later use
+  
   loaderPath.dataset.pathLength = pathLength;
 
   function showLoader() {
-    // Reset the loader to start from the beginning
+    
     resetLoader();
 
-    // Show the loader container
+    
     loaderContainer.style.display = 'block';
-    loaderContainer.style.opacity = '1'; // Ensure it's fully visible
+    loaderContainer.style.opacity = '1'; 
 
-    // Animate the strokeDashoffset from pathLength to 0 (fills the loader)
+    
     gsap.to(loaderPath, {
       strokeDashoffset: 0,
-      duration: 10, // Duration of the loader animation
+      duration: 10, 
       ease: 'power1.out',
     });
   }
@@ -294,24 +275,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const newDashOffset = pathLength * (1 - progressPercentage / 100);
     gsap.to(loaderPath, {
       strokeDashoffset: newDashOffset,
-      duration: 0.5, // Smooth transition for each update
+      duration: 0.5, 
       ease: 'power1.out',
       overwrite: true,
     });
 
-    // Update ARIA attribute for accessibility
+    
     loaderContainer.setAttribute('aria-valuenow', progressPercentage);
   }
 
   function hideLoader() {
     gsap.to(loaderContainer, {
-      opacity: 0, // Fade out to invisible
-      duration: 0.2, // Duration of the fade-out
+      opacity: 0, 
+      duration: 0.2, 
       ease: 'power1.in',
       onComplete: () => {
-        loaderContainer.style.display = 'none'; // Hide the loader container
+        loaderContainer.style.display = 'none'; 
 
-        // Reset the loader for the next loading cycle
+        
         resetLoader();
       },
     });
@@ -323,12 +304,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Example Function to Simulate Image Loading
+  
   async function loadImagesSequentially(images, onImageLoad) {
     const total = images.length;
     let loaded = 0;
 
-    // Show the loader when loading starts
+    
     showLoader();
 
     for (let i = 0; i < total; i++) {
@@ -336,20 +317,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const dataSrc = img.dataset.src;
       if (!dataSrc) continue;
 
-      // Start loading the image
+      
       img.src = dataSrc;
       img.removeAttribute('data-src');
 
-      // Wait for the image to load
+      
       await new Promise((resolve, reject) => {
         img.onload = () => {
           loaded++;
           const progress = (loaded / total) * 100;
 
-          // Update loader progress
+          
           updateLoader(progress);
 
-          // Callback after image is loaded
+          
           if (onImageLoad) onImageLoad(img, i, total);
           resolve();
         };
@@ -359,35 +340,35 @@ document.addEventListener('DOMContentLoaded', () => {
           loaded++;
           const progress = (loaded / total) * 100;
 
-          // Update loader progress even if image fails to load
+          
           updateLoader(progress);
 
-          // Callback after image fails to load
+          
           if (onImageLoad) onImageLoad(img, i, total);
-          resolve(); // Resolve to continue the sequence
+          resolve(); 
         };
       });
     }
 
     setTimeout(() => {
-      // After all images have loaded, hide the loader with fade-out
+      
       hideLoader();
     }, 400);
   }
 
-  // ============= 5) Month Link Click Logic (Sequential Loading) =============
+  
   document.querySelectorAll('.month-link').forEach((month) => {
     month.addEventListener('click', async () => {
-      // Make the event handler async
+      
       gsap.to(month, {
         y: -1.5,
         duration: 0.1,
-        yoyo: true, // go back to original
-        repeat: 1, // do it twice
+        yoyo: true, 
+        repeat: 1, 
         ease: 'power1.out',
       });
 
-      // Hide all month sections
+      
       document.querySelectorAll('.month-section').forEach((sec) => {
         sec.style.display = 'none';
       });
@@ -397,18 +378,18 @@ document.addEventListener('DOMContentLoaded', () => {
         .forEach((link) => link.classList.remove('active'));
       month.classList.add('active');
 
-      // Show the clicked month
+      
       const monthSection = document.querySelector(
         `#month-${month.dataset.year}-${month.dataset.month}`
       );
-      if (!monthSection) return; // Check if this month was already loaded
+      if (!monthSection) return; 
 
       if (monthSection.dataset.loaded === 'true') {
-        // Ensure the month section is visible
+        
         monthSection.style.display = 'block';
 
-        // Immediately show images with fade-in
-        const alreadyImages = monthSection.querySelectorAll('img'); // Select all images
+        
+        const alreadyImages = monthSection.querySelectorAll('img'); images
         gsap.to(alreadyImages, {
           opacity: 1,
           duration: 0.3,
@@ -417,11 +398,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // If not loaded, proceed with loading logic
-      // Mark it as loaded to skip next time
+      
+      
       monthSection.dataset.loaded = 'true';
 
-      // Collect images in this month
+      
       const monthImages = Array.from(
         monthSection.querySelectorAll('img.lazy-image')
       );
@@ -430,30 +411,30 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Show the clicked month
+      
       monthSection.style.display = 'block';
 
-      // Hide images initially and prepare for animation
+      
       gsap.set(monthImages, {
         opacity: 0,
       });
 
-      // Define a callback to fade in each image as it's loaded
+      
       const onImageLoad = (img, index, total) => {
         gsap.to(img, {
           opacity: 1,
           duration: 0.5,
           delay: index * 0.05,
         });
-        img.classList.remove('lazy-image'); // Remove the lazy-image class after loading
+        img.classList.remove('lazy-image'); loading
       };
 
-      // Start sequential loading
+      
       await loadImagesSequentially(monthImages, onImageLoad);
     });
   });
 
-  // ============= 6) First Click logic, etc. =============
+  
   const imgContainers = document.querySelectorAll('.image-container');
   let firstClick = true;
 
@@ -473,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// --- Back Navigation ---
+
 const cross = document.getElementById('cross');
 
 cross.addEventListener('click', function (e) {
@@ -493,7 +474,7 @@ cross.addEventListener('click', function (e) {
 if (sessionStorage.getItem('isInternalNavigation') === 'true') {
 }
 
-// ============= 7) Lightbox Functionality =============
+
 const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightbox-image');
 const interfaceElement = document.getElementById('interface');
@@ -502,9 +483,9 @@ const monthNavigation = document.querySelectorAll('.month-navigation');
 let currentImages = [];
 let currentIndex = 0;
 
-// Existing counterElement styles
+
 const counterElement = document.createElement('div');
-counterElement.style.position = 'fixed'; // Changed from "absolute" to "fixed"
+counterElement.style.position = 'fixed'; 
 counterElement.style.bottom = '20px';
 counterElement.style.right = '20px';
 counterElement.style.color = '#ffffffd6';
@@ -533,18 +514,18 @@ function updateCounter() {
   });
 }
 
-// Function to handle keyboard events
+
 function handleKeyDown(event) {
-  // Check if the lightbox is currently displayed
+  
   if (lightbox.style.display === 'flex') {
     switch (event.key) {
-      case 'ArrowRight': // Navigate to the next image
+      case 'ArrowRight': 
         showNextImage();
         break;
-      case 'ArrowLeft': // Navigate to the previous image
+      case 'ArrowLeft': 
         showPreviousImage();
         break;
-      case 'Escape': // Close the lightbox
+      case 'Escape': 
         closeLightbox();
         break;
       default:
@@ -553,7 +534,7 @@ function handleKeyDown(event) {
   }
 }
 
-// Click image -> open lightbox
+
 document.querySelectorAll('.image-container img').forEach((img) => {
   img.addEventListener('click', (e) => {
     e.target.style.visibility = 'hidden';
@@ -571,7 +552,7 @@ document.querySelectorAll('.image-container img').forEach((img) => {
       },
     });
 
-    // Clone & animate
+    
     const clonedImage = e.target.cloneNode(true);
     const rect = e.target.getBoundingClientRect();
     clonedImage.style.position = 'fixed';
@@ -608,7 +589,7 @@ document.querySelectorAll('.image-container img').forEach((img) => {
   });
 });
 
-// Close Lightbox
+
 function closeLightbox() {
   const rect = lightboxImage.getBoundingClientRect();
   const clonedImage = lightboxImage.cloneNode(true);
@@ -662,7 +643,7 @@ function closeLightbox() {
   document.removeEventListener('keydown', handleKeyDown);
 }
 
-// Next/Prev function
+
 function showNextImage() {
   if (currentImages.length > 0) {
     currentImages[currentIndex].style.visibility = 'visible';
@@ -686,14 +667,13 @@ function showPreviousImage() {
 
 lightbox.addEventListener('click', (e) => {
   if (e.target === lightbox) {
-    //Handle Click to close on the parent, in the case of an overlay
     closeLightbox();
     return;
   }
-  const lightboxImage = lightbox.querySelector('img'); // Get the lightbox image
+  const lightboxImage = lightbox.querySelector('img'); 
   const rect = lightboxImage.getBoundingClientRect();
 
-  // Calculate visible image dimensions and offsets
+  
   const imageWidth = rect.width;
   const imageHeight = rect.height;
   const naturalWidth = lightboxImage.naturalWidth;
@@ -715,29 +695,29 @@ lightbox.addEventListener('click', (e) => {
     xOffset = (imageWidth - visibleWidth) / 2;
   }
 
-  // Calculate click positions relative to the image, accounting for scaling and offset
+  
   const clickX = e.clientX - rect.left - xOffset;
   const clickY = e.clientY - rect.top - yOffset;
 
-  // Check if the click is within the visible image
+  
   if (
     clickX >= 0 &&
     clickX <= visibleWidth &&
     clickY >= 0 &&
     clickY <= visibleHeight
   ) {
-    // Determine which half of the visible image was clicked
+    
     if (clickX > visibleWidth / 2) {
-      showNextImage(); // Clicked on the right half
+      showNextImage(); 
     } else {
-      showPreviousImage(); // Clicked on the left half
+      showPreviousImage(); 
     }
   } else {
-    closeLightbox(); // Clicked outside the visible image
+    closeLightbox(); 
   }
 });
 
-// --- Back Navigation ---
+
 
 cross.addEventListener('click', function (e) {
   e.preventDefault();

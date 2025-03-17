@@ -1,232 +1,213 @@
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import MotionPathPlugin from "gsap/MotionPathPlugin";
-import "./browser-detect.js";
-import "./applystuff.js";
-document.addEventListener("DOMContentLoaded", function () {
-  const divoverpre = document.querySelector(".divoverpre");
-  const div28 = document.querySelector(".div-block-28.a");
-  const text18 = document.querySelector(".text-block-18");
-  const div14 = document.querySelector(".div-block-14");
-  const naviga = document.querySelector("#naviga");
-  divoverpre.style.display = "none";
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import MotionPathPlugin from 'gsap/MotionPathPlugin';
+import './browser-detect.js';
+import './applystuff.js';
+document.addEventListener('DOMContentLoaded', function () {
+  const divoverpre = document.querySelector('.divoverpre');
+  const div28 = document.querySelector('.div-block-28.a');
+  const text18 = document.querySelector('.text-block-18');
+  const div14 = document.querySelector('.div-block-14');
+  const naviga = document.querySelector('#naviga');
+  const interfaceLskknlkcn = document.querySelector('.interface.lskknlkcn');
+  divoverpre.style.display = 'none';
   gsap.set(naviga, {
     opacity: 0,
     y: 10,
   });
-  gsap.to(naviga, {
+  gsap.set(interfaceLskknlkcn, {
+    opacity: 0,
+    y: 10,
+    display: 'flex',
+  });
+
+  gsap.to([naviga, interfaceLskknlkcn], {
     opacity: 1,
     y: 0,
     duration: 0.5,
-    ease: "power2.inOut",
+    ease: 'power2.inOut',
   });
   gsap.to(text18, {
     opacity: 1,
     duration: 0.1,
-    ease: "power1.inOut",
+    ease: 'power1.inOut',
   });
   gsap.to(div14, {
     opacity: 1,
     duration: 1,
     delay: 0.25,
-    ease: "power4.inOut",
+    ease: 'power4.inOut',
   });
   setTimeout(() => {
-    divoverpre.style.display = "flex";
+    divoverpre.style.display = 'flex';
     gsap.to(div28, {
       opacity: 1,
       duration: 1,
-      ease: "power4.inOut",
+      ease: 'power4.inOut',
     });
     gsap.to(divoverpre, {
       opacity: 1,
       duration: 1,
       delay: 0.1,
       y: 0,
-      ease: "power4.inOut",
+      ease: 'power4.inOut',
     });
   }, 7500);
   document.fonts
     .load("1em 'Neueeigene'")
     .then(function () {
-      // Apply a slight delay to ensure the font is fully loaded before displaying
       setTimeout(function () {
-        document.querySelectorAll(".hidden-text").forEach((el) => {
-          el.style.opacity = "1";
+        document.querySelectorAll('.hidden-text').forEach((el) => {
+          el.style.opacity = '1';
         });
-      }, 100); // 100ms delay to avoid any flash
+      }, 100);
     })
-    .catch(function () {
-      // Font failed to load; keep opacity at 0
-    });
+    .catch(function () {});
 
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
-  let iframe6 = document.querySelector("#vimeo-video1");
-  let iframe7 = document.querySelector("#vimeo-video2");
-  let iframe8 = document.querySelector("#vimeo-video3");
+  let iframe6 = document.querySelector('#vimeo-video1');
+  let iframe7 = document.querySelector('#vimeo-video2');
+  let iframe8 = document.querySelector('#vimeo-video3');
 
   let player6 = new Vimeo.Player(iframe6);
   let player7 = new Vimeo.Player(iframe7);
   let player8 = new Vimeo.Player(iframe8);
 
-  // Initialize all videos to be paused
   player6.pause();
   player7.pause();
   player8.pause();
 
-  // Create a ScrollTrigger to control video playback
   ScrollTrigger.create({
-    trigger: ".home-scroll_text-item._1", // Change this to your desired trigger element
-    start: "top top", // Adjust these values as needed for the starting point
-    end: "bottom top", // Adjust these values as needed for the ending point
+    trigger: '.home-scroll_text-item._1',
+    start: 'top top',
+    end: 'bottom top',
     scrub: 1,
     onEnter: () => {
-      // Start playback for all videos when entering the trigger area
       player6.play();
       player7.play();
       player8.play();
     },
-    // Removed onEnterBack and onLeave, onLeaveBack callbacks
   });
 
-  // Audio control
-  let iframe1 = document.querySelector("#vimeo-video1");
+  let iframe1 = document.querySelector('#vimeo-video1');
   let player1 = new Vimeo.Player(iframe1);
 
-  // Initialize the video to be paused
-
-  // ScrollTrigger to control video playback
   ScrollTrigger.create({
-    trigger: ".home-scroll_text-item._5",
-    start: "-100% 50%",
-    end: "1200 50%",
+    trigger: '.home-scroll_text-item._5',
+    start: '-100% 50%',
+    end: '1200 50%',
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress;
 
-      // Set volume based on progress
       if (progress <= 0.2) {
-        player1.setVolume(progress / 0.2); // Increase volume from 0 to 100% in the first 20%
+        player1.setVolume(progress / 0.2);
       } else if (progress < 0.5) {
-        player1.setVolume(1); // Keep volume at 100% from 20% to 80%
+        player1.setVolume(1);
       } else {
-        player1.setVolume((1 - progress) / 0.5); // Decrease volume from 100% to 0% from 80% to 100%
+        player1.setVolume((1 - progress) / 0.5);
       }
     },
     onEnter: () => {
-      player1.setMuted(false); // Unmute the video when entering the trigger area
+      player1.setMuted(false);
     },
     onLeave: () => {
       player1.setMuted(true);
-      player1.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player1.setVolume(0);
     },
     onEnterBack: () => {
-      player1.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player1.setMuted(false);
     },
     onLeaveBack: () => {
       player1.setMuted(true);
-      player1.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player1.setVolume(0);
     },
   });
 
   //scroll move controll for all items
   function createScrollAnimation(index) {
     gsap.to(`.home-scroll_img-item._${index}`, {
-      ease: "none",
+      ease: 'none',
       x: -window.innerHeight * 3,
       scrollTrigger: {
         trigger: `.home-scroll_text-item._${index}`,
-        start: "top 300%",
-        end: "top -300%",
+        start: 'top 300%',
+        end: 'top -300%',
         scrub: 1,
       },
     });
   }
 
-  // Loop through the image items to create the animations
   for (let i = 1; i <= 9; i++) {
     createScrollAnimation(i);
   }
 
-  // Get audio elements from the DOM
-  const clickAudio = document.getElementById("click-audio");
-  const hoverAudio = document.getElementById("hover-audio");
+  const clickAudio = document.getElementById('click-audio');
+  const hoverAudio = document.getElementById('hover-audio');
 
-  // List of link classes and associated audio
   const linkClasses = [
     {
-      className: "imageeoifnc",
+      className: 'imageeoifnc',
       clickAudio: clickAudio,
       hoverAudio: hoverAudio,
     },
-    { className: "divoverpre", clickAudio: clickAudio, hoverAudio: null },
+    { className: 'divoverpre', clickAudio: clickAudio, hoverAudio: null },
   ];
 
-  // Function to handle click events
   function handleClick(linkInfo) {
-    linkInfo.clickAudio.currentTime = 0; // Reset audio to the beginning
-    linkInfo.clickAudio.play(); // Play the audio
+    linkInfo.clickAudio.currentTime = 0;
+    linkInfo.clickAudio.play();
   }
 
-  // Function to handle hover events
   function handleMouseOver(linkInfo) {
     if (linkInfo.hoverAudio) {
-      // Check if hover audio exists
       linkInfo.hoverAudio.play();
     }
   }
 
-  // Function to handle mouse leave events
   function handleMouseLeave(linkInfo) {
     if (linkInfo.hoverAudio) {
-      // Check if hover audio exists
       linkInfo.hoverAudio.pause();
-      linkInfo.hoverAudio.currentTime = 0; // Reset audio to the beginning
+      linkInfo.hoverAudio.currentTime = 0;
     }
   }
 
-  // Iterate through each link class to set up event listeners
   linkClasses.forEach((linkInfo) => {
     const link = document.querySelector(`.${linkInfo.className}`);
     if (link) {
-      // Add click event listener if there's an associated click audio
       if (linkInfo.clickAudio) {
-        link.addEventListener("click", () => handleClick(linkInfo));
+        link.addEventListener('click', () => handleClick(linkInfo));
       }
 
-      // Add hover event listener if there's an associated hover audio
       if (linkInfo.hoverAudio) {
-        link.addEventListener("mouseover", () => handleMouseOver(linkInfo));
+        link.addEventListener('mouseover', () => handleMouseOver(linkInfo));
 
-        // Stop the hover audio when the mouse leaves the element
-        link.addEventListener("mouseleave", () => handleMouseLeave(linkInfo));
+        link.addEventListener('mouseleave', () => handleMouseLeave(linkInfo));
       }
     }
   });
 
-  // Function to check scroll position and redirect when at the bottom
   function checkScrollPosition() {
     const scrollTop = window.scrollY || window.pageYOffset;
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
   }
 
-  //           Pins
-  window.addEventListener("scroll", checkScrollPosition);
-  // Function to create a motion path animation
-  function createMotionPathAnimation(triggerClass, start, end, id = "") {
-    gsap.to(".newpinleipzig", {
+  window.addEventListener('scroll', checkScrollPosition);
+
+  function createMotionPathAnimation(triggerClass, start, end, id = '') {
+    gsap.to('.newpinleipzig', {
       motionPath: {
-        path: "#wegpfadid",
-        align: "#wegpfadid",
+        path: '#wegpfadid',
+        align: '#wegpfadid',
         alignOrigin: [0.5, 0.98],
         start: start,
         end: end,
       },
       scrollTrigger: {
         trigger: triggerClass,
-        start: "-50% 95%",
-        end: "center 95%",
+        start: '-50% 95%',
+        end: 'center 95%',
         scrub: true,
         id: id,
         immediateRender: false,
@@ -234,43 +215,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Create animations for each segment
-  createMotionPathAnimation(".home-scroll_text-item._1", 0, 0.0085);
-  createMotionPathAnimation(".home-scroll_text-item._2", 0.0085, 0.0165);
+  createMotionPathAnimation('.home-scroll_text-item._1', 0, 0.0085);
+  createMotionPathAnimation('.home-scroll_text-item._2', 0.0085, 0.0165);
   createMotionPathAnimation(
-    ".home-scroll_text-item._4",
+    '.home-scroll_text-item._4',
     0.0165,
     0.0265,
-    "third"
+    'third'
   );
   createMotionPathAnimation(
-    ".home-scroll_text-item._5",
+    '.home-scroll_text-item._5',
     0.0265,
     0.0332,
-    "fourth"
+    'fourth'
   );
   createMotionPathAnimation(
-    ".home-scroll_text-item._6",
+    '.home-scroll_text-item._6',
     0.0332,
     0.0375,
-    "fifth"
+    'fifth'
   );
-  createMotionPathAnimation(".home-scroll_text-item._7", 0.0375, 0.0535);
-  createMotionPathAnimation(".home-scroll_text-item._8", 0.0535, 0.0565);
-  createMotionPathAnimation(".home-scroll_text-item._9", 0.0565, 0.0635);
-  createMotionPathAnimation(".home-scroll_text-item._10", 0.0635, 0.0665);
-  createMotionPathAnimation(".home-scroll_text-item._15", 0.0665, 0.0765);
+  createMotionPathAnimation('.home-scroll_text-item._7', 0.0375, 0.0535);
+  createMotionPathAnimation('.home-scroll_text-item._8', 0.0535, 0.0565);
+  createMotionPathAnimation('.home-scroll_text-item._9', 0.0565, 0.0635);
+  createMotionPathAnimation('.home-scroll_text-item._10', 0.0635, 0.0665);
+  createMotionPathAnimation('.home-scroll_text-item._15', 0.0665, 0.0765);
 
-  //           Dates
-  // Function to create counter animations
   function animateCounter(target, start, end, trigger, scrub, markerId) {
     let obj = { value: start };
     gsap.to(obj, {
       value: end,
       scrollTrigger: {
         trigger: trigger,
-        start: "-50% 95%",
-        end: "center 95%",
+        start: '-50% 95%',
+        end: 'center 95%',
         scrub: scrub,
         id: markerId,
         onEnter: () => updateCounter(target, obj, start),
@@ -282,374 +260,369 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Update counter display
   function updateCounter(target, obj, value) {
     obj.value = value;
     document.querySelector(target).textContent = Math.floor(obj.value);
   }
 
-  // Initialize the counter animations with an array of parameters
   const animations = [
     {
-      target: ".tagecount",
+      target: '.tagecount',
       start: 0,
       end: 3,
-      trigger: ".home-scroll_text-item._1",
+      trigger: '.home-scroll_text-item._1',
       scrub: 1,
-      markerId: "tage",
+      markerId: 'tage',
     },
     {
-      target: ".kmcount",
+      target: '.kmcount',
       start: 0,
       end: 46,
-      trigger: ".home-scroll_text-item._1",
+      trigger: '.home-scroll_text-item._1',
       scrub: 1,
-      markerId: "km",
+      markerId: 'km',
     },
     {
-      target: ".coordi-1",
+      target: '.coordi-1',
       start: 5130814,
       end: 5108788,
-      trigger: ".home-scroll_text-item._1",
+      trigger: '.home-scroll_text-item._1',
       scrub: 1,
-      markerId: "coordi-1",
+      markerId: 'coordi-1',
     },
     {
-      target: ".coordi-2",
+      target: '.coordi-2',
       start: 1237803,
       end: 1251922,
-      trigger: ".home-scroll_text-item._1",
+      trigger: '.home-scroll_text-item._1',
       scrub: 1,
-      markerId: "coordi-2",
+      markerId: 'coordi-2',
     },
     {
-      target: ".tagecount",
+      target: '.tagecount',
       start: 3,
       end: 4,
-      trigger: ".home-scroll_text-item._2",
+      trigger: '.home-scroll_text-item._2',
       scrub: 1,
-      markerId: "tage",
+      markerId: 'tage',
     },
     {
-      target: ".kmcount",
+      target: '.kmcount',
       start: 46,
       end: 56,
-      trigger: ".home-scroll_text-item._2",
+      trigger: '.home-scroll_text-item._2',
       scrub: 1,
-      markerId: "km",
+      markerId: 'km',
     },
     {
-      target: ".coordi-1",
+      target: '.coordi-1',
       start: 5108788,
       end: 5106648,
-      trigger: ".home-scroll_text-item._2",
+      trigger: '.home-scroll_text-item._2',
       scrub: 1,
-      markerId: "coordi-1",
+      markerId: 'coordi-1',
     },
     {
-      target: ".coordi-2",
+      target: '.coordi-2',
       start: 1251922,
       end: 1263877,
-      trigger: ".home-scroll_text-item._2",
+      trigger: '.home-scroll_text-item._2',
       scrub: 1,
-      markerId: "coordi-2",
+      markerId: 'coordi-2',
     },
     {
-      target: ".tagecount",
+      target: '.tagecount',
       start: 4,
       end: 4,
-      trigger: ".home-scroll_text-item._3",
+      trigger: '.home-scroll_text-item._3',
       scrub: 1,
-      markerId: "tage",
+      markerId: 'tage',
     },
     {
-      target: ".kmcount",
+      target: '.kmcount',
       start: 56,
       end: 58,
-      trigger: ".home-scroll_text-item._3",
+      trigger: '.home-scroll_text-item._3',
       scrub: 1,
-      markerId: "km",
+      markerId: 'km',
     },
     {
-      target: ".coordi-1",
+      target: '.coordi-1',
       start: 5106648,
       end: 5100364,
-      trigger: ".home-scroll_text-item._3",
+      trigger: '.home-scroll_text-item._3',
       scrub: 1,
-      markerId: "coordi-1",
+      markerId: 'coordi-1',
     },
     {
-      target: ".coordi-2",
+      target: '.coordi-2',
       start: 1263877,
       end: 1264062,
-      trigger: ".home-scroll_text-item._3",
+      trigger: '.home-scroll_text-item._3',
       scrub: 1,
-      markerId: "coordi-2",
+      markerId: 'coordi-2',
     },
     {
-      target: ".tagecount",
+      target: '.tagecount',
       start: 4,
       end: 4,
-      trigger: ".home-scroll_text-item._4",
+      trigger: '.home-scroll_text-item._4',
       scrub: 1,
-      markerId: "tage",
+      markerId: 'tage',
     },
     {
-      target: ".kmcount",
+      target: '.kmcount',
       start: 56,
       end: 68,
-      trigger: ".home-scroll_text-item._4",
+      trigger: '.home-scroll_text-item._4',
       scrub: 1,
-      markerId: "km",
+      markerId: 'km',
     },
     {
-      target: ".coordi-1",
+      target: '.coordi-1',
       start: 5100364,
       end: 5093187,
-      trigger: ".home-scroll_text-item._4",
+      trigger: '.home-scroll_text-item._4',
       scrub: 1,
-      markerId: "coordi-1",
+      markerId: 'coordi-1',
     },
     {
-      target: ".coordi-2",
+      target: '.coordi-2',
       start: 1264062,
       end: 1271301,
-      trigger: ".home-scroll_text-item._4",
+      trigger: '.home-scroll_text-item._4',
       scrub: 1,
-      markerId: "coordi-2",
+      markerId: 'coordi-2',
     },
     {
-      target: ".tagecount",
+      target: '.tagecount',
       start: 4,
       end: 4,
-      trigger: ".home-scroll_text-item._5",
+      trigger: '.home-scroll_text-item._5',
       scrub: 1,
-      markerId: "tage",
+      markerId: 'tage',
     },
     {
-      target: ".kmcount",
+      target: '.kmcount',
       start: 68,
       end: 77,
-      trigger: ".home-scroll_text-item._5",
+      trigger: '.home-scroll_text-item._5',
       scrub: 1,
-      markerId: "km",
+      markerId: 'km',
     },
     {
-      target: ".coordi-1",
+      target: '.coordi-1',
       start: 5093187,
       end: 5092404,
-      trigger: ".home-scroll_text-item._5",
+      trigger: '.home-scroll_text-item._5',
       scrub: 1,
-      markerId: "coordi-1",
+      markerId: 'coordi-1',
     },
     {
-      target: ".coordi-2",
+      target: '.coordi-2',
       start: 1271301,
       end: 1277728,
-      trigger: ".home-scroll_text-item._5",
+      trigger: '.home-scroll_text-item._5',
       scrub: 1,
-      markerId: "coordi-2",
+      markerId: 'coordi-2',
     },
     {
-      target: ".tagecount",
+      target: '.tagecount',
       start: 4,
       end: 4,
-      trigger: ".home-scroll_text-item._6",
+      trigger: '.home-scroll_text-item._6',
       scrub: 1,
-      markerId: "tage",
+      markerId: 'tage',
     },
     {
-      target: ".kmcount",
+      target: '.kmcount',
       start: 77,
       end: 85,
-      trigger: ".home-scroll_text-item._6",
+      trigger: '.home-scroll_text-item._6',
       scrub: 1,
-      markerId: "km",
+      markerId: 'km',
     },
     {
-      target: ".coordi-1",
+      target: '.coordi-1',
       start: 5092404,
       end: 5088827,
-      trigger: ".home-scroll_text-item._6",
+      trigger: '.home-scroll_text-item._6',
       scrub: 1,
-      markerId: "coordi-1",
+      markerId: 'coordi-1',
     },
     {
-      target: ".coordi-2",
+      target: '.coordi-2',
       start: 1277728,
       end: 1283811,
-      trigger: ".home-scroll_text-item._6",
+      trigger: '.home-scroll_text-item._6',
       scrub: 1,
-      markerId: "coordi-2",
+      markerId: 'coordi-2',
     },
     {
-      target: ".tagecount",
+      target: '.tagecount',
       start: 4,
       end: 6,
-      trigger: ".home-scroll_text-item._7",
+      trigger: '.home-scroll_text-item._7',
       scrub: 1,
-      markerId: "tage",
+      markerId: 'tage',
     },
     {
-      target: ".kmcount",
+      target: '.kmcount',
       start: 85,
       end: 121,
-      trigger: ".home-scroll_text-item._7",
+      trigger: '.home-scroll_text-item._7',
       scrub: 1,
-      markerId: "km",
+      markerId: 'km',
     },
     {
-      target: ".coordi-1",
+      target: '.coordi-1',
       start: 5088827,
       end: 5082190,
-      trigger: ".home-scroll_text-item._7",
+      trigger: '.home-scroll_text-item._7',
       scrub: 1,
-      markerId: "coordi-1",
+      markerId: 'coordi-1',
     },
     {
-      target: ".coordi-2",
+      target: '.coordi-2',
       start: 1283811,
       end: 1313869,
-      trigger: ".home-scroll_text-item._7",
+      trigger: '.home-scroll_text-item._7',
       scrub: 1,
-      markerId: "coordi-2",
+      markerId: 'coordi-2',
     },
     {
-      target: ".tagecount",
+      target: '.tagecount',
       start: 6,
       end: 6,
-      trigger: ".home-scroll_text-item._8",
+      trigger: '.home-scroll_text-item._8',
       scrub: 1,
-      markerId: "tage",
+      markerId: 'tage',
     },
     {
-      target: ".kmcount",
+      target: '.kmcount',
       start: 121,
       end: 135,
-      trigger: ".home-scroll_text-item._8",
+      trigger: '.home-scroll_text-item._8',
       scrub: 1,
-      markerId: "km",
+      markerId: 'km',
     },
     {
-      target: ".coordi-1",
+      target: '.coordi-1',
       start: 5082190,
       end: 5083194,
-      trigger: ".home-scroll_text-item._8",
+      trigger: '.home-scroll_text-item._8',
       scrub: 1,
-      markerId: "coordi-1",
+      markerId: 'coordi-1',
     },
     {
-      target: ".coordi-2",
+      target: '.coordi-2',
       start: 1313869,
       end: 1333356,
-      trigger: ".home-scroll_text-item._8",
+      trigger: '.home-scroll_text-item._8',
       scrub: 1,
-      markerId: "coordi-2",
+      markerId: 'coordi-2',
     },
     {
-      target: ".tagecount",
+      target: '.tagecount',
       start: 6,
       end: 7,
-      trigger: ".home-scroll_text-item._9",
+      trigger: '.home-scroll_text-item._9',
       scrub: 1,
-      markerId: "tage",
+      markerId: 'tage',
     },
     {
-      target: ".kmcount",
+      target: '.kmcount',
       start: 135,
       end: 148,
-      trigger: ".home-scroll_text-item._9",
+      trigger: '.home-scroll_text-item._9',
       scrub: 1,
-      markerId: "km",
+      markerId: 'km',
     },
     {
-      target: ".coordi-1",
+      target: '.coordi-1',
       start: 5083194,
       end: 5080267,
-      trigger: ".home-scroll_text-item._9",
+      trigger: '.home-scroll_text-item._9',
       scrub: 1,
-      markerId: "coordi-1",
+      markerId: 'coordi-1',
     },
     {
-      target: ".coordi-2",
+      target: '.coordi-2',
       start: 1333356,
       end: 1349375,
-      trigger: ".home-scroll_text-item._9",
+      trigger: '.home-scroll_text-item._9',
       scrub: 1,
-      markerId: "coordi-2",
+      markerId: 'coordi-2',
     },
     {
-      target: ".tagecount",
+      target: '.tagecount',
       start: 7,
       end: 7,
-      trigger: ".home-scroll_text-item._10",
+      trigger: '.home-scroll_text-item._10',
       scrub: 1,
-      markerId: "tage",
+      markerId: 'tage',
     },
     {
-      target: ".kmcount",
+      target: '.kmcount',
       start: 148,
       end: 157,
-      trigger: ".home-scroll_text-item._10",
+      trigger: '.home-scroll_text-item._10',
       scrub: 1,
-      markerId: "km",
+      markerId: 'km',
     },
     {
-      target: ".coordi-1",
+      target: '.coordi-1',
       start: 5080267,
       end: 5079368,
-      trigger: ".home-scroll_text-item._10",
+      trigger: '.home-scroll_text-item._10',
       scrub: 1,
-      markerId: "coordi-1",
+      markerId: 'coordi-1',
     },
     {
-      target: ".coordi-2",
+      target: '.coordi-2',
       start: 1349375,
       end: 1351676,
-      trigger: ".home-scroll_text-item._10",
+      trigger: '.home-scroll_text-item._10',
       scrub: 1,
-      markerId: "coordi-2",
+      markerId: 'coordi-2',
     },
     {
-      target: ".tagecount",
+      target: '.tagecount',
       start: 7,
       end: 7,
-      trigger: ".home-scroll_text-item._11",
+      trigger: '.home-scroll_text-item._11',
       scrub: 1,
-      markerId: "tage",
+      markerId: 'tage',
     },
     {
-      target: ".kmcount",
+      target: '.kmcount',
       start: 157,
       end: 158,
-      trigger: ".home-scroll_text-item._11",
+      trigger: '.home-scroll_text-item._11',
       scrub: 1,
-      markerId: "km",
+      markerId: 'km',
     },
     {
-      target: ".coordi-1",
+      target: '.coordi-1',
       start: 5079368,
       end: 5077831,
-      trigger: ".home-scroll_text-item._11",
+      trigger: '.home-scroll_text-item._11',
       scrub: 1,
-      markerId: "coordi-1",
+      markerId: 'coordi-1',
     },
     {
-      target: ".coordi-2",
+      target: '.coordi-2',
       start: 1351676,
       end: 1353448,
-      trigger: ".home-scroll_text-item._11",
+      trigger: '.home-scroll_text-item._11',
       scrub: 1,
-      markerId: "coordi-2",
+      markerId: 'coordi-2',
     },
   ];
 
-  // Loop through each animation configuration in the animations array
   animations.forEach((animation) => {
-    // Merge the current animation's properties with common trigger properties
     const animationConfig = { ...animation };
 
-    // Call the animateCounter function with the combined configuration
     animateCounter(
       animationConfig.target,
       animationConfig.start,
@@ -660,20 +633,17 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   });
 
-  //           Images
-
-  // Timeline for first set of elements
   const tl0 = gsap.timeline({
     scrollTrigger: {
-      trigger: ".home-scroll_text-item._11",
-      start: "top 100%",
-      end: "top -325%",
+      trigger: '.home-scroll_text-item._11',
+      start: 'top 100%',
+      end: 'top -325%',
       scrub: 1,
     },
   });
 
   tl0.fromTo(
-    ".home-scroll_img-item._11",
+    '.home-scroll_img-item._11',
     {
       opacity: 0,
     },
@@ -683,62 +653,58 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   );
 
-  tl0.from(".home-scroll_img._12.first", {
+  tl0.from('.home-scroll_img._12.first', {
     width: 0,
     duration: 1,
   });
 
   tl0
-    .to(".home-scroll_img-item._11", {
+    .to('.home-scroll_img-item._11', {
       opacity: 0,
       duration: 0.5,
     })
     .to(
-      ".home-scroll_img._12.new",
+      '.home-scroll_img._12.new',
       {
         opacity: 0,
         duration: 0.5,
       },
-      "<"
+      '<'
     );
 
-  const element = document.querySelector(".home-scroll_img-item._10");
+  const element = document.querySelector('.home-scroll_img-item._10');
   const elementWidth = element.offsetWidth;
-  const centerX = (window.innerWidth - elementWidth) / 2; // Calculate center position
+  const centerX = (window.innerWidth - elementWidth) / 2;
 
-  // Timeline for first set of elements
   const tl1 = gsap.timeline({
     scrollTrigger: {
-      trigger: ".home-scroll_text-item._10",
-      start: "top 275%",
-      end: "top -325%",
+      trigger: '.home-scroll_text-item._10',
+      start: 'top 275%',
+      end: 'top -325%',
       scrub: 1,
     },
   });
 
-  // Move the item horizontally to the center of the screen
-  tl1.to(".home-scroll_img-item._10", {
-    x: centerX, // Move element to the calculated center
+  tl1.to('.home-scroll_img-item._10', {
+    x: centerX,
   });
 
-  // Then fade it out after it's in the center
-  tl1.to(".home-scroll_img-item._10", {
+  tl1.to('.home-scroll_img-item._10', {
     opacity: 0,
   });
 
-  // Timeline for second set of elements
   const tl2 = gsap.timeline({
     scrollTrigger: {
-      trigger: ".home-scroll_text-item._14",
-      start: "top 100%",
-      end: "bottom -25%",
+      trigger: '.home-scroll_text-item._14',
+      start: 'top 100%',
+      end: 'bottom -25%',
       scrub: 1,
     },
   });
 
   tl2
     .fromTo(
-      ".home-scroll_img-item._14",
+      '.home-scroll_img-item._14',
       {
         opacity: 0,
       },
@@ -746,161 +712,146 @@ document.addEventListener("DOMContentLoaded", function () {
         opacity: 1,
       }
     )
-    .to(".home-scroll_img-item._14", {
+    .to('.home-scroll_img-item._14', {
       x: -window.innerWidth * 1.2,
-      ease: "power3.in",
+      ease: 'power3.in',
     });
 
-  // Refresh ScrollTrigger to ensure it recalculates correctly
   ScrollTrigger.refresh();
 
-  gsap.to(".home-scroll_img-item._15", {
-    ease: "none",
+  gsap.to('.home-scroll_img-item._15', {
+    ease: 'none',
     x: -window.innerHeight * 0,
 
     scrollTrigger: {
-      trigger: ".home-scroll_text-item._15",
-      start: "top 225%",
-      end: "top -0%",
+      trigger: '.home-scroll_text-item._15',
+      start: 'top 225%',
+      end: 'top -0%',
       scrub: 1,
     },
   });
 
-  // Player 1
-  let iframe2 = document.querySelector("#vimeo-video2");
+  let iframe2 = document.querySelector('#vimeo-video2');
   let player2 = new Vimeo.Player(iframe2);
-  // Initialize the video to be paused
 
   ScrollTrigger.create({
-    trigger: ".home-scroll_text-item._10",
-    start: "-100% 50%",
-    end: "1500 50%",
+    trigger: '.home-scroll_text-item._10',
+    start: '-100% 50%',
+    end: '1500 50%',
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress;
 
-      // Set volume based on progress
       if (progress <= 0.2) {
-        player2.setVolume(progress / 0.2); // Increase volume from 0 to 100% in the first 20%
+        player2.setVolume(progress / 0.2);
       } else if (progress < 0.5) {
-        player2.setVolume(1); // Keep volume at 100% from 20% to 80%
+        player2.setVolume(1);
       } else {
-        player2.setVolume((1 - progress) / 0.5); // Decrease volume from 100% to 0% from 80% to 100%
+        player2.setVolume((1 - progress) / 0.5);
       }
     },
     onEnter: () => {
-      player2.setMuted(false); // Unmute the video when entering the trigger area
+      player2.setMuted(false);
     },
     onLeave: () => {
       player2.setMuted(true);
-      player2.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player2.setVolume(0);
     },
     onEnterBack: () => {
-      player2.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player2.setMuted(false);
     },
     onLeaveBack: () => {
       player2.setMuted(true);
-      player2.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player2.setVolume(0);
     },
   });
 
-  // Player 1
-  let iframe3 = document.querySelector("#vimeo-video3");
+  let iframe3 = document.querySelector('#vimeo-video3');
   let player3 = new Vimeo.Player(iframe3);
   ScrollTrigger.create({
-    trigger: ".home-scroll_text-item._14",
-    start: "-100% 50%",
-    end: "1200 50%",
+    trigger: '.home-scroll_text-item._14',
+    start: '-100% 50%',
+    end: '1200 50%',
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress;
 
-      // Set volume based on progress
       if (progress <= 0.2) {
-        player3.setVolume(progress / 0.2); // Increase volume from 0 to 100% in the first 20%
+        player3.setVolume(progress / 0.2);
       } else if (progress < 0.5) {
-        player3.setVolume(1); // Keep volume at 100% from 20% to 80%
+        player3.setVolume(1);
       } else {
-        player3.setVolume((1 - progress) / 0.5); // Decrease volume from 100% to 0% from 80% to 100%
+        player3.setVolume((1 - progress) / 0.5);
       }
     },
     onEnter: () => {
-      player3.setMuted(false); // Unmute the video when entering the trigger area
+      player3.setMuted(false);
     },
     onLeave: () => {
       player3.setMuted(true);
-      player3.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player3.setVolume(0);
     },
     onEnterBack: () => {
-      player3.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player3.setMuted(false);
     },
     onLeaveBack: () => {
       player3.setMuted(true);
-      player3.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player3.setVolume(0);
     },
   });
 
-  // Winter Audio Preloader
-  let winterAudio = document.querySelector("#winter");
-  let preloader = document.querySelector(".divoverpre");
-  let myButton = document.getElementById("my-buttonp1"); // Get the button
+  let winterAudio = document.querySelector('#winter');
+  let preloader = document.querySelector('.divoverpre');
+  let myButton = document.getElementById('my-buttonp1');
 
-  preloader.addEventListener("click", () => {
-    // Fade out preloader
+  preloader.addEventListener('click', () => {
     gsap.to(preloader, {
       duration: 0.5,
       opacity: 0,
-      display: "none",
+      display: 'none',
       onComplete: () => {
-        // Start playing the audio and set initial volume to 0
         winterAudio.play();
         winterAudio.volume = 0;
 
-        // Fade in the audio
         gsap.to(winterAudio, {
-          duration: 2, // Duration of the fade in seconds
-          volume: 0.5, // Target volume
-          ease: "power1.inOut",
+          duration: 2,
+          volume: 0.5,
+          ease: 'power1.inOut',
           onComplete: () => {
-            winterAudio.volume = 0.5; // Ensure the volume is set to 0.5 at the end
+            winterAudio.volume = 0.5;
           },
         });
       },
     });
   });
 
-  // Add event listener for the button to fade out the audio
-  myButton.addEventListener("click", () => {
-    // Fade out the audio
+  myButton.addEventListener('click', () => {
     gsap.to(winterAudio, {
-      duration: 2, // Duration of the fade out
-      volume: 0, // Target volume to fade out
-      ease: "power1.inOut",
+      duration: 2,
+      volume: 0,
+      ease: 'power1.inOut',
       onComplete: () => {
-        winterAudio.pause(); // Pause the audio after fade out
-        winterAudio.currentTime = 0; // Optional: reset audio to start
+        winterAudio.pause();
+        winterAudio.currentTime = 0;
       },
     });
   });
 
-  // Audio 3
-  let audio2 = document.querySelector("#nachtg");
+  let audio2 = document.querySelector('#nachtg');
 
   ScrollTrigger.create({
-    trigger: ".home-scroll_text-item._11",
-    start: "top 100%",
-    end: "bottom -0%",
+    trigger: '.home-scroll_text-item._11',
+    start: 'top 100%',
+    end: 'bottom -0%',
     scrub: 1,
     onUpdate: (self) => {
       let progress = self.progress;
 
       if (progress <= 0.3) {
-        // Clamp the volume
         audio2.volume = Math.max(0, Math.min(progress / 0.3, 1));
       } else if (progress > 0.3 && progress < 0.6) {
-        audio2.volume = 1; // Keep volume at 100%
+        audio2.volume = 1;
       } else if (progress >= 0.6) {
-        // Clamp the volume
         audio2.volume = Math.max(0, Math.min((1 - progress) / 0.3, 1));
       }
     },
@@ -909,35 +860,32 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     onLeave: () => {
       audio2.pause();
-      audio2.volume = 0; // Mute
+      audio2.volume = 0;
     },
     onEnterBack: () => {
       audio2.play();
     },
     onLeaveBack: () => {
       audio2.pause();
-      audio2.volume = 0; // Mute
+      audio2.volume = 0;
     },
   });
 
-  // Audio 4
-  let audio = document.querySelector("#vogelg");
+  let audio = document.querySelector('#vogelg');
 
   ScrollTrigger.create({
-    trigger: ".home-scroll_text-item._14",
-    start: "top 125%",
-    end: "bottom -125%",
+    trigger: '.home-scroll_text-item._14',
+    start: 'top 125%',
+    end: 'bottom -125%',
     scrub: 1,
     onUpdate: (self) => {
       let progress = self.progress;
 
       if (progress <= 0.2) {
-        // Clamp the volume
         audio.volume = Math.max(0, Math.min(progress / 0.2, 1));
       } else if (progress > 0.2 && progress < 0.4) {
-        audio.volume = 1; // Keep volume at 100%
+        audio.volume = 1;
       } else if (progress >= 0.4) {
-        // Clamp the volume
         audio.volume = Math.max(0, Math.min((1 - progress) / 0.3, 1));
       }
     },
@@ -946,35 +894,32 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     onLeave: () => {
       audio.pause();
-      audio.volume = 0; // Mute
+      audio.volume = 0;
     },
     onEnterBack: () => {
       audio.play();
     },
     onLeaveBack: () => {
       audio.pause();
-      audio.volume = 0; // Mute
+      audio.volume = 0;
     },
   });
 
-  // Audio 5 Schritte 1
-  let audio3 = document.querySelector("#schritte1");
+  let audio3 = document.querySelector('#schritte1');
 
   ScrollTrigger.create({
-    trigger: ".wrappermain",
-    start: "bottom 75%", // Start 10% from the top of the viewport
-    end: "bottom -600%", // End 90% from the top of the viewport
+    trigger: '.wrappermain',
+    start: 'bottom 75%',
+    end: 'bottom -600%',
     scrub: 1,
     onUpdate: (self) => {
       let progress = self.progress;
 
       if (progress <= 0.2) {
-        // Clamp the volume
         audio3.volume = Math.max(0, Math.min(progress / 0.2, 1));
       } else if (progress > 0.2 && progress < 0.6) {
-        audio3.volume = 1; // Keep volume at 100%
+        audio3.volume = 1;
       } else if (progress >= 0.6) {
-        // Clamp the volume
         audio3.volume = Math.max(0, Math.min((1 - progress) / 0.2, 1));
       }
     },
@@ -983,35 +928,32 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     onLeave: () => {
       audio3.pause();
-      audio3.volume = 0; // Mute
+      audio3.volume = 0;
     },
     onEnterBack: () => {
       audio3.play();
     },
     onLeaveBack: () => {
       audio3.pause();
-      audio3.volume = 0; // Mute
+      audio3.volume = 0;
     },
   });
 
-  // Audio 6 Schritte 2
-  let audio6 = document.querySelector("#schritte1"); // Correcting selector for audio6
+  let audio6 = document.querySelector('#schritte1');
 
   ScrollTrigger.create({
-    trigger: ".wrappermain",
-    start: "bottom -690%", // Start 10% from the top of the viewport
-    end: "bottom -1150%", // End 90% from the top of the viewport
+    trigger: '.wrappermain',
+    start: 'bottom -690%',
+    end: 'bottom -1150%',
     scrub: 1,
     onUpdate: (self) => {
       let progress = self.progress;
 
       if (progress <= 0.2) {
-        // Clamp the volume
         audio6.volume = Math.max(0, Math.min(progress / 0.2, 1));
       } else if (progress > 0.2 && progress < 0.6) {
-        audio6.volume = 1; // Keep volume at 100%
+        audio6.volume = 1;
       } else if (progress >= 0.6) {
-        // Clamp the volume
         audio6.volume = Math.max(0, Math.min((1 - progress) / 0.2, 1));
       }
     },
@@ -1020,81 +962,66 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     onLeave: () => {
       audio6.pause();
-      audio6.volume = 0; // Mute
+      audio6.volume = 0;
     },
     onEnterBack: () => {
       audio6.play();
     },
     onLeaveBack: () => {
       audio6.pause();
-      audio6.volume = 0; // Mute
+      audio6.volume = 0;
     },
   });
 
-  //           Go to new page etc
   document
-    .getElementById("my-buttonp1")
-    .addEventListener("click", function (event) {
-      // Prevent the default action
+    .getElementById('my-buttonp1')
+    .addEventListener('click', function (event) {
       event.preventDefault();
 
-      // Delay the navigation by 1 second (1000 milliseconds)
       setTimeout(function () {
-        window.location.href = "/how-to-leave-town-p2";
+        window.location.href = '/how-to-leave-town-p2';
       }, 1275);
     });
 
-  // Function to show the pop-up, count down, and reload the page after 3 seconds
   function popupAndReloadOnResize() {
-    window.addEventListener("resize", function () {
-      // Get the pop-up and countdown elements
-      const popup = document.getElementById("resize-popup");
-      const countdownElement = document.getElementById("downcount");
+    window.addEventListener('resize', function () {
+      const popup = document.getElementById('resize-popup');
+      const countdownElement = document.getElementById('downcount');
 
-      // Shw the pop-up
-      popup.style.display = "block";
+      popup.style.display = 'block';
 
-      // Initialize the countdown
-      let countdown = 3; // Start from 3 seconds
+      let countdown = 3;
 
-      // Update the countdown every second
       const countdownInterval = setInterval(function () {
-        countdownElement.textContent = countdown; // Update the displayed number
-        countdown--; // Decrease the countdown
+        countdownElement.textContent = countdown;
+        countdown--;
 
-        // If countdown reaches 0, clear the interval and reload the page
         if (countdown < 0) {
           clearInterval(countdownInterval);
 
-          location.reload(); // Reload the page
+          location.reload();
         }
-      }, 1000); // Update every second (1000 milliseconds)
+      }, 1000);
     });
   }
 
-  // Call the function to set up the event listener
   popupAndReloadOnResize();
 
   window.onload = function () {
-    // Ensure the page is scrolled to the top
     window.scrollTo(0, 0);
 
-    // Disable scroll restoration to prevent unwanted scrolling
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
     }
 
-    // Prevent scrolling
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
 
-    // Set up the event listener for closing the modal
-    const closeModalDiv = document.getElementById("closeModal");
+    const closeModalDiv = document.getElementById('closeModal');
     closeModalDiv.onclick = function () {
-      document.body.style.overflow = "auto"; // Enable scrolling again
-      // Your Webflow interaction should handle closing the modal
+      document.body.style.overflow = 'auto';
     };
   };
-  document.addEventListener("scroll", () => {
+  document.addEventListener('scroll', () => {
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight;

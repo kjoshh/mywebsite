@@ -1,22 +1,9 @@
 
-/*!
- * Webflow: Front-end site library
- * @license MIT
- * Inline scripts may access the api using an async handler:
- *   var Webflow = Webflow || [];
- *   Webflow.push(readyFunction);
- */
 
-(() => { // webpackBootstrap
+(() => { 
 var __webpack_modules__ = ({
 "1361": (function (module) {
-/**
- * https://github.com/gre/bezier-easing
- * BezierEasing - use bezier curve for transition easing function
- * by Gaëtan Renaudeau 2014 - 2015 – MIT License
- */
 
-// These values are established by empiricism with tests (tradeoff: performance VS precision)
 var NEWTON_ITERATIONS = 4;
 var NEWTON_MIN_SLOPE = 0.001;
 var SUBDIVISION_PRECISION = 0.0000001;
@@ -31,10 +18,10 @@ function A (aA1, aA2) { return 1.0 - 3.0 * aA2 + 3.0 * aA1; }
 function B (aA1, aA2) { return 3.0 * aA2 - 6.0 * aA1; }
 function C (aA1)      { return 3.0 * aA1; }
 
-// Returns x(t) given t, x1, and x2, or y(t) given t, y1, and y2.
+
 function calcBezier (aT, aA1, aA2) { return ((A(aA1, aA2) * aT + B(aA1, aA2)) * aT + C(aA1)) * aT; }
 
-// Returns dx/dt given t, x1, and x2, or dy/dt given t, y1, and y2.
+
 function getSlope (aT, aA1, aA2) { return 3.0 * A(aA1, aA2) * aT * aT + 2.0 * B(aA1, aA2) * aT + C(aA1); }
 
 function binarySubdivide (aX, aA, aB, mX1, mX2) {
@@ -68,7 +55,7 @@ module.exports = function bezier (mX1, mY1, mX2, mY2) {
     throw new Error('bezier x values must be in [0, 1] range');
   }
 
-  // Precompute samples table
+  
   var sampleValues = float32ArraySupported ? new Float32Array(kSplineTableSize) : new Array(kSplineTableSize);
   if (mX1 !== mY1 || mX2 !== mY2) {
     for (var i = 0; i < kSplineTableSize; ++i) {
@@ -86,7 +73,7 @@ module.exports = function bezier (mX1, mY1, mX2, mY2) {
     }
     --currentSample;
 
-    // Interpolate to provide an initial guess for t
+    
     var dist = (aX - sampleValues[currentSample]) / (sampleValues[currentSample + 1] - sampleValues[currentSample]);
     var guessForT = intervalStart + dist * kSampleStepSize;
 
@@ -102,9 +89,9 @@ module.exports = function bezier (mX1, mY1, mX2, mY2) {
 
   return function BezierEasing (x) {
     if (mX1 === mY1 && mX2 === mY2) {
-      return x; // linear
+      return x; 
     }
-    // Because JavaScript number are imprecise, we should guarantee the extremes are right.
+    
     if (x === 0) {
       return 0;
     }
@@ -121,7 +108,6 @@ module.exports = function bezier (mX1, mY1, mX2, mY2) {
 var getNative = __webpack_require__(440),
     root = __webpack_require__(5238);
 
-/* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
 
 module.exports = DataView;
@@ -153,7 +139,7 @@ function Hash(entries) {
   }
 }
 
-// Add methods to `Hash`.
+
 Hash.prototype.clear = hashClear;
 Hash.prototype['delete'] = hashDelete;
 Hash.prototype.get = hashGet;
@@ -168,7 +154,6 @@ module.exports = Hash;
 var baseCreate = __webpack_require__(5940),
     baseLodash = __webpack_require__(4382);
 
-/** Used as references for the maximum length and index of an array. */
 var MAX_ARRAY_LENGTH = 4294967295;
 
 /**
@@ -188,7 +173,7 @@ function LazyWrapper(value) {
   this.__views__ = [];
 }
 
-// Ensure `LazyWrapper` is an instance of `baseLodash`.
+
 LazyWrapper.prototype = baseCreate(baseLodash.prototype);
 LazyWrapper.prototype.constructor = LazyWrapper;
 
@@ -221,7 +206,7 @@ function ListCache(entries) {
   }
 }
 
-// Add methods to `ListCache`.
+
 ListCache.prototype.clear = listCacheClear;
 ListCache.prototype['delete'] = listCacheDelete;
 ListCache.prototype.get = listCacheGet;
@@ -294,7 +279,7 @@ function MapCache(entries) {
   }
 }
 
-// Add methods to `MapCache`.
+
 MapCache.prototype.clear = mapCacheClear;
 MapCache.prototype['delete'] = mapCacheDelete;
 MapCache.prototype.get = mapCacheGet;
@@ -350,7 +335,7 @@ function SetCache(values) {
   }
 }
 
-// Add methods to `SetCache`.
+
 SetCache.prototype.add = SetCache.prototype.push = setCacheAdd;
 SetCache.prototype.has = setCacheHas;
 
@@ -378,7 +363,7 @@ function Stack(entries) {
   this.size = data.size;
 }
 
-// Add methods to `Stack`.
+
 Stack.prototype.clear = stackClear;
 Stack.prototype['delete'] = stackDelete;
 Stack.prototype.get = stackGet;
@@ -534,13 +519,13 @@ function arrayLikeKeys(value, inherited) {
   for (var key in value) {
     if ((inherited || hasOwnProperty.call(value, key)) &&
         !(skipIndexes && (
-           // Safari 9 has enumerable `arguments.length` in strict mode.
+           
            key == 'length' ||
-           // Node.js 0.10 has enumerable non-index properties on buffers.
+           
            (isBuff && (key == 'offset' || key == 'parent')) ||
-           // PhantomJS 2 has enumerable non-index properties on typed arrays.
+           
            (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
-           // Skip index properties.
+           
            isIndex(key, length)
         ))) {
       result.push(key);
@@ -893,7 +878,7 @@ function baseFlatten(array, depth, predicate, isStrict, result) {
     var value = array[index];
     if (depth > 0 && predicate(value)) {
       if (depth > 1) {
-        // Recursively flatten arrays (susceptible to call stack limits).
+        
         baseFlatten(value, depth - 1, predicate, isStrict, result);
       } else {
         arrayPush(result, value);
@@ -1387,8 +1372,8 @@ var baseMatches = __webpack_require__(6358),
  * @returns {Function} Returns the iteratee.
  */
 function baseIteratee(value) {
-  // Don't store the `typeof` result in a variable to avoid a JIT bug in Safari 9.
-  // See https://bugs.webkit.org/show_bug.cgi?id=156034 for more details.
+  
+  
   if (typeof value == 'function') {
     return value;
   }
@@ -1485,7 +1470,7 @@ module.exports = baseKeysIn;
  * @private
  */
 function baseLodash() {
-  // No operation performed.
+  
 }
 
 module.exports = baseLodash;
@@ -1781,7 +1766,7 @@ var symbolProto = Symbol ? Symbol.prototype : undefined,
  * @returns {string} Returns the string.
  */
 function baseToString(value) {
-  // Exit early for strings to avoid a performance hit in some environments.
+  
   if (typeof value == 'string') {
     return value;
   }

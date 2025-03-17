@@ -1,10 +1,8 @@
-// src/js/howtoleavetown.js
 import gsap from 'gsap';
-import './browser-detect.js'; // Import for side effects
-import './applystuff.js'; // Import for side effects
-import { initializeFirstSlider } from './slider.js'; // Import the function
+import './browser-detect.js';
+import './applystuff.js';
+import { initializeFirstSlider } from './slider.js';
 
-// --- Load Base Animations and Functionality ---
 document.addEventListener('DOMContentLoaded', function () {
   const loaderText = document.querySelectorAll('.linkwrap');
   const loaderImg = document.querySelectorAll('.bookim');
@@ -14,11 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const menuoverlay = document.getElementById('menuoverlay');
   const interfaceElement = document.getElementById('interface');
   const links = document.querySelectorAll('a');
+  const interfaceLskknlkcn = document.querySelector('.interface.lskknlkcn');
 
   interfaceElement.style.display = 'flex';
   textBlock.style.display = 'none';
   console.log('gogogogogo');
-  // set stuff
+
   gsap.set(loaderText, {
     y: 10,
   });
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
     y: 20,
   });
 
-  // animate stuff
   textBlock.style.display = 'flex';
   gsap.to(loaderImg, {
     height: '100vh',
@@ -47,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
     opacity: 1,
     duration: 0.25,
     onComplete: () => {
-      // Create the pulse animation
       gsap.to(menuoverlay, {
         opacity: 0.5,
         width: '500px',
@@ -152,18 +149,17 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// --- Hover Effects ---
 document.addEventListener('DOMContentLoaded', function () {
-  const hoverDelay = 750; // Delay before re-enabling hover after click (ms)
-  const throttleLimit = 50; // Throttle limit for mousemove events (ms)
-  const initialDelay = 1000; // Delay before starting hover (ms)
+  const hoverDelay = 750;
+  const throttleLimit = 50;
+  const initialDelay = 1000;
   let hoverEffectActive = false;
-  let links = []; // Cache the links array
+  let links = [];
   let isHovering = false;
   let lastHoveredLink = null;
-  const hoveredLinksQueue = []; // Queue of links to hover
+  const hoveredLinksQueue = [];
   let backgroundImage = null;
-  const linkOffsets = [0, 185]; // Example X offsets for two links
+  const linkOffsets = [0, 185];
   const imageClasses = ['sdds', 'nerner'];
   const imageElements = {};
 
@@ -186,17 +182,16 @@ document.addEventListener('DOMContentLoaded', function () {
   function initializeHoverScript() {
     if (!hoverEffectActive) return;
 
-    updateLinksCache(); // Initial cache update
+    updateLinksCache();
 
     backgroundImage = document.querySelector('.imglinkbg.arch.intro');
     if (!backgroundImage) {
       console.error(
         'Background image element with class .imglinkbg.arch.intro not found!'
       );
-      return; // Exit if the element is not found
+      return;
     }
 
-    // Find the image elements
     imageClasses.forEach((className) => {
       imageElements[className] = document.querySelector(`.bookim.${className}`);
       if (!imageElements[className]) {
@@ -299,7 +294,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// Call initializeFirstSlider when needed (e.g., on a button click)
 const triggerElement1 = document.getElementById('openbook');
 triggerElement1.addEventListener('click', () => {
   initializeFirstSlider();

@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("thisbuttonyop4")
     .addEventListener("click", function () {
-      // Scroll to a specific percentage of viewport height after 50 milliseconds
+      
       setTimeout(() => {
-        const vh = window.innerHeight; // Get the height of the viewport in pixels
-        const scrollAmount = vh * 3.4; // Scroll 4 times the viewport height (change this value as needed)
+        const vh = window.innerHeight; 
+        const scrollAmount = vh * 3.4; 
 
         window.scrollTo({
           top: scrollAmount,
@@ -22,20 +22,20 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("butbutp3")
     .addEventListener("click", function (event) {
-      // Prevent the default action
+      
       event.preventDefault();
 
-      // Navigate to the new page after 8 seconds
+      
       setTimeout(function () {
         window.location.href = "/how-to-leave-town-p5";
       }, 2000);
     });
 
-  // Get the audio elements
+  
   const clickAudio = document.getElementById("click-audio");
   const hoverAudio = document.getElementById("hover-audio");
 
-  // List of link classes and associated audio
+  
   const linkClasses = [
     {
       className: "link-6.yoyo",
@@ -62,24 +62,24 @@ document.addEventListener("DOMContentLoaded", function () {
   linkClasses.forEach((linkInfo) => {
     const link = document.querySelector(`.${linkInfo.className}`);
     if (link) {
-      // Add click event listener if there's an associated click audio
+      
       if (linkInfo.clickAudio) {
         link.addEventListener("click", function (event) {
-          linkInfo.clickAudio.currentTime = 0; // Reset audio to the beginning
-          linkInfo.clickAudio.play(); // Play the audio
+          linkInfo.clickAudio.currentTime = 0; 
+          linkInfo.clickAudio.play(); 
         });
       }
 
-      // Add hover event listener if there's an associated hover audio
+      
       if (linkInfo.hoverAudio) {
         link.addEventListener("mouseover", function () {
           linkInfo.hoverAudio.play();
         });
 
-        // Optional: Stop the hover audio when the mouse leaves the element
+        
         link.addEventListener("mouseleave", function () {
           linkInfo.hoverAudio.pause();
-          linkInfo.hoverAudio.currentTime = 0; // Reset audio to the beginning
+          linkInfo.hoverAudio.currentTime = 0; 
         });
       }
     }
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-  // Pins
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { start: 0.4465, end: 0.459, trigger: ".home-scroll_text-item.p4p16" },
   ];
 
-  // Loop through the steps to apply the animation
+  
   animationSteps.forEach((step) => {
     gsap.to(".newpinleipzig", {
       motionPath: {
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Set initial values for the counters
+  
   document.querySelector(".tagecount").textContent = 25;
   document.querySelector(".kmcount").textContent = 635;
   document.querySelector(".coordi-1").textContent = 4851172;
@@ -179,14 +179,14 @@ document.addEventListener("DOMContentLoaded", function () {
     obj.value = value;
     document.querySelector(target).textContent = Math.floor(obj.value);
   }
-  // Initialize the counter animations
+  
   animateCounter(
     ".tagecount",
     25,
     26,
     ".home-scroll_text-item.p4p1",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -195,8 +195,8 @@ document.addEventListener("DOMContentLoaded", function () {
     635,
     646,
     ".home-scroll_text-item.p4p1",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -205,8 +205,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4851172,
     4847784,
     ".home-scroll_text-item.p4p1",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -215,8 +215,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1657423,
     1664845,
     ".home-scroll_text-item.p4p1",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -226,8 +226,8 @@ document.addEventListener("DOMContentLoaded", function () {
     646,
     652,
     ".home-scroll_text-item.p4p2",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -236,8 +236,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4847784,
     4834302,
     ".home-scroll_text-item.p4p2",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -246,8 +246,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1664845,
     1685355,
     ".home-scroll_text-item.p4p2",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -257,8 +257,8 @@ document.addEventListener("DOMContentLoaded", function () {
     652,
     675,
     ".home-scroll_text-item.p4p3",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -267,8 +267,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4834302,
     4828420,
     ".home-scroll_text-item.p4p3",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -277,8 +277,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1685355,
     1689533,
     ".home-scroll_text-item.p4p3",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -288,8 +288,8 @@ document.addEventListener("DOMContentLoaded", function () {
     26,
     30,
     ".home-scroll_text-item.p4p4",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -298,8 +298,8 @@ document.addEventListener("DOMContentLoaded", function () {
     675,
     778,
     ".home-scroll_text-item.p4p4",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -308,8 +308,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4828420,
     4788928,
     ".home-scroll_text-item.p4p4",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -318,8 +318,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1689533,
     1744875,
     ".home-scroll_text-item.p4p4",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -329,8 +329,8 @@ document.addEventListener("DOMContentLoaded", function () {
     30,
     32,
     ".home-scroll_text-item.p4p5",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -339,8 +339,8 @@ document.addEventListener("DOMContentLoaded", function () {
     778,
     854,
     ".home-scroll_text-item.p4p5",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -349,8 +349,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4788928,
     4788698,
     ".home-scroll_text-item.p4p5",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -359,8 +359,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1744875,
     1748559,
     ".home-scroll_text-item.p4p5",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -370,8 +370,8 @@ document.addEventListener("DOMContentLoaded", function () {
     32,
     33,
     ".home-scroll_text-item.p4p6",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -380,8 +380,8 @@ document.addEventListener("DOMContentLoaded", function () {
     854,
     886,
     ".home-scroll_text-item.p4p6",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -390,8 +390,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4788698,
     4742381,
     ".home-scroll_text-item.p4p6",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -400,8 +400,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1748559,
     1776011,
     ".home-scroll_text-item.p4p6",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -411,8 +411,8 @@ document.addEventListener("DOMContentLoaded", function () {
     33,
     34,
     ".home-scroll_text-item.p4p7",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -421,8 +421,8 @@ document.addEventListener("DOMContentLoaded", function () {
     886,
     935,
     ".home-scroll_text-item.p4p7",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -431,8 +431,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4742381,
     4716483,
     ".home-scroll_text-item.p4p7",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -441,8 +441,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1776011,
     1793326,
     ".home-scroll_text-item.p4p7",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -452,8 +452,8 @@ document.addEventListener("DOMContentLoaded", function () {
     34,
     36,
     ".home-scroll_text-item.p4p8",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -462,8 +462,8 @@ document.addEventListener("DOMContentLoaded", function () {
     935,
     988,
     ".home-scroll_text-item.p4p8",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -472,8 +472,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4716483,
     4693346,
     ".home-scroll_text-item.p4p8",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -482,8 +482,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1793326,
     1818054,
     ".home-scroll_text-item.p4p8",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -493,8 +493,8 @@ document.addEventListener("DOMContentLoaded", function () {
     36,
     37,
     ".home-scroll_text-item.p4p9",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -503,8 +503,8 @@ document.addEventListener("DOMContentLoaded", function () {
     988,
     1017,
     ".home-scroll_text-item.p4p9",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -513,8 +513,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4693346,
     4671317,
     ".home-scroll_text-item.p4p9",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -523,8 +523,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1818054,
     1863136,
     ".home-scroll_text-item.p4p9",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -534,8 +534,8 @@ document.addEventListener("DOMContentLoaded", function () {
     37,
     39,
     ".home-scroll_text-item.p4p10",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -544,8 +544,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1017,
     1035,
     ".home-scroll_text-item.p4p10",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -554,8 +554,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4671317,
     4649872,
     ".home-scroll_text-item.p4p10",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -564,8 +564,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1863136,
     1891543,
     ".home-scroll_text-item.p4p10",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -575,8 +575,8 @@ document.addEventListener("DOMContentLoaded", function () {
     39,
     39,
     ".home-scroll_text-item.p4p11",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -585,8 +585,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1035,
     1080,
     ".home-scroll_text-item.p4p11",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -595,8 +595,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4649872,
     4646456,
     ".home-scroll_text-item.p4p11",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -605,8 +605,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1891543,
     1916808,
     ".home-scroll_text-item.p4p11",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -616,8 +616,8 @@ document.addEventListener("DOMContentLoaded", function () {
     39,
     40,
     ".home-scroll_text-item.p4p12",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -626,8 +626,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1080,
     1095,
     ".home-scroll_text-item.p4p12",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -636,8 +636,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4646456,
     4640182,
     ".home-scroll_text-item.p4p12",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -646,8 +646,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1916808,
     1933911,
     ".home-scroll_text-item.p4p12",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -657,8 +657,8 @@ document.addEventListener("DOMContentLoaded", function () {
     40,
     40,
     ".home-scroll_text-item.p4p13",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -667,8 +667,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1095,
     1096,
     ".home-scroll_text-item.p4p13",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -677,8 +677,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4640182,
     4635026,
     ".home-scroll_text-item.p4p13",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -687,8 +687,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1933911,
     1945374,
     ".home-scroll_text-item.p4p13",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -698,8 +698,8 @@ document.addEventListener("DOMContentLoaded", function () {
     40,
     41,
     ".home-scroll_text-item.p4p14",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -708,8 +708,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1096,
     1105,
     ".home-scroll_text-item.p4p14",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -718,8 +718,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4635026,
     4634702,
     ".home-scroll_text-item.p4p14",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -728,8 +728,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1945374,
     1946307,
     ".home-scroll_text-item.p4p14",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -739,8 +739,8 @@ document.addEventListener("DOMContentLoaded", function () {
     41,
     41,
     ".home-scroll_text-item.p4p15",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -749,8 +749,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1105,
     1120,
     ".home-scroll_text-item.p4p15",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -759,8 +759,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4634702,
     4626244,
     ".home-scroll_text-item.p4p15",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -769,8 +769,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1946307,
     1965196,
     ".home-scroll_text-item.p4p15",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
@@ -780,8 +780,8 @@ document.addEventListener("DOMContentLoaded", function () {
     41,
     41,
     ".home-scroll_text-item.p4p16",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "tage"
   );
@@ -790,8 +790,8 @@ document.addEventListener("DOMContentLoaded", function () {
     1120,
     1122,
     ".home-scroll_text-item.p4p16",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "km"
   );
@@ -800,8 +800,8 @@ document.addEventListener("DOMContentLoaded", function () {
     4626244,
     4616938,
     ".home-scroll_text-item.p4p16",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-1"
   );
@@ -810,17 +810,17 @@ document.addEventListener("DOMContentLoaded", function () {
     1965196,
     1979709,
     ".home-scroll_text-item.p4p16",
-    "-50% 95%", // Updated value
-    "center 95%", // Updated value
+    "-50% 95%", 
+    "center 95%", 
     1,
     "coordi-2"
   );
 
   //images
-  // Define the initializePlayer function first
+  
   function initializePlayer() {}
 
-  // Your existing code to trigger animations
+  
   const imageTriggers = [
     ".home-scroll_img-item.p4p1",
     ".home-scroll_img-item.p4p2",
@@ -842,13 +842,13 @@ document.addEventListener("DOMContentLoaded", function () {
   imageTriggers.forEach((selector) => {
     gsap.to(selector, {
       ease: "none",
-      x: -window.innerHeight * 3, // Move left
+      x: -window.innerHeight * 3, 
       scrollTrigger: {
-        trigger: selector.replace("img-item", "text-item"), // Replace to get the text item trigger
+        trigger: selector.replace("img-item", "text-item"), 
         start: "top 300%",
         end: "top -300%",
         scrub: 1,
-        markers: false, // For debugging
+        markers: false, 
       },
     });
   });
@@ -864,45 +864,45 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Select your audio and button elements
+  
   let winterAudio = document.querySelector("#winter");
   let preloader = document.querySelector("#thisbuttonyop4");
-  let myButton = document.getElementById("my-buttonp4"); // Get the button
+  let myButton = document.getElementById("my-buttonp4"); 
 
-  // Event listener for the preloader click
+  
   preloader.addEventListener("click", () => {
-    // Start playing the audio and set initial volume to 0
+    
     winterAudio.play();
     winterAudio.volume = 0;
 
-    // Fade in the audio
+    
     gsap.to(winterAudio, {
-      duration: 2, // Duration of the fade in seconds
-      volume: 0.5, // Target volume
+      duration: 2, 
+      volume: 0.5, 
       ease: "power1.inOut",
       onComplete: () => {
-        winterAudio.volume = 0.5; // Ensure the volume is set to 0.5 at the end
+        winterAudio.volume = 0.5; 
       },
     });
 
-    // Initialize the Vimeo player and ScrollTrigger
-    initializePlayer(); // This will now work without throwing an error
+    
+    initializePlayer(); 
   });
 
-  // Add event listener for the button to fade out the audio
+  
   myButton.addEventListener("click", () => {
-    // Fade out the audio
+    
     gsap.to(winterAudio, {
-      duration: 2, // Duration of the fade out
-      volume: 0, // Target volume to fade out
+      duration: 2, 
+      volume: 0, 
       ease: "power1.inOut",
       onComplete: () => {
-        winterAudio.pause(); // Pause the audio after fade out
-        winterAudio.currentTime = 0; // Optional: reset audio to start
+        winterAudio.pause(); 
+        winterAudio.currentTime = 0; 
       },
     });
   });
-  // Player 3
+  
   let iframe40 = document.querySelector("#vimeo-video40");
   let player40 = new Vimeo.Player(iframe40);
 
@@ -912,40 +912,40 @@ document.addEventListener("DOMContentLoaded", function () {
     end: "1200 50%",
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress; 
 
-      // Calculate the desired volume based on progress
+      
       let volume;
       if (progress <= 0.2) {
-        volume = progress / 0.2; // Increase volume from 0 to 1 in the first 20%
+        volume = progress / 0.2; 
       } else if (progress < 0.5) {
-        volume = 1; // Keep volume at 1 from 20% to 50%
+        volume = 1; 
       } else {
-        volume = (1 - progress) / 0.5; // Decrease volume from 1 to 0 from 50% to 100%
+        volume = (1 - progress) / 0.5; 
       }
 
-      // Clamp the volume between 0 and 1
+      
       volume = Math.max(0, Math.min(1, volume));
 
-      // Set the volume
+      
       player40.setVolume(volume);
     },
     onEnter: () => {
-      player40.setMuted(false); // Unmute the video when entering the trigger area
+      player40.setMuted(false); 
     },
     onLeave: () => {
       player40.setMuted(true);
-      player40.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player40.setVolume(0); 
     },
     onEnterBack: () => {
-      player40.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player40.setMuted(false); 
     },
     onLeaveBack: () => {
       player40.setMuted(true);
-      player40.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player40.setVolume(0); 
     },
   });
-  // Player 3
+  
   let iframe42 = document.querySelector("#vimeo-video42");
   let player42 = new Vimeo.Player(iframe42);
 
@@ -955,66 +955,66 @@ document.addEventListener("DOMContentLoaded", function () {
     end: "1200 50%",
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress; 
 
-      // Calculate the desired volume based on progress
+      
       let volume;
       if (progress <= 0.2) {
-        volume = progress / 0.2; // Increase volume from 0 to 1 in the first 20%
+        volume = progress / 0.2; 
       } else if (progress < 0.5) {
-        volume = 1; // Keep volume at 1 from 20% to 50%
+        volume = 1; 
       } else {
-        volume = (1 - progress) / 0.5; // Decrease volume from 1 to 0 from 50% to 100%
+        volume = (1 - progress) / 0.5; 
       }
 
-      // Clamp the volume between 0 and 1
+      
       volume = Math.max(0, Math.min(1, volume));
 
-      // Set the volume
+      
       player42.setVolume(volume);
     },
     onEnter: () => {
-      player42.setMuted(false); // Unmute the video when entering the trigger area
+      player42.setMuted(false); 
     },
     onLeave: () => {
       player42.setMuted(true);
-      player42.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player42.setVolume(0); 
     },
     onEnterBack: () => {
-      player42.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player42.setMuted(false); 
     },
     onLeaveBack: () => {
       player42.setMuted(true);
-      player42.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player42.setVolume(0); 
     },
   });
-  // Audio 6 Schritte 2
+  
   let audio1112 = document.querySelector("#schritte1");
 
   ScrollTrigger.create({
     trigger: ".home-scroll_text-item.p4p4",
     start: "top bottom",
-    end: "659% bottom", // End 90% from the top of the viewport
+    end: "659% bottom", 
     scrub: 1,
     onUpdate: (self) => {
       let progress = self.progress;
 
-      // Calculate the desired volume based on progress
+      
       let volume;
       if (progress <= 0.05) {
-        volume = progress / 0.05; // Increase volume from 0 to 1 in the first 5%
+        volume = progress / 0.05; 
       } else if (progress > 0.2 && progress < 0.85) {
-        volume = 1; // Keep volume at 1 between 20% and 85%
+        volume = 1; 
       } else if (progress >= 0.85) {
-        volume = (1 - progress) / 0.1; // Decrease volume from 1 to 0 from 85% to 100%
+        volume = (1 - progress) / 0.1; 
       } else {
-        volume = 0; // Default to 0 for unexpected cases
+        volume = 0; 
       }
 
-      // Clamp the volume between 0 and 1
+      
       volume = Math.max(0, Math.min(1, volume));
 
-      // Set the volume
+      
       audio1112.volume = volume;
     },
     onEnter: () => {
@@ -1022,18 +1022,18 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     onLeave: () => {
       audio1112.pause();
-      audio1112.volume = 0; // Reset volume when leaving
+      audio1112.volume = 0; 
     },
     onEnterBack: () => {
       audio1112.play();
     },
     onLeaveBack: () => {
       audio1112.pause();
-      audio1112.volume = 0; // Reset volume when leaving back
+      audio1112.volume = 0; 
     },
   });
 
-  // Audio 6 Schritte 2 (second instance)
+  
   let audio11 = document.querySelector("#schritte1");
 
   ScrollTrigger.create({
@@ -1044,22 +1044,22 @@ document.addEventListener("DOMContentLoaded", function () {
     onUpdate: (self) => {
       let progress = self.progress;
 
-      // Calculate the desired volume based on progress
+      
       let volume;
       if (progress <= 0.05) {
-        volume = progress / 0.05; // Increase volume from 0 to 1 in the first 5%
+        volume = progress / 0.05; 
       } else if (progress > 0.2 && progress < 0.85) {
-        volume = 1; // Keep volume at 1 between 20% and 85%
+        volume = 1; 
       } else if (progress >= 0.85) {
-        volume = (1 - progress) / 0.1; // Decrease volume from 1 to 0 from 85% to 100%
+        volume = (1 - progress) / 0.1; 
       } else {
-        volume = 0; // Default to 0 for unexpected cases
+        volume = 0; 
       }
 
-      // Clamp the volume between 0 and 1
+      
       volume = Math.max(0, Math.min(1, volume));
 
-      // Set the volume
+      
       audio11.volume = volume;
     },
     onEnter: () => {
@@ -1067,77 +1067,77 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     onLeave: () => {
       audio11.pause();
-      audio11.volume = 0; // Reset volume when leaving
+      audio11.volume = 0; 
     },
     onEnterBack: () => {
       audio11.play();
     },
     onLeaveBack: () => {
       audio11.pause();
-      audio11.volume = 0; // Reset volume when leaving back
+      audio11.volume = 0; 
     },
   });
 
   document
     .getElementById("my-buttonp4")
     .addEventListener("click", function (event) {
-      // Prevent the default action
+      
       event.preventDefault();
 
-      // Delay the navigation by 1 second (1000 milliseconds)
+      
       setTimeout(function () {
         window.location.href = "/how-to-leave-town-p5";
       }, 2250);
     });
 
-  // Function to show the pop-up, count down, and reload the page after 3 seconds
+  
   function popupAndReloadOnResize() {
     window.addEventListener("resize", function () {
-      // Get the pop-up and countdown elements
+      
       const popup = document.getElementById("resize-popup");
       const countdownElement = document.getElementById("downcount");
 
-      // Show the pop-up
+      
       popup.style.display = "block";
 
-      // Initialize the countdown
-      let countdown = 3; // Start from 3 seconds
+      
+      let countdown = 3; 
 
-      // Update the countdown every second
+      
       const countdownInterval = setInterval(function () {
-        countdownElement.textContent = countdown; // Update the displayed number
-        countdown--; // Decrease the countdown
+        countdownElement.textContent = countdown; 
+        countdown--; 
 
-        // If countdown reaches 0, clear the interval and reload the page
+        
         if (countdown < 0) {
           clearInterval(countdownInterval);
 
-          location.reload(); // Reload the page
+          location.reload(); 
         }
-      }, 1000); // Update every second (1000 milliseconds)
+      }, 1000); 
     });
   }
 
-  // Call the function to set
+  
   popupAndReloadOnResize();
 
   window.onload = function () {
-    // Ensure the page is scrolled to the top
+    
     window.scrollTo(0, 0);
 
-    // Disable scroll restoration to prevent unwanted scrolling
+    
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
     }
 
-    // Prevent scrolling
+    
     document.body.style.overflow = "hidden";
 
-    // Set up the event listener for closing the modal
+    
     const closeModalDiv = document.getElementById("thisbuttonyop4");
     closeModalDiv.onclick = function () {
-      document.body.style.overflow = "auto"; // Enable scrolling again
-      // Your Webflow interaction should handle closing the modal
+      document.body.style.overflow = "auto"; 
+      
     };
   };
   document.querySelectorAll("s").forEach(function (strikethrough) {
@@ -1145,18 +1145,18 @@ document.addEventListener("DOMContentLoaded", function () {
     delElement.innerHTML = strikethrough.innerHTML;
     strikethrough.replaceWith(delElement);
   });
-  // Prevent overscroll by limiting scroll range
+  
   document.addEventListener("scroll", () => {
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight;
     const clientHeight = document.documentElement.clientHeight;
-    // Prevent overscroll at the top
+    
     if (scrollTop <= 0) {
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
     }
-    // Prevent overscroll at the bottom
+    
     if (scrollTop + clientHeight >= scrollHeight) {
       document.documentElement.scrollTop = scrollHeight - clientHeight;
       document.body.scrollTop = scrollHeight - clientHeight;

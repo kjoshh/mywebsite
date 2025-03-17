@@ -95,7 +95,6 @@ body {
   content: '';
   display: block;
   width: 0%;
-  /* Start at 0% */
   height: 4px;
   background: #fff;
   animation: load 3s linear forwards;
@@ -902,7 +901,6 @@ body {
   border-radius: 10px 10px 0 0;
 }
 
-/* Visibility Classes */
 .finder-wrapper.bin.visible {
   display: flex;
   opacity: 1;
@@ -914,7 +912,6 @@ body {
   transform: scale(0.95);
 }
 
-/* Finder Header */
 .finder-header.bin {
   background: #20211d;
   padding: 10px 15px;

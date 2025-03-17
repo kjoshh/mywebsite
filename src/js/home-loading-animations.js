@@ -1,11 +1,9 @@
 import gsap from 'gsap';
-import { isInternalNavigation } from './index.js'; // Import the function
+import { isInternalNavigation } from './index.js';
 
-// v8 home-loading-animations.js
 document.addEventListener('DOMContentLoaded', function () {
   console.log('home-loading-animations.js: DOMContentLoaded');
 
-  // Cache frequently used elements
   const loaderText = document.querySelectorAll('.linkwrap');
   const loaderImg = document.querySelectorAll('.imgbghome');
   const textBlock = document.querySelector('#text-block');
@@ -19,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const beforeAllEmbed = document.querySelector('.before-all');
   const path = document.getElementById('animatedpath');
 
-  // Reusable function for common animations
   function animateCommonElements() {
     gsap.set(loaderText, {
       opacity: 0,
@@ -97,8 +94,8 @@ document.addEventListener('DOMContentLoaded', function () {
           });
         },
       });
-      // Call dispatchHoverEvent after ALL animations are complete
-      setTimeout(dispatchHoverEvent, 500); // Adjust delay as needed
+
+      setTimeout(dispatchHoverEvent, 500);
     }, 600);
   }
 
@@ -108,8 +105,6 @@ document.addEventListener('DOMContentLoaded', function () {
     textBlock.style.opacity = '1';
 
     animateCommonElements();
-
-    // Animated Path Code (Run Immediately)
 
     if (path) {
       const length = path.getTotalLength();
@@ -140,12 +135,11 @@ document.addEventListener('DOMContentLoaded', function () {
       willChange: 'background-color',
     });
 
-    // Animate the number counter directly
     gsap.to(numberElement, {
-      textContent: '100', // Set the final text content
+      textContent: '100',
       duration: 3.65,
       ease: 'none',
-      snap: { textContent: 1 }, // Snap to integer values
+      snap: { textContent: 1 },
       willChange: 'textContent',
     });
 
@@ -235,13 +229,12 @@ document.addEventListener('DOMContentLoaded', function () {
             pathsvg.style.display = 'none';
           },
         });
-        // Call dispatchHoverEvent after ALL animations are complete
-        setTimeout(dispatchHoverEvent, 500); // Adjust delay as needed
+
+        setTimeout(dispatchHoverEvent, 500);
       }, 3100);
     }, 750);
   }
 
-  // Function to call the appropriate animation based on navigation type
   function mainExecution() {
     const internal = isInternalNavigation();
     if (internal) {
@@ -251,7 +244,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Function to dispatch the custom event
   function dispatchHoverEvent() {
     console.log('home-loading-animations.js: dispatchHoverEvent() called');
     document.dispatchEvent(new CustomEvent('hoverEffectsReady'));

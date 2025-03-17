@@ -4,39 +4,35 @@ import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import './browser-detect.js';
 import './applystuff.js';
 document.addEventListener('DOMContentLoaded', function () {
-  // Target value and duration
   const targetValue = 100;
-  const duration = 2900; // in milliseconds
-  const delay = 500; // delay in milliseconds
+  const duration = 2900;
+  const delay = 500;
 
-  // Cubic Bezier easing function for (0.292, 0.638, 0.544, 0.246)
   function cubicBezier(t) {
     const [p0, p1, p2, p3] = [0.292, 0.638, 0.544, 0.246];
     const u = 1 - t;
     return 3 * u * u * t * p0 + 3 * u * t * t * p2 + t * t * t;
   }
 
-  // Animation function
   function animateCountUp(element, target, duration, easingFunc) {
     const startTime = performance.now();
 
     function updateValue(timestamp) {
       const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1); // clamp progress to 1
-      const easedProgress = easingFunc(progress); // apply easing
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easingFunc(progress);
       const currentValue = Math.floor(target * easedProgress);
 
       element.textContent = currentValue;
 
       if (progress < 1) {
-        requestAnimationFrame(updateValue); // continue if not finished
+        requestAnimationFrame(updateValue);
       }
     }
 
     requestAnimationFrame(updateValue);
   }
 
-  // Add delay before starting the animation
   setTimeout(() => {
     animateCountUp(
       document.getElementById('countyo'),
@@ -49,10 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
   document
     .getElementById('newbuttonlast')
     .addEventListener('click', function (event) {
-      // Prevent the default action
       event.preventDefault();
 
-      // Scroll to the bottom of the page after 7 seconds
       setTimeout(() => {
         window.scrollTo({
           top: document.body.scrollHeight,
@@ -60,17 +54,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }, 7000);
 
-      // Navigate to the new page after 8 seconds
       setTimeout(function () {
         window.location.href = '/how-to-leave-town-p4';
       }, 4500);
     });
 
-  // Get the audio elements
   const clickAudio = document.getElementById('click-audio');
   const hoverAudio = document.getElementById('hover-audio');
 
-  // List of link classes and associated audio
   const linkClasses = [
     { className: 'textyo._2', clickAudio: clickAudio, hoverAudio: hoverAudio },
     { className: 'linkisound', clickAudio: clickAudio, hoverAudio: hoverAudio },
@@ -104,30 +95,27 @@ document.addEventListener('DOMContentLoaded', function () {
   linkClasses.forEach((linkInfo) => {
     const link = document.querySelector(`.${linkInfo.className}`);
     if (link) {
-      // Add click event listener if there's an associated click audio
       if (linkInfo.clickAudio) {
         link.addEventListener('click', function (event) {
-          linkInfo.clickAudio.currentTime = 0; // Reset audio to the beginning
-          linkInfo.clickAudio.play(); // Play the audio
+          linkInfo.clickAudio.currentTime = 0;
+          linkInfo.clickAudio.play();
         });
       }
 
-      // Add hover event listener if there's an associated hover audio
       if (linkInfo.hoverAudio) {
         link.addEventListener('mouseover', function () {
           linkInfo.hoverAudio.play();
         });
 
-        // Optional: Stop the hover audio when the mouse leaves the element
         link.addEventListener('mouseleave', function () {
           linkInfo.hoverAudio.pause();
-          linkInfo.hoverAudio.currentTime = 0; // Reset audio to the beginning
+          linkInfo.hoverAudio.currentTime = 0;
         });
       }
     }
   });
   window.onload = function () {
-    var textElement = document.querySelector('.textyo._2'); // Use the class name
+    var textElement = document.querySelector('.textyo._2');
     var body = document.querySelector('body.p3');
 
     if (textElement && body) {
@@ -136,32 +124,26 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // Ensure the page is scrolled to the top
     window.scrollTo(0, 0);
 
-    // Disable scroll restoration to prevent unwanted scrolling
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
 
-    // Add a 1.25 second delay before starting the scroll animation
     setTimeout(function () {
-      // Use a function to control the smooth scroll
       $('html, body')
         .stop(true, true)
         .animate(
           {
-            scrollTop: 4.1 * $(window).height(), // Scrolls 4.1 times the window height down (410vh)
+            scrollTop: 4.1 * $(window).height(),
           },
-          2000 // Animation duration of 2600 milliseconds (2.6 seconds)
+          2000
         );
-    }, 3500); // Delay is now 1250 milliseconds (1.25 seconds)
+    }, 3500);
   };
 
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-  // Function to create a ScrollTrigger animation for a pin segment
-  // Function to create a ScrollTrigger animation for a pin segment
   function createPinAnimation(start, end, triggerClass, immediateRender) {
     gsap.to('.newpinleipzig', {
       motionPath: {
@@ -176,15 +158,13 @@ document.addEventListener('DOMContentLoaded', function () {
         start: '-50% 95%',
         end: 'center 95%',
         scrub: true,
-        immediateRender: immediateRender, // Set immediateRender dynamically
+        immediateRender: immediateRender,
       },
     });
   }
 
-  // Call the function for the first pin segment with immediateRender: true
   createPinAnimation(0.128, 0.1295, 'p3p1', true);
 
-  // Call the function for the rest with immediateRender: false
   createPinAnimation(0.1295, 0.1302, 'p3p2', false);
   createPinAnimation(0.1302, 0.15, 'p3p3', false);
   createPinAnimation(0.15, 0.1555, 'p3p4', false);
@@ -201,7 +181,6 @@ document.addEventListener('DOMContentLoaded', function () {
   createPinAnimation(0.2305, 0.246, 'p3p16', false);
   createPinAnimation(0.246, 0.256, 'p3p17', false);
 
-  // Set initial values for the counters
   document.querySelector('.tagecount').textContent = 12;
   document.querySelector('.kmcount').textContent = 298;
   document.querySelector('.coordi-1').textContent = 5012490;
@@ -240,7 +219,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector(target).textContent = Math.floor(obj.value);
   }
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     12,
@@ -282,7 +260,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     12,
@@ -324,7 +301,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     13,
@@ -366,7 +342,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.kmcount',
     374,
@@ -398,7 +373,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     15,
@@ -440,8 +414,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
-
   animateCounter(
     '.kmcount',
     406,
@@ -504,7 +476,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     16,
@@ -546,7 +517,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     17,
@@ -588,7 +558,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     18,
@@ -630,7 +599,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     19,
@@ -672,7 +640,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     20,
@@ -714,7 +681,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.kmcount',
     519,
@@ -746,7 +712,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     21,
@@ -788,7 +753,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     23,
@@ -830,7 +794,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.kmcount',
     586,
@@ -862,7 +825,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'coordi-2'
   );
 
-  // Initialize the counter animations
   animateCounter(
     '.tagecount',
     24,
@@ -942,7 +904,7 @@ document.addEventListener('DOMContentLoaded', function () {
     x: () => {
       const element = document.querySelector('.home-scroll_img-item.p3p18');
       const elementWidth = element.offsetWidth;
-      const centerX = (window.innerWidth - elementWidth) / 2; // Calculate center position
+      const centerX = (window.innerWidth - elementWidth) / 2;
       return centerX;
     },
     scrollTrigger: {
@@ -953,7 +915,6 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-  // Player 1
   let iframe1 = document.querySelector('#vimeo-video30');
   let player1 = new Vimeo.Player(iframe1);
 
@@ -963,34 +924,32 @@ document.addEventListener('DOMContentLoaded', function () {
     end: '1200 50%',
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress;
 
-      // Set volume based on progress
       if (progress <= 0.2) {
-        player1.setVolume(progress / 0.2); // Increase volume from 0 to 100% in the first 20%
+        player1.setVolume(progress / 0.2);
       } else if (progress < 0.5) {
-        player1.setVolume(1); // Keep volume at 100% from 20% to 80%
+        player1.setVolume(1);
       } else {
-        player1.setVolume((1 - progress) / 0.5); // Decrease volume from 100% to 0% from 80% to 100%
+        player1.setVolume((1 - progress) / 0.5);
       }
     },
     onEnter: () => {
-      player1.setMuted(false); // Unmute the video when entering the trigger area
+      player1.setMuted(false);
     },
     onLeave: () => {
       player1.setMuted(true);
-      player1.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player1.setVolume(0);
     },
     onEnterBack: () => {
-      player1.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player1.setMuted(false);
     },
     onLeaveBack: () => {
       player1.setMuted(true);
-      player1.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player1.setVolume(0);
     },
   });
 
-  // Player 2
   let iframe2 = document.querySelector('#vimeo-video31');
   let player2 = new Vimeo.Player(iframe2);
 
@@ -1000,34 +959,32 @@ document.addEventListener('DOMContentLoaded', function () {
     end: '1200 50%',
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress;
 
-      // Set volume based on progress
       if (progress <= 0.2) {
-        player2.setVolume(progress / 0.2); // Increase volume from 0 to 100% in the first 20%
+        player2.setVolume(progress / 0.2);
       } else if (progress < 0.5) {
-        player2.setVolume(1); // Keep volume at 100% from 20% to 80%
+        player2.setVolume(1);
       } else {
-        player2.setVolume((1 - progress) / 0.5); // Decrease volume from 100% to 0% from 80% to 100%
+        player2.setVolume((1 - progress) / 0.5);
       }
     },
     onEnter: () => {
-      player2.setMuted(false); // Unmute the video when entering the trigger area
+      player2.setMuted(false);
     },
     onLeave: () => {
       player2.setMuted(true);
-      player2.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player2.setVolume(0);
     },
     onEnterBack: () => {
-      player2.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player2.setMuted(false);
     },
     onLeaveBack: () => {
       player2.setMuted(true);
-      player2.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player2.setVolume(0);
     },
   });
 
-  // Player 3
   let iframe3 = document.querySelector('#vimeo-video32');
   let player3 = new Vimeo.Player(iframe3);
 
@@ -1037,34 +994,32 @@ document.addEventListener('DOMContentLoaded', function () {
     end: '1200 50%',
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress;
 
-      // Set volume based on progress
       if (progress <= 0.2) {
-        player3.setVolume(progress / 0.2); // Increase volume from 0 to 100% in the first 20%
+        player3.setVolume(progress / 0.2);
       } else if (progress < 0.5) {
-        player3.setVolume(1); // Keep volume at 100% from 20% to 80%
+        player3.setVolume(1);
       } else {
-        player3.setVolume((1 - progress) / 0.5); // Decrease volume from 100% to 0% from 80% to 100%
+        player3.setVolume((1 - progress) / 0.5);
       }
     },
     onEnter: () => {
-      player3.setMuted(false); // Unmute the video when entering the trigger area
+      player3.setMuted(false);
     },
     onLeave: () => {
       player3.setMuted(true);
-      player3.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player3.setVolume(0);
     },
     onEnterBack: () => {
-      player3.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player3.setMuted(false);
     },
     onLeaveBack: () => {
       player3.setMuted(true);
-      player3.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player3.setVolume(0);
     },
   });
 
-  // Player 3
   let iframe4 = document.querySelector('#vimeo-video33');
   let player4 = new Vimeo.Player(iframe4);
 
@@ -1074,34 +1029,32 @@ document.addEventListener('DOMContentLoaded', function () {
     end: '1200 50%',
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress;
 
-      // Set volume based on progress
       if (progress <= 0.2) {
-        player4.setVolume(progress / 0.2); // Increase volume from 0 to 100% in the first 20%
+        player4.setVolume(progress / 0.2);
       } else if (progress < 0.5) {
-        player4.setVolume(1); // Keep volume at 100% from 20% to 80%
+        player4.setVolume(1);
       } else {
-        player4.setVolume((1 - progress) / 0.5); // Decrease volume from 100% to 0% from 80% to 100%
+        player4.setVolume((1 - progress) / 0.5);
       }
     },
     onEnter: () => {
-      player4.setMuted(false); // Unmute the video when entering the trigger area
+      player4.setMuted(false);
     },
     onLeave: () => {
       player4.setMuted(true);
-      player4.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player4.setVolume(0);
     },
     onEnterBack: () => {
-      player4.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player4.setMuted(false);
     },
     onLeaveBack: () => {
       player4.setMuted(true);
-      player4.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player4.setVolume(0);
     },
   });
 
-  // Player 3
   let iframe5 = document.querySelector('#vimeo-video34');
   let player5 = new Vimeo.Player(iframe5);
 
@@ -1111,142 +1064,130 @@ document.addEventListener('DOMContentLoaded', function () {
     end: '1200 50%',
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress;
 
-      // Set volume based on progress
       if (progress <= 0.2) {
-        player5.setVolume(progress / 0.2); // Increase volume from 0 to 100% in the first 20%
+        player5.setVolume(progress / 0.2);
       } else if (progress < 0.5) {
-        player5.setVolume(1); // Keep volume at 100% from 20% to 80%
+        player5.setVolume(1);
       } else {
-        player5.setVolume((1 - progress) / 0.5); // Decrease volume from 100% to 0% from 80% to 100%
+        player5.setVolume((1 - progress) / 0.5);
       }
     },
     onEnter: () => {
-      player5.setMuted(false); // Unmute the video when entering the trigger area
+      player5.setMuted(false);
     },
     onLeave: () => {
       player5.setMuted(true);
-      player5.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player5.setVolume(0);
     },
     onEnterBack: () => {
-      player5.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player5.setMuted(false);
     },
     onLeaveBack: () => {
       player5.setMuted(true);
-      player5.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player5.setVolume(0);
     },
   });
-  // Select the buttons and audio elements
-  const winterButton = document.getElementById('last-button-p3'); // Button to play winter audio
-  const fadeOutButton = document.getElementById('newbuttonlast'); // Button to fade out audio
-  const winterAudio = document.getElementById('winter'); // Winter audio element
 
-  // Create a Vimeo player instance
+  const winterButton = document.getElementById('last-button-p3');
+  const fadeOutButton = document.getElementById('newbuttonlast');
+  const winterAudio = document.getElementById('winter');
+
   let iframe6 = document.querySelector('#vimeo-video35');
   let player6 = new Vimeo.Player(iframe6);
 
-  // Set initial volume for winter audio and define fade durations
   winterAudio.volume = 0;
-  const fadeInDuration = 3000; // Duration of fade-in in milliseconds
-  const fadeOutDuration = 3000; // Duration of fade-out in milliseconds
+  const fadeInDuration = 3000;
+  const fadeOutDuration = 3000;
 
-  // Function to start playing and fade in winter audio
   winterButton.addEventListener('click', () => {
-    winterAudio.play(); // Start playing the audio
+    winterAudio.play();
 
-    // Calculate the fade-in increment based on volume steps over time
-    const fadeStep = 0.01; // Volume increment per step
-    const interval = fadeInDuration * fadeStep; // Time per volume increase step
+    const fadeStep = 0.01;
+    const interval = fadeInDuration * fadeStep;
 
-    // Use an interval to gradually increase volume
     const fadeAudio = setInterval(() => {
       if (winterAudio.volume < 1) {
-        winterAudio.volume = Math.min(winterAudio.volume + fadeStep, 1); // Increase volume until max
+        winterAudio.volume = Math.min(winterAudio.volume + fadeStep, 1);
       } else {
-        clearInterval(fadeAudio); // Stop fading when volume reaches 1
+        clearInterval(fadeAudio);
       }
     }, interval);
   });
 
-  // Function to fade out both winter audio and Vimeo audio
   fadeOutButton.addEventListener('click', () => {
-    // Calculate the fade-out decrement based on volume steps over time
-    const fadeStep = 0.01; // Volume decrement per step
-    const interval = fadeOutDuration * fadeStep; // Time per volume decrease step
+    const fadeStep = 0.01;
+    const interval = fadeOutDuration * fadeStep;
 
-    // Fade out winter audio
     const fadeOutWinterAudio = setInterval(() => {
       if (winterAudio.volume > 0) {
-        winterAudio.volume = Math.max(winterAudio.volume - fadeStep, 0); // Decrease volume until 0
+        winterAudio.volume = Math.max(winterAudio.volume - fadeStep, 0);
       } else {
-        clearInterval(fadeOutWinterAudio); // Stop fading when volume reaches 0
-        winterAudio.pause(); // Pause the audio after fade out
-        winterAudio.currentTime = 0; // Optional: reset audio to start
+        clearInterval(fadeOutWinterAudio);
+        winterAudio.pause();
+        winterAudio.currentTime = 0;
       }
     }, interval);
 
-    // Fade out Vimeo audio
     const fadeOutVimeoAudio = setInterval(() => {
       player6.getVolume().then((volume) => {
         if (volume > 0) {
-          const newVolume = Math.max(volume - fadeStep, 0); // Decrease volume until 0
-          player6.setVolume(newVolume); // Set the new volume
+          const newVolume = Math.max(volume - fadeStep, 0);
+          player6.setVolume(newVolume);
         } else {
-          clearInterval(fadeOutVimeoAudio); // Stop fading when volume reaches 0
+          clearInterval(fadeOutVimeoAudio);
         }
       });
     }, interval);
   });
 
-  // ScrollTrigger for Vimeo Player
   ScrollTrigger.create({
     trigger: '.home-scroll_text-item.p3p18',
     start: 'top 275%',
     end: 'bottom -725%',
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress;
 
       if (progress <= 0.2) {
-        player6.setVolume(progress / 0.2); // Increase volume from 0 to 100% in the first 20%
+        player6.setVolume(progress / 0.2);
       } else if (progress > 0.2 && progress < 0.5) {
-        player6.setVolume(1); // Keep volume at 100% from 20% to 80%
+        player6.setVolume(1);
       } else if (progress >= 0.5) {
-        player6.setVolume((1 - progress) / 0.5); // Decrease volume from 100% to 0% from 80% to 100%
+        player6.setVolume((1 - progress) / 0.5);
       }
     },
     onEnter: () => {
-      player6.setMuted(false); // Unmute the video when entering the trigger area
+      player6.setMuted(false);
     },
     onLeave: () => {
       player6.setMuted(true);
-      player6.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player6.setVolume(0);
     },
     onEnterBack: () => {
-      player6.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player6.setMuted(false);
     },
     onLeaveBack: () => {
       player6.setMuted(true);
-      player6.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player6.setVolume(0);
     },
   });
 
-  // Audio 6 Schirtte 2
   let audio11 = document.querySelector('#schritte1');
 
   ScrollTrigger.create({
     trigger: '.home-scroll_text-item.p3p1',
     start: '20% center',
-    end: '400% center', // End 90% from the top of the viewport
+    end: '400% center',
     scrub: 1,
     onUpdate: (self) => {
       let progress = self.progress;
 
       if (progress <= 0.2) {
-        audio11.volume = Math.min(progress / 0.2, 1); // Cap at 1
+        audio11.volume = Math.min(progress / 0.2, 1);
       } else if (progress > 0.2 && progress < 0.7) {
-        audio11.volume = 1; // Set to maximum
+        audio11.volume = 1;
       } else if (progress >= 0.7) {
         audio11.volume = Math.min(Math.max((1 - progress) / 0.1, 0), 1);
       }
@@ -1267,21 +1208,20 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-  // Audio 6 Schirtte 2
   let audio12 = document.querySelector('#schritte1');
 
   ScrollTrigger.create({
     trigger: '.home-scroll_text-item.p3p1',
     start: '700% center',
-    end: '1200% center', // End 90% from the top of the viewport
+    end: '1200% center',
     scrub: 1,
     onUpdate: (self) => {
       let progress = self.progress;
 
       if (progress <= 0.05) {
-        audio12.volume = Math.min(progress / 0.05, 1); // Cap at 1
+        audio12.volume = Math.min(progress / 0.05, 1);
       } else if (progress > 0.05 && progress < 0.85) {
-        audio12.volume = 1; // Set to maximum
+        audio12.volume = 1;
       } else if (progress >= 0.85) {
         audio11.volume = Math.min(Math.max((1 - progress) / 0.1, 0), 1);
       }
@@ -1302,48 +1242,41 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-  // Function to show the pop-up, count down, and reload the page after 3 seconds
   function popupAndReloadOnResize() {
     window.addEventListener('resize', function () {
-      // Get the pop-up and countdown elements
       const popup = document.getElementById('resize-popup');
       const countdownElement = document.getElementById('downcount');
 
-      // Show the pop-up
       popup.style.display = 'block';
 
-      // Initialize the countdown
-      let countdown = 3; // Start from 3 seconds
+      let countdown = 3;
 
-      // Update the countdown every second
       const countdownInterval = setInterval(function () {
-        countdownElement.textContent = countdown; // Update the displayed number
-        countdown--; // Decrease the countdown
+        countdownElement.textContent = countdown;
+        countdown--;
 
-        // If countdown reaches 0, clear the interval and reload the page
         if (countdown < 0) {
           clearInterval(countdownInterval);
 
-          location.reload(); // Reload the page
+          location.reload();
         }
-      }, 1000); // Update every second (1000 milliseconds)
+      }, 1000);
     });
   }
 
-  // Call the function to set
   popupAndReloadOnResize();
-  // Prevent overscroll by limiting scroll range
+
   document.addEventListener('scroll', () => {
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight;
     const clientHeight = document.documentElement.clientHeight;
-    // Prevent overscroll at the top
+
     if (scrollTop <= 0) {
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
     }
-    // Prevent overscroll at the bottom
+
     if (scrollTop + clientHeight >= scrollHeight) {
       document.documentElement.scrollTop = scrollHeight - clientHeight;
       document.body.scrollTop = scrollHeight - clientHeight;

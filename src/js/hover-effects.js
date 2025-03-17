@@ -1,30 +1,24 @@
-// v57 hover-effects.js
 let monitorTerminalState;
 
 document.addEventListener('DOMContentLoaded', function () {
   console.log('hover-effects.js: DOMContentLoaded');
 
-  // Configuration
-  const hoverDelay = 750; // Delay before re-enabling hover after click (ms)
-  const hoverStayDuration = 120; // Minimum time to stay on each link (ms)
+  const hoverDelay = 750;
+  const hoverStayDuration = 120;
 
-  // Hover stuff
   let hoverEffectActive = false;
-  let userHoverDisabled = false; // Flag to disable hover temporarily after click
+  let userHoverDisabled = false;
   let hoverEventHandler;
   let throttledHoverEventHandler;
-  let links = []; // Cache the links array
+  let links = [];
   let isHovering = false;
   let lastHoveredLink = null;
-  const hoveredLinksQueue = []; // Queue of links to hover
+  const hoveredLinksQueue = [];
 
-  // Background image element
   let backgroundImage = null;
 
-  // Y offsets for each link (assuming they are in order)
   const linkOffsets = [0, 25.3, 50.6, 74.75, 100.1, 124, 149.3];
 
-  // Image elements
   const imageClasses = [
     'archive',
     'htlt',
@@ -44,19 +38,15 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('hover-effects.js: initializeHoverScript() called');
     if (!hoverEffectActive) return;
 
-    updateLinksCache(); // Initial cache update
+    updateLinksCache();
 
-    // Find the existing background image element
     backgroundImage = document.querySelector('.imglinkbg.arch');
 
     if (!backgroundImage) {
-      console.error(
-        'Background image element with class .imglinkbg.arch not found!'
-      );
-      return; // Exit if the element is not found
+      console.error('image element with class .imglinkbg.arch not here');
+      return;
     }
 
-    // Find the image elements
     imageClasses.forEach((className) => {
       imageElements[className] = document.querySelector(
         `.imgbghome.${className}`
@@ -74,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const mouseX = event.clientX;
       const mouseY = event.clientY;
       let closestLink = null;
-      let smallestDistanceSq = Infinity; // Use squared distance for performance
+      let smallestDistanceSq = Infinity;
 
       links.forEach((link) => {
         try {
@@ -82,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
           const linkCenterX = (rect.left + rect.right) / 2;
           const linkCenterY = (rect.top + rect.bottom) / 2;
 
-          // Calculate squared distance (more efficient)
           const distanceSq =
             Math.pow(mouseX - linkCenterX, 2) +
             Math.pow(mouseY - linkCenterY, 2);
@@ -103,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     };
 
-    // Remove throttling to allow immediate processing of hover events
     document.addEventListener('mousemove', hoverEventHandler);
   }
 
@@ -115,38 +103,33 @@ document.addEventListener('DOMContentLoaded', function () {
     isHovering = true;
     const link = hoveredLinksQueue.shift();
 
-    // Dispatch mouseover and mouseout events
     link.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
 
-    // Position the background image
-    const linkIndex = Array.from(links).indexOf(link); // Find the index of the link
+    const linkIndex = Array.from(links).indexOf(link);
     if (linkIndex !== -1 && linkIndex < linkOffsets.length) {
       const offsetY = linkOffsets[linkIndex];
-      backgroundImage.style.transform = `translateY(${offsetY}px)`; // Move the background image
+      backgroundImage.style.transform = `translateY(${offsetY}px)`;
     }
 
-    // Update image opacities
     imageClasses.forEach((className, index) => {
       const imageElement = imageElements[className];
       const glitchLayerElements = document.querySelectorAll(
         `.imgbghome.${className}.glitch-layer`
-      ); // Select all glitch layers for this image
+      );
 
       if (imageElement) {
         if (index === linkIndex) {
-          // Fade in the new image immediately
           imageElement.style.opacity = 1;
           glitchLayerElements.forEach((layer) => {
-            layer.style.opacity = 1; // Also fade in glitch layers
+            layer.style.opacity = 1;
           });
         } else {
-          // Fade out the old image with a slight delay
           setTimeout(() => {
             imageElement.style.opacity = 0;
             glitchLayerElements.forEach((layer) => {
-              layer.style.opacity = 0; // Also fade out glitch layers
+              layer.style.opacity = 0;
             });
-          }, 50); // Adjust the delay (50ms) as needed
+          }, 50);
         }
       }
     });
@@ -154,29 +137,24 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => {
       link.dispatchEvent(new MouseEvent('mouseout', { bubbles: true }));
       isHovering = false;
-      processQueue(); // Process the next link in the queue after the delay
-    }, hoverStayDuration); // Use the hoverStayDuration for the delay
+      processQueue();
+    }, hoverStayDuration);
   }
 
   function stopHoverScript() {
     if (throttledHoverEventHandler) {
       document.removeEventListener('mousemove', throttledHoverEventHandler);
-      throttledHoverEventHandler = null; // Clear the throttled handler
-      hoverEventHandler = null; // Clear the original handler
+      throttledHoverEventHandler = null;
+      hoverEventHandler = null;
     }
-
-    // Do NOT remove the background image element from the DOM
-    // as it already exists in the HTML
   }
 
-  // Listen for a custom event to trigger hover initialization
   document.addEventListener('hoverEffectsReady', function () {
     console.log('hover-effects.js: hoverEffectsReady event received');
     hoverEffectActive = true;
     initializeHoverScript();
   });
 
-  // Handle link clicks
   const anchorLinks = document.querySelectorAll('a');
   anchorLinks.forEach(function (link) {
     link.addEventListener('click', function () {
@@ -198,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
     clearInterval(monitorTerminalState);
   });
 
-  // MutationObserver to update links cache when DOM changes
   const observer = new MutationObserver(updateLinksCache);
   observer.observe(document.body, {
     childList: true,

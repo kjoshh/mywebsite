@@ -4,39 +4,39 @@ import MotionPathPlugin from "gsap/MotionPathPlugin";
 import "./browser-detect.js";
 import "./applystuff.js";
 document.addEventListener("DOMContentLoaded", function () {
-  // Target value and duration
+  
   const targetValue = 100;
-  const duration = 2900; // in milliseconds
-  const delay = 500; // delay in milliseconds
+  const duration = 2900; 
+  const delay = 500; 
 
-  // Cubic Bezier easing function for (0.292, 0.638, 0.544, 0.246)
+  
   function cubicBezier(t) {
     const [p0, p1, p2, p3] = [0.292, 0.638, 0.544, 0.246];
     const u = 1 - t;
     return 3 * u * u * t * p0 + 3 * u * t * t * p2 + t * t * t;
   }
 
-  // Animation function
+  
   function animateCountUp(element, target, duration, easingFunc) {
     const startTime = performance.now();
 
     function updateValue(timestamp) {
       const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1); // clamp progress to 1
-      const easedProgress = easingFunc(progress); // apply easing
+      const progress = Math.min(elapsed / duration, 1); 
+      const easedProgress = easingFunc(progress); 
       const currentValue = Math.floor(target * easedProgress);
 
       element.textContent = currentValue;
 
       if (progress < 1) {
-        requestAnimationFrame(updateValue); // continue if not finished
+        requestAnimationFrame(updateValue); 
       }
     }
 
     requestAnimationFrame(updateValue);
   }
 
-  // Add delay before starting the animation
+  
   setTimeout(() => {
     animateCountUp(
       document.getElementById("countyo"),
@@ -49,10 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("thisbuttonyo")
     .addEventListener("click", function () {
-      // Scroll to a specific percentage of viewport height after 50 milliseconds
+      
       setTimeout(() => {
-        const vh = window.innerHeight; // Get the height of the viewport in pixels
-        const scrollAmount = vh * 3.4; // Scroll 4 times the viewport height (change this value as needed)
+        const vh = window.innerHeight; 
+        const scrollAmount = vh * 3.4; 
 
         window.scrollTo({
           top: scrollAmount,
@@ -61,11 +61,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 1500);
     });
 
-  // Get the audio elements
+  
   const clickAudio = document.getElementById("click-audio");
   const hoverAudio = document.getElementById("hover-audio");
 
-  // List of link classes and associated audio
+  
   const linkClasses = [
     {
       className: "turnaround.linkisound.p5",
@@ -92,24 +92,24 @@ document.addEventListener("DOMContentLoaded", function () {
   linkClasses.forEach((linkInfo) => {
     const link = document.querySelector(`.${linkInfo.className}`);
     if (link) {
-      // Add click event listener if there's an associated click audio
+      
       if (linkInfo.clickAudio) {
         link.addEventListener("click", function (event) {
-          linkInfo.clickAudio.currentTime = 0; // Reset audio to the beginning
-          linkInfo.clickAudio.play(); // Play the audio
+          linkInfo.clickAudio.currentTime = 0; 
+          linkInfo.clickAudio.play(); 
         });
       }
 
-      // Add hover event listener if there's an associated hover audio
+      
       if (linkInfo.hoverAudio) {
         link.addEventListener("mouseover", function () {
           linkInfo.hoverAudio.play();
         });
 
-        // Optional: Stop the hover audio when the mouse leaves the element
+        
         link.addEventListener("mouseleave", function () {
           linkInfo.hoverAudio.pause();
-          linkInfo.hoverAudio.currentTime = 0; // Reset audio to the beginning
+          linkInfo.hoverAudio.currentTime = 0; 
         });
       }
     }
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -279,7 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -315,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -333,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -351,7 +351,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -369,7 +369,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -423,7 +423,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Animation for the 12th pin segment
+  
   gsap.to(".newpinleipzig", {
     motionPath: {
       path: "#wegpfadid",
@@ -475,7 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // Set initial values for the counters
+  
   document.querySelector(".tagecount").textContent = 41;
   document.querySelector(".kmcount").textContent = 1129;
   document.querySelector(".coordi-1").textContent = 4614254;
@@ -501,7 +501,7 @@ document.addEventListener("DOMContentLoaded", function () {
         end: endTrigger,
         scrub: scrub,
         id: markerId,
-        immediateRender: immediateRender, // Use immediateRender here
+        immediateRender: immediateRender, 
         onEnter: () => updateCounter(target, obj, start),
         onLeaveBack: () => updateCounter(target, obj, start),
       },
@@ -525,7 +525,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "center 95%",
     1,
     "tage",
-    true // immediateRender: true for p5p2.dot
+    true 
   );
   animateCounter(
     ".kmcount",
@@ -536,7 +536,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "center 95%",
     1,
     "km",
-    true // immediateRender: true for p5p2.dot
+    true 
   );
   animateCounter(
     ".coordi-1",
@@ -547,7 +547,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "center 95%",
     1,
     "coordi-1",
-    true // immediateRender: true for p5p2.dot
+    true 
   );
   animateCounter(
     ".coordi-2",
@@ -558,7 +558,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "center 95%",
     1,
     "coordi-2",
-    true // immediateRender: true for p5p2.dot
+    true 
   );
 
   animateCounter(
@@ -570,7 +570,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "center 95%",
     1,
     "tage",
-    true // immediateRender: true for p5p2.dot
+    true 
   );
   animateCounter(
     ".kmcount",
@@ -581,7 +581,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "center 95%",
     1,
     "km",
-    true // immediateRender: true for p5p2.dot
+    true 
   );
   animateCounter(
     ".coordi-1",
@@ -592,7 +592,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "center 95%",
     1,
     "coordi-1",
-    true // immediateRender: true for p5p2.dot
+    true 
   );
   animateCounter(
     ".coordi-2",
@@ -603,7 +603,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "center 95%",
     1,
     "coordi-2",
-    true // immediateRender: true for p5p2.dot
+    true 
   );
 
   animateCounter(
@@ -615,7 +615,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "center 95%",
     1,
     "tage",
-    false // immediateRender: true for p5p2.dot
+    false 
   );
   animateCounter(
     ".kmcount",
@@ -1338,30 +1338,17 @@ document.addEventListener("DOMContentLoaded", function () {
     "coordi-2"
   );
 
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //newnewnewnewnewnewnewnewnewnewnewnewnew
-  //Images
-  // Define the initializePlayer function
+  
+  
+  
   function initializePlayer() {
-    // Your initialization code for the Vimeo player goes here
-    // Example: console.log("Player initialized");
+    
+    
   }
 
-  // Scroll Animations for images 1 to 19
+  
   for (let i = 1; i <= 19; i++) {
-    let xValue = i === 19 ? window.innerHeight * 0.1 : -window.innerHeight * 3; // Conditional for last image
+    let xValue = i === 19 ? window.innerHeight * 0.1 : -window.innerHeight * 3; 
 
     gsap.to(`.home-scroll_img-item.p5p${i}`, {
       ease: "none",
@@ -1375,46 +1362,46 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Select the button and audio elements
+  
   let winterAudio = document.querySelector("#winter");
   let preloader = document.querySelector("#thisbuttonyo");
-  let myButton = document.getElementById("my-buttonp5"); // Get the button
+  let myButton = document.getElementById("my-buttonp5"); 
 
-  // Event listener for the preloader click
+  
   preloader.addEventListener("click", () => {
-    // Start playing the audio and set initial volume to 0
-    winterAudio.volume = 0; // Ensure initial volume is 0
+    
+    winterAudio.volume = 0; 
     winterAudio.play();
 
-    // Fade in the audio to a maximum of 0.5 volume
+    
     gsap.to(winterAudio, {
-      duration: 2, // Duration of the fade-in seconds
-      volume: 0.5, // Target volume
+      duration: 2, 
+      volume: 0.5, 
       ease: "power1.inOut",
       onComplete: () => {
-        winterAudio.volume = 0.5; // Ensure the volume is set to 0.5 at the end
+        winterAudio.volume = 0.5; 
       },
     });
 
-    // Initialize the Vimeo player and ScrollTrigger
+    
     initializePlayer();
   });
 
-  // Add event listener for the button to fade out the audio
+  
   myButton.addEventListener("click", () => {
-    // Fade out the audio
+    
     gsap.to(winterAudio, {
-      duration: 2, // Duration of the fade out
-      volume: 0, // Target volume to fade out
+      duration: 2, 
+      volume: 0, 
       ease: "power1.inOut",
       onComplete: () => {
-        winterAudio.pause(); // Pause the audio after fade out
-        winterAudio.currentTime = 0; // Optional: reset audio to start
+        winterAudio.pause(); 
+        winterAudio.currentTime = 0; 
       },
     });
   });
 
-  // Player 3
+  
   let iframe40 = document.querySelector("#vimeo-video50");
   let player40 = new Vimeo.Player(iframe40);
 
@@ -1424,39 +1411,39 @@ document.addEventListener("DOMContentLoaded", function () {
     end: "1200 50%",
     scrub: 1,
     onUpdate: (self) => {
-      let progress = self.progress; // Get the scroll progress from 0 to 1
+      let progress = self.progress; 
 
       if (progress <= 0.2) {
-        player40.setVolume(progress / 0.2); // Increase volume from 0 to 100% in the first 20%
+        player40.setVolume(progress / 0.2); 
       } else if (progress > 0.2 && progress < 0.5) {
-        player40.setVolume(1); // Keep volume at 100% from 20% to 80%
+        player40.setVolume(1); 
       } else if (progress >= 0.5) {
-        player40.setVolume((1 - progress) / 0.5); // Decrease volume from 100% to 0% from 80% to 100%
+        player40.setVolume((1 - progress) / 0.5); 
       }
     },
     onEnter: () => {
-      player40.setMuted(false); // Unmute the video when entering the trigger area
+      player40.setMuted(false); 
     },
     onLeave: () => {
       player40.setMuted(true);
-      player40.setVolume(0); // Mute and reset the volume when leaving the trigger area
+      player40.setVolume(0); 
     },
     onEnterBack: () => {
-      player40.setMuted(false); // Unmute the video when re-entering the trigger area from below
+      player40.setMuted(false); 
     },
     onLeaveBack: () => {
       player40.setMuted(true);
-      player40.setVolume(0); // Mute and reset the volume when leaving the trigger area from above
+      player40.setVolume(0); 
     },
   });
 
-  // Audio 6 Schirtte 2
+  
   let audio11 = document.querySelector("#schritte1");
 
   ScrollTrigger.create({
     trigger: ".home-scroll_text-item.p5p4",
     start: "20% center",
-    end: "bottom -3100%", // End 90% from the top of the viewport
+    end: "bottom -3100%", 
     scrub: 1,
     onUpdate: (self) => {
       let progress = self.progress;
@@ -1488,93 +1475,93 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("my-buttonp5")
     .addEventListener("click", function (event) {
-      // Prevent the default action
+      
       event.preventDefault();
 
-      // Delay the navigation by 1 second (1000 milliseconds)
+      
       setTimeout(function () {
         window.location.href = "/how-to-leave-town-p6";
       }, 2250);
     });
 
-  // Function to show the pop-up, count down, and reload the page after 3 seconds
+  
   function popupAndReloadOnResize() {
     window.addEventListener("resize", function () {
-      // Get the pop-up and countdown elements
+      
       const popup = document.getElementById("resize-popup");
       const countdownElement = document.getElementById("downcount");
 
-      // Show the pop-up
+      
       popup.style.display = "block";
 
-      // Initialize the countdown
-      let countdown = 3; // Start from 3 seconds
+      
+      let countdown = 3; 
 
-      // Update the countdown every second
+      
       const countdownInterval = setInterval(function () {
-        countdownElement.textContent = countdown; // Update the displayed number
-        countdown--; // Decrease the countdown
+        countdownElement.textContent = countdown; 
+        countdown--; 
 
-        // If countdown reaches 0, clear the interval and reload the page
+        
         if (countdown < 0) {
           clearInterval(countdownInterval);
 
-          location.reload(); // Reload the page
+          location.reload(); 
         }
-      }, 1000); // Update every second (1000 milliseconds)
+      }, 1000); 
     });
   }
 
-  // Call the function to set
+  
   popupAndReloadOnResize();
 
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
-  //newnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnwnewnw
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   window.onload = function () {
-    // Ensure the page is scrolled to the top
+    
     window.scrollTo(0, 0);
 
-    // Disable scroll restoration to prevent unwanted scrolling
+    
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
     }
 
-    // Prevent scrolling
+    
     document.body.style.overflow = "hidden";
 
-    // Set up the event listener for closing the modal
+    
     const closeModalDiv = document.getElementById("thisbuttonyo");
     closeModalDiv.onclick = function () {
-      document.body.style.overflow = "auto"; // Enable scrolling again
-      // Your Webflow interaction should handle closing the modal
+      document.body.style.overflow = "auto"; 
+      
     };
   };
-  // Prevent overscroll by limiting scroll range
+  
   document.addEventListener("scroll", () => {
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight;
     const clientHeight = document.documentElement.clientHeight;
-    // Prevent overscroll at the top
+    
     if (scrollTop <= 0) {
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
     }
-    // Prevent overscroll at the bottom
+    
     if (scrollTop + clientHeight >= scrollHeight) {
       document.documentElement.scrollTop = scrollHeight - clientHeight;
       document.body.scrollTop = scrollHeight - clientHeight;

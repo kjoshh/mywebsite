@@ -88,7 +88,6 @@ canvas:active {
 }
 
 .passwordmain {
-  /* opacity: 0; */
   gap: 5px;
   display: flex;
   flex-direction: row;
@@ -111,7 +110,6 @@ canvas:active {
 }
 
 .submitform {
-  /* opacity: 0; */
   font-size: 17px;
   -webkit-text-stroke-width: 0.5px;
 }

@@ -1,13 +1,9 @@
-// index.js
-
-// Function to check if the user is on a mobile device
 function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
   );
 }
 
-// Function to check if the user is on desktop Safari
 function isDesktopSafari() {
   const userAgent = navigator.userAgent;
   return (

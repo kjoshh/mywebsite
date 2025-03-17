@@ -361,9 +361,9 @@ th {
 }
 
 @font-face {
-  font-family: 'Neueeigene'; /* Name of the font */
-  src: url('../../public/fonts/Neueeigene-Regular.ttf') format('truetype'); /* Path to the font file */
-  font-display: swap; /* Optional: control font loading behavior */
+  font-family: 'Neueeigene';
+  src: url('../../public/fonts/Neueeigene-Regular.ttf') format('truetype'); 
+  font-display: swap;
 }
 
 #device-check-overlay {
@@ -5439,8 +5439,8 @@ th {
   align-items: flex-start;
   width: 100vw;
   height: 100vh;
-  padding-top: 20px;
-  padding-left: 20px;
+  padding-top: 2.5vh;
+  padding-left: 2.5vh;
   display: none;
   position: fixed;
   inset: 0%;
@@ -6772,7 +6772,7 @@ th {
 
 .music-player-container:not(.hide) .track-nav,
 .music-player-container:not(.hide) .track-info {
-  transition-delay: 0.5s; /* Delay the transition when NOT hidden */
+  transition-delay: 0.5s;
 }
 
 .music-player-container.hidden {

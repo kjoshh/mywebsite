@@ -7,7 +7,7 @@ const __dirname = dirname(__filename);
 
 export default defineConfig({
   root: resolve(__dirname),
-  base: '/', // VERY IMPORTANT
+  base: '/',
   build: {
     rollupOptions: {
       input: {
@@ -33,9 +33,9 @@ export default defineConfig({
       output: {
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === 'src/js/htlt-fuck.js') {
-            return 'src/js/htlt-fuck.js'; // Keep the original name
+            return 'src/js/htlt-fuck.js';
           }
-          return 'assets/[name]-[hash][extname]'; // Default asset naming
+          return 'assets/[name]-[hash][extname]';
         },
       },
     },

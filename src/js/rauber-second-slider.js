@@ -41,7 +41,6 @@ export function initializeSecondSlider() {
     target = Math.min(maxScroll, target);
   });
   update();
-  // Stop the script when the specified image is clicked
   const stopTrigger = document.querySelector('#closebook');
   stopTrigger.addEventListener('click', () => {
     setTimeout(() => {
@@ -51,7 +50,6 @@ export function initializeSecondSlider() {
     }, 500);
   });
 }
-// Add an event listener for the image click
 const triggerElement2 = document.getElementById('openbook');
 triggerElement2.addEventListener('click', () => {
   initializeSecondSlider();

@@ -1,5 +1,3 @@
-// vimeo-helper-no-audio.js
-
 function initializeVimeoPlayerNoAudio(iframeId, closeButtonId) {
   const videoIframe = document.getElementById(iframeId);
   const videoCloseButton = document.getElementById(closeButtonId);
@@ -12,19 +10,19 @@ function initializeVimeoPlayerNoAudio(iframeId, closeButtonId) {
       }
       videoIframe.contentWindow.postMessage(
         JSON.stringify(data),
-        "https://player.vimeo.com"
+        'https://player.vimeo.com'
       );
     }
 
     if (videoCloseButton) {
-      videoCloseButton.addEventListener("click", function () {
-        postMessageToVimeo("pause");
+      videoCloseButton.addEventListener('click', function () {
+        postMessageToVimeo('pause');
       });
     } else {
-      console.error(`Error: #${closeButtonId} button not found in the DOM.`);
+      console.error(`Error: #${closeButtonId} button not found.`);
     }
   } else {
-    console.error(`Error: #${iframeId} iframe not found in the DOM.`);
+    console.error(`Error: #${iframeId} iframe not found.`);
   }
 }
 
