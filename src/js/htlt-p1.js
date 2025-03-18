@@ -187,6 +187,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  const newpinleipzig = document.querySelector('.newpinleipzig');
+  gsap.set(newpinleipzig, { autoAlpha: 0 });
+
+  ScrollTrigger.create({
+    trigger: '.home-scroll_text-item._1',
+    start: 'top 155%',
+    end: 'top 155%',
+    // scrub: true,
+    onEnter: () => gsap.to(newpinleipzig, { autoAlpha: 1 }),
+    onEnterBack: () => gsap.to(newpinleipzig, { autoAlpha: 0 }),
+  });
+
+  const leipzigtarget = document.querySelector('.leipzig.pin.target._11');
+
+  ScrollTrigger.create({
+    trigger: '.home-scroll_text-item._1',
+    start: 'top 155%',
+    end: 'top 155%',
+    // scrub: true,
+    onEnter: () => gsap.to(leipzigtarget, { opacity: 0 }),
+    onEnterBack: () => gsap.to(leipzigtarget, { opacity: 1 }),
+  });
   function checkScrollPosition() {
     const scrollTop = window.scrollY || window.pageYOffset;
     const windowHeight = window.innerHeight;

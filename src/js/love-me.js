@@ -186,8 +186,8 @@ document.addEventListener('DOMContentLoaded', function () {
       firsthint.classList.add('hidden');
       secondhint.classList.remove('hidden');
       const hintContent = `We are not a proud race<br>
-    It's not a race at all<br>
-    We're just trying, I'm only trying to get ____`;
+    Its not a race at all<br>
+    Were just trying, Im only trying to get ____`;
       typeWriterEffect(hintText, hintContent, 50);
     } else {
       hintText.classList.add('hidden');

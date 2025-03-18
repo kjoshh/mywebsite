@@ -362,7 +362,7 @@ th {
 
 @font-face {
   font-family: 'Neueeigene';
-  src: url('../../public/fonts/Neueeigene-Regular.ttf') format('truetype'); 
+  src: url('../../public/fonts/Neueeigene-Regular.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -2463,11 +2463,14 @@ th {
 }
 
 .newpinleipzig {
+  opacity: 0;
   height: 3.35vh;
   margin-top: 56.6vh;
   margin-left: -164.2vh;
   display: block;
   position: absolute;
+  visibility: hidden;
+  opacity: 1 !important;
 }
 
 .newpinleipzig._1 {

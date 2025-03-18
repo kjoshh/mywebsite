@@ -103,7 +103,17 @@ const commands = {
   professional:
     'The dedicated expert who approaches their work with consistent skill, discipline, and a commitment to quality, often in pursuit of a career.',
   photographer: 'Someone who likes to take pictures?',
-  dogwalker: 'https://www.dogwalkerkoeln.com',
+  dogwalker: () => {
+    const message = '';
+    const url = 'https://www.dogwalkerkoeln.com';
+
+    appendOutputWithTyping(message, () => {
+      const linkElement = document.createElement('div');
+      linkElement.innerHTML = `<a href="${url}" target="_blank" style="color: #89e142; text-decoration: underline; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">${url}</a>`;
+      outputDiv.appendChild(linkElement);
+      scrollToBottom();
+    });
+  },
   hi: 'Hello visitor :)',
   hello: 'Helloi visitor :)',
   hey: 'Hello visitor :)',
@@ -113,7 +123,6 @@ const commands = {
   friends:
     '– Asli Oezcelik\n– Jule Wild\n– Ülgen Atakman\n– Max Knoll\n– Fotobus Society',
   help: 'Some available commands:\n- whois\n- whoami\n– contact\n- copyright\n- desktop\n- inspect\n- fixme',
-  morecommands: '– friends\n– inspira\n– camera\n– film',
   books:
     '– Eigensinn Macht Spaß by Hermann Hesse\n– Steal Like An Artist by Austion Kleon\n– Big Magic by Elizabeth Gilbert',
   photobooks:
