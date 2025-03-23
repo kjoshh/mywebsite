@@ -963,7 +963,7 @@ document.addEventListener('DOMContentLoaded', function () {
               },
               function (xhr) {
                 const percentComplete = Math.round(
-                  (xhr.loaded / xhr.total) * 100
+                  (xhr.loaded / xhr.total) * 99
                 );
                 loadingPercent.textContent = percentComplete;
               },
