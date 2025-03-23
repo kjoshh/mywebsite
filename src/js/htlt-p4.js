@@ -4,6 +4,10 @@ import MotionPathPlugin from "gsap/MotionPathPlugin";
 import "./browser-detect.js";
 import "./applystuff.js";
 document.addEventListener("DOMContentLoaded", function () {
+
+  const newpinleipzig = document.querySelector('.newpinleipzig');
+  newpinleipzig.style.visibility = 'visible';
+  
   document
     .getElementById("thisbuttonyop4")
     .addEventListener("click", function () {

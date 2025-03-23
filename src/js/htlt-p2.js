@@ -5,6 +5,8 @@ import './browser-detect.js';
 import './applystuff.js';
 document.addEventListener('DOMContentLoaded', function () {
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+  const newpinleipzig = document.querySelector('.newpinleipzig');
+  newpinleipzig.style.visibility = 'visible';
 
   const targetValue = 100;
   const duration = 2900;

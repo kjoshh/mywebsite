@@ -4,6 +4,9 @@ import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import './browser-detect.js';
 import './applystuff.js';
 document.addEventListener('DOMContentLoaded', function () {
+  const newpinleipzig = document.querySelector('.newpinleipzig');
+  newpinleipzig.style.visibility = 'visible';
+
   const targetValue = 100;
   const duration = 2900;
   const delay = 500;
