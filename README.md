@@ -17,4 +17,4 @@ I have have no idea how this conributing stuff exactly works. But if youre here,
 
 - My `dist` folder (containing the built website) is in a separate repository [(newhostedsite)](https://github.com/kjoshh/newhostedsite), because everything together was too big.
 - Build for production: `npm run build`
-  – Im a total noob when it comes to writing code. I get along with html and css but I just started to learn JavaScript. I also just started using GitHub and still dont really understand it. Maybe that explains some things for you :))
+- Im a total noob when it comes to writing code. I get along with html and css but I just started to learn JavaScript. I also just started using GitHub and still dont really understand it. Maybe that explains some things for you :))
