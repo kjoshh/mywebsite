@@ -944,7 +944,7 @@ document.addEventListener('DOMContentLoaded', function () {
             controls.enableZoom = false;
             const loader = new GLTFLoader();
             loader.load(
-              'src/js/huetteblender.glb',
+              '/huetteblender.glb',
               function (gltf) {
                 const model = gltf.scene;
                 const box = new THREE.Box3().setFromObject(model);
