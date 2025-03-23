@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import strip from 'vite-plugin-strip';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -8,7 +9,9 @@ const __dirname = dirname(__filename);
 export default defineConfig({
   root: resolve(__dirname),
   base: '/',
+  plugins: [strip()],
   build: {
+    minify: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),

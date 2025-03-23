@@ -12,7 +12,6 @@ import {
 document.addEventListener('DOMContentLoaded', function () {
   initializeVimeoPlayer('lovememvid', 'closevid');
 
- 
   const imageUrls = Array.from(
     {
       length: 88,
@@ -22,14 +21,14 @@ document.addEventListener('DOMContentLoaded', function () {
       full: `images/Fuck-Me/fuck-me-full/fuck-me-full-${i + 1}.jpg`,
     })
   );
- 
+
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
   }
- 
+
   const shuffledIndices = Array.from(
     {
       length: imageUrls.length,
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     (_, i) => i
   );
   shuffleArray(shuffledIndices);
- 
+
   const preloader = document.createElement('div');
   preloader.id = 'preloader';
   preloader.style.cssText = `
@@ -57,9 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
   preloader.innerHTML = `<span id="progress-text" style=" margin:2.5vmin; transition: opacity 0.3s ease;">loading... 0/88</span>`;
   document.body.appendChild(preloader);
- 
+
   let imagesLoadedCount = 0;
- 
+
   const imgElements = document.querySelectorAll('.fuck-me-img');
   shuffledIndices.forEach((shuffledIndex) => {
     const imgData = imageUrls[shuffledIndex];
@@ -70,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (targetImg) {
         targetImg.src = img.src;
         targetImg.dataset.full = imgData.full;
-       
+
         gsap.fromTo(
           targetImg,
           {
@@ -83,21 +82,19 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         );
       }
-     
+
       imagesLoadedCount++;
       const progressText = document.getElementById('progress-text');
 
       progressText.textContent = `loading... ${imagesLoadedCount}/88`;
-     
+
       if (imagesLoadedCount === imgElements.length) {
-       
         gsap.to(progressText, {
           opacity: 0,
           duration: 0.5,
           ease: 'power2.inOut',
         });
         setTimeout(() => {
-         
           gsap.to(preloader, {
             opacity: 0,
             duration: 0.4,
@@ -110,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     };
   });
- 
+
   function typeWriterEffect(element, text, speed = 35) {
     element.innerHTML = '';
     let i = 0;
@@ -128,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     type();
   }
- 
+
   const passwordInput = document.getElementById('passwordInput');
   const checkPasswordBtn = document.getElementById('checkPasswordBtn');
   const firsthint = document.getElementById('firsthint');
@@ -204,13 +201,12 @@ document.addEventListener('DOMContentLoaded', function () {
       secondhint.classList.add('hidden');
     }
   });
- 
+
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightbox-image');
   const interfaceElement = document.getElementById('naviga');
   let currentImages = [];
   let currentIndex = 0;
- 
 
   const counterElement = document.createElement('div');
   counterElement.style.position = 'fixed';
@@ -242,22 +238,17 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: 'power2.in',
     });
   }
- 
- 
+
   function handleKeyDown(event) {
-   
     if (lightbox.style.display === 'flex') {
       switch (event.key) {
         case 'ArrowRight':
-         
           showNextImage();
           break;
         case 'ArrowLeft':
-         
           showPreviousImage();
           break;
         case 'Escape':
-         
           closeLightbox();
           break;
         default:
@@ -267,18 +258,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   document.querySelectorAll('.image-container img').forEach((img) => {
-   
     img.addEventListener('mouseover', (e) => {
       const highResSrc = e.target.src.replace(
         '/fuck-me-thumb/fuck-me-thumb-',
         '/fuck-me-full/fuck-me-full-'
       );
-     
+
       const backgroundImage = new Image();
       backgroundImage.src = highResSrc;
-     
+
       backgroundImage.onload = () => {
-       
         const clonedImage = e.target.cloneNode(true);
         clonedImage.src = highResSrc;
         clonedImage.style.position = 'absolute';
@@ -288,22 +277,22 @@ document.addEventListener('DOMContentLoaded', function () {
         clonedImage.style.height = 'auto';
         clonedImage.style.visibility = 'hidden';
         clonedImage.style.pointerEvents = 'none';
-       
+
         document.body.appendChild(clonedImage);
       };
     });
-   
+
     img.addEventListener('click', (e) => {
       e.target.style.visibility = 'hidden';
       const container = e.target.closest('.image-container');
-     
+
       currentImages = Array.from(container.querySelectorAll('img'));
-     
+
       const highResSrc = e.target.src.replace(
         '/fuck-me-thumb/fuck-me-thumb-',
         '/fuck-me-full/fuck-me-full-'
       );
-     
+
       currentIndex = currentImages
         .map((img) =>
           img.src.replace(
@@ -312,11 +301,11 @@ document.addEventListener('DOMContentLoaded', function () {
           )
         )
         .indexOf(highResSrc);
-     
+
       updateCounter();
-     
+
       lightboxImage.src = highResSrc;
-     
+
       gsap.to(interfaceElement, {
         opacity: 0,
         duration: 0.5,
@@ -325,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function () {
           interfaceElement.style.display = 'none';
         },
       });
-     
+
       const clonedImage = e.target.cloneNode(true);
       clonedImage.src = highResSrc;
       const rect = e.target.getBoundingClientRect();
@@ -360,21 +349,20 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
- 
+
   function closeLightbox() {
-   
     const rect = lightboxImage.getBoundingClientRect();
-   
+
     const clonedImage = lightboxImage.cloneNode(true);
-   
+
     const highResSrc = lightboxImage.src.replace(
       '/fuck-me-thumb/fuck-me-Thumb-',
       '/fuck-me-full/fuck-me-full-'
     );
     clonedImage.src = highResSrc;
-   
+
     document.body.appendChild(clonedImage);
-   
+
     clonedImage.style.position = 'fixed';
     clonedImage.style.top = `${rect.top}px`;
     clonedImage.style.left = `${rect.left}px`;
@@ -383,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function () {
     clonedImage.style.zIndex =
       '999999999999999999999999999999999999999999999999991';
     clonedImage.style.objectFit = 'contain';
-   
+
     const originalImage = Array.from(
       document.querySelectorAll('.image-container img')
     ).find(
@@ -394,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ) === highResSrc
     );
     const originalRect = originalImage.getBoundingClientRect();
-   
+
     gsap.to(clonedImage, {
       top: `${originalRect.top}px`,
       left: `${originalRect.left}px`,
@@ -412,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function () {
         originalImage.style.opacity = '1';
       },
     });
-   
+
     gsap.to(counterElement, {
       opacity: 0,
       duration: 0.5,
@@ -421,50 +409,47 @@ document.addEventListener('DOMContentLoaded', function () {
         counterElement.style.display = 'none';
       },
     });
-   
+
     interfaceElement.style.display = 'flex';
     gsap.to(interfaceElement, {
       opacity: 1,
       duration: 0.5,
       ease: 'power2.in',
     });
-   
+
     lightbox.style.display = 'none';
-   
+
     document.removeEventListener('keydown', handleKeyDown);
   }
   function showNextImage() {
     if (currentImages.length > 0) {
-     
-     
       currentImages[currentIndex].style.visibility = 'visible';
-     
+
       gsap.to(currentImages[currentIndex], {
         opacity: 1,
         duration: 0.2,
         ease: 'power2.inOut',
       });
-     
+
       currentIndex = (currentIndex + 1) % currentImages.length;
       gsap.to(currentImages[currentIndex], {
         opacity: 0,
         duration: 0.2,
         ease: 'power2.inOut',
         onComplete: () => {
-         
           currentImages[currentIndex].style.visibility = 'hidden';
         },
       });
-     
+
       updateCounter();
-     
+
       const currentHighResSrc = currentImages[currentIndex].src.replace(
         '/fuck-me-thumb/fuck-me-thumb-',
         '/fuck-me-full/fuck-me-full-'
       );
-     
+
       lightboxImage.src = currentHighResSrc;
-     
+
       const clonedNextImage = document.createElement('img');
       clonedNextImage.src = currentImages[
         (currentIndex + 1) % currentImages.length
@@ -473,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '/fuck-me-full/fuck-me-full-'
       );
       document.body.appendChild(clonedNextImage);
-     
+
       gsap.to(clonedNextImage, {
         top: '50%',
         left: '50%',
@@ -493,15 +478,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   function showPreviousImage() {
     if (currentImages.length > 0) {
-     
       currentImages[currentIndex].style.visibility = 'visible';
-     
+
       gsap.to(currentImages[currentIndex], {
         opacity: 1,
         duration: 0.2,
         ease: 'power2.inOut',
       });
-     
+
       currentIndex =
         (currentIndex - 1 + currentImages.length) % currentImages.length;
       gsap.to(currentImages[currentIndex], {
@@ -509,19 +493,18 @@ document.addEventListener('DOMContentLoaded', function () {
         duration: 0.2,
         ease: 'power2.inOut',
         onComplete: () => {
-         
           currentImages[currentIndex].style.visibility = 'hidden';
         },
       });
       updateCounter();
-     
+
       const currentHighResSrc = currentImages[currentIndex].src.replace(
         '/fuck-me-thumb/fuck-me-thumb-',
         '/fuck-me-full/fuck-me-full-'
       );
-     
+
       lightboxImage.src = currentHighResSrc;
-     
+
       const clonedPrevImage = document.createElement('img');
       clonedPrevImage.src = currentImages[
         (currentIndex - 1 + currentImages.length) % currentImages.length
@@ -530,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '/fuck-me-full/fuck-me-full-'
       );
       document.body.appendChild(clonedPrevImage);
-     
+
       gsap.to(clonedPrevImage, {
         top: '50%',
         left: '50%',
@@ -558,7 +541,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const lightboxImage = lightbox.querySelector('img');
     const rect = lightboxImage.getBoundingClientRect();
 
-   
     const imageWidth = rect.width;
     const imageHeight = rect.height;
     const naturalWidth = lightboxImage.naturalWidth;
@@ -580,18 +562,15 @@ document.addEventListener('DOMContentLoaded', function () {
       xOffset = (imageWidth - visibleWidth) / 2;
     }
 
-   offset
     const clickX = e.clientX - rect.left - xOffset;
     const clickY = e.clientY - rect.top - yOffset;
 
-   
     if (
       clickX >= 0 &&
       clickX <= visibleWidth &&
       clickY >= 0 &&
       clickY <= visibleHeight
     ) {
-     
       if (clickX > visibleWidth / 2) {
         showNextImage();
       } else {
@@ -602,8 +581,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
- 
- 
   const navigalast = document.getElementById('navigalast');
   const pwembed = document.getElementById('pwembed');
   const textDiv = document.getElementById('textdiv');
@@ -621,7 +598,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeVid = document.getElementById('closevid');
   const mainInterface = document.getElementById('naviga');
   const secondInterface = document.getElementById('navigalast');
- 
+
   const backStuff = document.querySelector('.blurbackstuff');
   gsap.set(textInside, {
     opacity: 0,
@@ -792,8 +769,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   const cross = document.getElementById('cross');
- 
- 
+
   const onloadDiv = document.querySelector('.onload-div');
   if (!cross) {
     console.warn("Element with ID 'cross' not found.");
@@ -856,14 +832,14 @@ document.addEventListener('DOMContentLoaded', function () {
   if (sessionStorage.getItem('isInternalNavigation') === 'true') {
     console.log('Page loaded via internal navigation.');
   }
- 
+
   function getMousePos(ev) {
     return {
       x: ev.clientX,
       y: ev.clientY,
     };
   }
- 
+
   function lerp(start, end, amt) {
     return (1 - amt) * start + amt * end;
   }
@@ -875,7 +851,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('mousemove', (ev) => (mouse = getMousePos(ev)));
   class Cursor {
     constructor() {
-     
       this.image = document.querySelector('#handyyo');
       this.cursorConfigs = {
         x: {
@@ -889,18 +864,16 @@ document.addEventListener('DOMContentLoaded', function () {
           amt: 0.2,
         },
       };
-     
+
       window.addEventListener('mousemove', this.onMouseMoveEv.bind(this));
     }
     onMouseMoveEv() {
-     
       this.cursorConfigs.x.current = mouse.x;
       this.cursorConfigs.y.current = mouse.y;
-     
+
       requestAnimationFrame(() => this.render());
     }
     render() {
-     
       for (const key in this.cursorConfigs) {
         this.cursorConfigs[key].previous = lerp(
           this.cursorConfigs[key].previous,
@@ -908,7 +881,7 @@ document.addEventListener('DOMContentLoaded', function () {
           this.cursorConfigs[key].amt
         );
       }
-     
+
       if (this.image) {
         const imgWidth = this.image.offsetWidth;
         const imgHeight = this.image.offsetHeight;
@@ -919,11 +892,11 @@ document.addEventListener('DOMContentLoaded', function () {
           ease: 'power3.out',
         });
       }
-     
+
       requestAnimationFrame(() => this.render());
     }
   }
- 
+
   const cursor = new Cursor();
 
   import('lottie-web')
@@ -953,17 +926,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       initializeVideoStateManager(player1);
 
-     
       const triggerElement1 = document.getElementById('openbook');
       triggerElement1.addEventListener('click', () => {
         initializeFirstSlider();
       });
 
-     
       const openVid = document.getElementById('openvid');
       const closeVid = document.getElementById('closevid');
 
-     
       openVid.addEventListener('click', () => {
         handleVideoStateChange(true);
         gsap.to(vidDiv, {
@@ -981,7 +951,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       });
 
-     
       closeVid.addEventListener('click', () => {
         handleVideoStateChange(false);
         naviga.style.display = 'flex';
