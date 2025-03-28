@@ -423,13 +423,6 @@ const cross = document.getElementById('cross');
 cross.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const noiseElement = document.getElementById('persistent-noise');
-  if (noiseElement) {
-    noiseElement.remove();
-    noiseElement.style.zIndex = '999999999999999999';
-    document.body.appendChild(noiseElement);
-  }
-
   const href = '/';
   sessionStorage.setItem('isInternalNavigation', 'true');
 
@@ -674,6 +667,13 @@ lightbox.addEventListener('click', (e) => {
   }
 });
 
+cross.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const href = '/';
+  sessionStorage.setItem('isInternalNavigation', 'true');
+
+  fetch(href, { mode: 'no-cors' })
     .then(() => console.log('Page preloaded:', href))
     .catch(() => console.warn('Failed to preload page:', href));
 
@@ -681,4 +681,5 @@ lightbox.addEventListener('click', (e) => {
 });
 
 if (sessionStorage.getItem('isInternalNavigation') === 'true') {
+  // Add any internal navigation handling here if needed
 }
