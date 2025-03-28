@@ -48,14 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
       fixedWrap.style.display = 'block';
 
-      // Keep the noise overlay during transition
-      const noiseOverlay = document.querySelector('#persistent-noise-overlay');
-      if (noiseOverlay) {
-        // Ensure it stays on top
-        document.body.appendChild(noiseOverlay);
-      }
-
-      // Start preloading immediately
       fetch(href)
         .then((response) => response.text())
         .catch((error) => {
@@ -91,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
             duration: 1,
             ease: 'power4.inOut',
             onComplete: () => {
-              // After animation completes, navigate regardless of fetch status
               window.location.href = href;
             },
           });
