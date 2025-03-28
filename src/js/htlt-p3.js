@@ -5,10 +5,21 @@ import './browser-detect.js';
 import './applystuff.js';
 document.addEventListener('DOMContentLoaded', function () {
   const newpinleipzig = document.querySelector('.newpinleipzig');
-  newpinleipzig.style.visibility = 'visible';
-
+  setTimeout(() => {
+    newpinleipzig.style.visibility = 'visible';
+  }, 5500);
+  // const fixedcontent = document.querySelector('.fixed-content._2.p3');
+  // gsap.set(fixedcontent, {
+  //   opacity: 0,
+  // });
+  // gsap.to(fixedcontent, {
+  //   opacity: 1,
+  //   duration: 0.5,
+  //   delay: 5,
+  //   ease: 'power2.inOut',
+  // });
   const targetValue = 100;
-  const duration = 2900;
+  const duration = 3000;
   const delay = 500;
 
   function cubicBezier(t) {
@@ -17,32 +28,36 @@ document.addEventListener('DOMContentLoaded', function () {
     return 3 * u * u * t * p0 + 3 * u * t * t * p2 + t * t * t;
   }
 
-  function animateCountUp(element, target, duration, easingFunc) {
-    const startTime = performance.now();
+  function animateCountUp(element, target, duration) {
+    const loaderImg = document.querySelector('.loader-img.innen');
 
-    function updateValue(timestamp) {
-      const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easedProgress = easingFunc(progress);
-      const currentValue = Math.floor(target * easedProgress);
+    const tl = gsap.timeline({
+      delay: 0.5,
+      defaults: {
+        duration: 3,
+        ease: [0.292, 0.638, 0.544, 0.246],
+      },
+    });
 
-      element.textContent = currentValue;
+    tl.to(loaderImg, {
+      width: '550px',
+    }).to(
+      element,
+      {
+        textContent: targetValue,
+        snap: { textContent: 1 },
+        modifiers: {
+          textContent: (value) => Math.round(value),
+        },
+      },
+      '<'
+    );
 
-      if (progress < 1) {
-        requestAnimationFrame(updateValue);
-      }
-    }
-
-    requestAnimationFrame(updateValue);
+    return tl;
   }
 
   setTimeout(() => {
-    animateCountUp(
-      document.getElementById('countyo'),
-      targetValue,
-      duration,
-      cubicBezier
-    );
+    animateCountUp(document.getElementById('countyo'), targetValue, duration);
   }, delay);
 
   document

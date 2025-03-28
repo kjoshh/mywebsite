@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
       y: 0,
       ease: 'power4.inOut',
     });
-  }, 7500);
+  }, 3750);
   document.fonts
     .load("1em 'Neueeigene'")
     .then(function () {

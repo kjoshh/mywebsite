@@ -37047,8 +37047,8 @@
                     actionTypeId: 'STYLE_OPACITY',
                     config: {
                       delay: 0,
-                      easing: 'easeOut',
-                      duration: 750,
+                      easing: '',
+                      duration: 10,
                       target: {
                         id: '66a8c840d60c34a95a1ebb60|c483f674-3e62-3fce-af9d-f79342e65046',
                       },
@@ -37112,12 +37112,13 @@
                     actionTypeId: 'STYLE_SIZE',
                     config: {
                       delay: 0,
-                      easing: [0.292, 0.638, 0.544, 0.246],
+                      // easing: [0.292, 0.638, 0.544, 0.246],
                       duration: 3000,
                       target: {
                         id: '66a8c840d60c34a95a1ebb60|c483f674-3e62-3fce-af9d-f79342e65051',
                       },
-                      widthValue: 550,
+                      // widthValue: 550,
+                      // widthValue: 0,
                       widthUnit: 'px',
                       heightUnit: 'PX',
                       locked: false,
@@ -37320,12 +37321,12 @@
                     actionTypeId: 'STYLE_SIZE',
                     config: {
                       delay: 0,
-                      easing: [0.292, 0.638, 0.544, 0.246],
+                      // easing: [0.292, 0.638, 0.544, 0.246],
                       duration: 3000,
                       target: {
                         id: '66b9fb94abcc1051c1639f87|50b76d88-5276-a585-149d-69677413a9d3',
                       },
-                      widthValue: 550,
+                      // widthValue: 550,
                       widthUnit: 'px',
                       heightUnit: 'PX',
                       locked: false,
@@ -37563,12 +37564,12 @@
                     actionTypeId: 'STYLE_SIZE',
                     config: {
                       delay: 0,
-                      easing: [0.292, 0.638, 0.544, 0.246],
+                      // easing: [0.292, 0.638, 0.544, 0.246],
                       duration: 3000,
                       target: {
                         id: '66c993e30ac4df1a3d95e73b|5b225d63-d90e-6faf-2ad1-0d2eebffcbf0',
                       },
-                      widthValue: 550,
+                      // widthValue: 550,
                       widthUnit: 'px',
                       heightUnit: 'PX',
                       locked: false,
@@ -37743,12 +37744,12 @@
                     actionTypeId: 'STYLE_SIZE',
                     config: {
                       delay: 0,
-                      easing: [0.292, 0.638, 0.544, 0.246],
+                      // easing: [0.292, 0.638, 0.544, 0.246],
                       duration: 3000,
                       target: {
                         id: '66cadaeaa84a018f51a501cb|30448b16-08f7-3084-373c-8959a9a49ea7',
                       },
-                      widthValue: 550,
+                      // widthValue: 550,
                       widthUnit: 'px',
                       heightUnit: 'PX',
                       locked: false,
@@ -37919,12 +37920,10 @@
                     actionTypeId: 'STYLE_SIZE',
                     config: {
                       delay: 0,
-                      easing: [0.292, 0.638, 0.544, 0.246],
                       duration: 3000,
                       target: {
                         id: '66d4231a5137139f75864016|c2d9ec48-6b19-abfa-5b26-017412370b9f',
                       },
-                      widthValue: 550,
                       widthUnit: 'px',
                       heightUnit: 'PX',
                       locked: false,
@@ -38110,12 +38109,10 @@
                     actionTypeId: 'STYLE_SIZE',
                     config: {
                       delay: 0,
-                      easing: [0.292, 0.638, 0.544, 0.246],
                       duration: 3000,
                       target: {
                         id: '66d719ee7b77f36fc1fc2905|cd668dc2-6069-6675-9592-632515adde81',
                       },
-                      widthValue: 550,
                       widthUnit: 'px',
                       heightUnit: 'PX',
                       locked: false,
@@ -38342,12 +38339,10 @@
                     actionTypeId: 'STYLE_SIZE',
                     config: {
                       delay: 0,
-                      easing: [0.292, 0.638, 0.544, 0.246],
                       duration: 3000,
                       target: {
                         id: '66d71161eeb676aed0a72126|07897eda-85ee-9899-3e00-68ee056bb288',
                       },
-                      widthValue: 550,
                       widthUnit: 'px',
                       heightUnit: 'PX',
                       locked: false,

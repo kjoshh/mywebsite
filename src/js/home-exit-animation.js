@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
   realLinks.forEach(function (link) {
     link.addEventListener('click', function (event) {
       const href = this.getAttribute('href');
-
       const isHashLink = href.startsWith('#');
       const isJavaScriptLink = href.startsWith('javascript:');
       const hasTargetBlank = this.getAttribute('target') === '_blank';
@@ -49,16 +48,18 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
       fixedWrap.style.display = 'block';
 
-      let nextPageContent = null;
+      // Keep the noise overlay during transition
+      const noiseOverlay = document.querySelector('#persistent-noise-overlay');
+      if (noiseOverlay) {
+        // Ensure it stays on top
+        document.body.appendChild(noiseOverlay);
+      }
+
+      // Start preloading immediately
       fetch(href)
         .then((response) => response.text())
-        .then((html) => {
-          nextPageContent = html;
-        })
         .catch((error) => {
           console.error('Error loading page:', error);
-
-          window.location.href = href;
         });
 
       gsap.to(texts, {
@@ -90,11 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
             duration: 1,
             ease: 'power4.inOut',
             onComplete: () => {
-              if (nextPageContent) {
-                window.location.href = href;
-              } else {
-                window.location.href = href;
-              }
+              // After animation completes, navigate regardless of fetch status
+              window.location.href = href;
             },
           });
         },

@@ -91,6 +91,10 @@ document.addEventListener('DOMContentLoaded', function () {
             duration: 0.3,
             ease: 'power1.inOut',
             willChange: 'transform, opacity',
+            onComplete: () => {
+              // Set internal navigation to false here
+              sessionStorage.setItem('isInternalNavigation', 'false');
+            },
           });
         },
       });

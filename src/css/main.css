@@ -24,7 +24,18 @@ html {
   font-family: sans-serif;
   text-size-adjust: 100%;
 }
-
+.global-noise {
+  background-image: url(/images/Random/noiseeee.gif);
+  background-size: 300px;
+  opacity: 0.07;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99999999999999;
+  pointer-events: none;
+}
 img {
   max-width: 100%;
   border: 0;
@@ -956,7 +967,7 @@ th {
 
 .fixed-content._2.p3 {
   z-index: 9999999;
-  opacity: 1;
+  /* opacity: 1; */
 }
 
 .fixed-content._765 {
@@ -2463,7 +2474,6 @@ th {
 }
 
 .newpinleipzig {
-  opacity: 0;
   height: 3.35vh;
   margin-top: 56.6vh;
   margin-left: -164.2vh;
@@ -4417,6 +4427,10 @@ th {
   flex-flow: column;
 }
 
+.preloaderrrrrrrr.p3.opaaa {
+  opacity: 1;
+}
+
 .preloaderrrrrrrr.p3.bllll {
   background-color: #000;
 }
@@ -5574,7 +5588,7 @@ th {
 }
 
 .buchhh.reffre {
-  z-index: 2147483647;
+  z-index: 100;
   opacity: 1;
   pointer-events: auto;
   width: 100vw;
@@ -6249,7 +6263,7 @@ th {
 }
 
 .yobacki {
-  z-index: 2147483647;
+  z-index: 10000000;
   cursor: auto;
   background-color: #0000;
   width: 100vw;
@@ -6590,7 +6604,7 @@ th {
 }
 
 .blurbackstuff {
-  z-index: 2147483647;
+  z-index: 10000000;
   opacity: 0;
   backdrop-filter: blur(10px);
   pointer-events: none;
@@ -7171,10 +7185,6 @@ th {
   inset: 0%;
 }
 
-.diary-start-embed {
-  position: relative;
-}
-
 .code-embed-16 {
   opacity: 0.8;
 }
@@ -7290,7 +7300,7 @@ th {
 }
 
 .onload-div {
-  z-index: 2147483647;
+  z-index: 1000000000;
   background-color: #f0eade;
   width: 100vw;
   height: 100vh;

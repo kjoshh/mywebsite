@@ -543,7 +543,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeHuette = document.getElementById('closehuette');
 
   const mainInterface = document.getElementById('naviga');
-  const grainiwrapppp = document.getElementById('grainiwrapppp');
+  const grainiwrapppp = document.querySelector('.global-noise');
   const closeThreeJs = document.getElementById('closeModal');
   const openThreeJs = document.getElementById('openModal');
   const backStuff = document.querySelector('.blurbackstuff');
@@ -693,7 +693,7 @@ document.addEventListener('DOMContentLoaded', function () {
     mainInterface.style.display = 'flex';
     navigalast.style.display = 'flex';
     gsap.to(grainiwrapppp, {
-      opacity: 1,
+      opacity: 0.07,
       duration: 0.5,
       ease: 'power4.in',
     });
@@ -753,7 +753,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   closeThreeJs.addEventListener('click', () => {
     gsap.to(grainiwrapppp, {
-      opacity: 1,
+      opacity: 0.07,
       duration: 0.5,
       ease: 'power4.in',
     });

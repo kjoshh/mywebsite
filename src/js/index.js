@@ -24,11 +24,7 @@ function setupTerminalActivation() {
 }
 
 export function isInternalNavigation() {
-  if (sessionStorage.getItem('isInternalNavigation') === 'true') {
-    sessionStorage.removeItem('isInternalNavigation');
-    return true;
-  }
-  return false;
+  return sessionStorage.getItem('isInternalNavigation') === 'true';
 }
 
 document.addEventListener('DOMContentLoaded', function () {

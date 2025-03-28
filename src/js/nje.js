@@ -153,32 +153,12 @@ document.addEventListener('DOMContentLoaded', function () {
   );
   shuffleArray(shuffledIndices);
 
-  const preloader = document.createElement('div');
-  preloader.id = 'preloader';
-  preloader.style.cssText = `
-        position: fixed;
-        top: 0; left: 0;
-        width: 100vw; height: 100vh;
-        background: rgba(0, 0, 0, 0.65); /* Slightly transparent overlay */
-        color: white;
-        opacity:0;
-        display: flex;
-        font-family: Neueeigene;
-        letter-spacing: -1.5;
-        align-items: flex-end;
-        justify-content: right;
-        font-size: 20px;
-        z-index: 9999;
-        transition: opacity 1.5s ease; /* Overlay fade-out */
-      `;
-  preloader.innerHTML = `<span id="progress-text" style=" margin:2.5vmin; transition: opacity 0.3s ease;">loading... 0/63</span>`;
-  document.body.appendChild(preloader);
+  const preloader = document.getElementById('preloadernje');
   gsap.to(preloader, {
     opacity: 1,
     duration: 1,
-    ease: 'power4.inOut',
+    ease: 'power2.in',
   });
-
   let imagesLoadedCount = 0;
 
   const imgElements = document.querySelectorAll('.nje-img');
@@ -220,8 +200,9 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
           gsap.to(preloader, {
             opacity: 0,
-            duration: 0.4,
-            ease: 'power2.inOut',
+            delay: 0.5,
+            duration: 1,
+            ease: 'power2.out',
             onComplete: () => {
               preloader.style.display = 'none';
               naviga.style.display = 'flex';

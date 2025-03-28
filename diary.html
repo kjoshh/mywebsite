@@ -51,6 +51,7 @@
     />
   </head>
   <body class="body-2">
+    <div class="global-noise"></div>
     <div
       id="device-check-overlay"
       class="hidden"
@@ -89,752 +90,818 @@
         </div>
       </div>
     </div>
-    <div class="diary-start-embed w-embed">
+    <div
+      class="lightbox"
+      id="lightbox"
+    >
+      <img
+        id="lightbox-image"
+        src=""
+        alt=""
+      />
+    </div>
+    <div id="image-loader">
+      <div id="loader-bar"></div>
+    </div>
+    <div
+      class="header-diary"
+      style="opacity: 0"
+    >
+      <img
+        id="header-img"
+        src="images/Archive/Dairy.png"
+      />
+    </div>
+    <div
+      class="navigation"
+      id="year-navigation"
+    >
       <div
-        class="lightbox"
-        id="lightbox"
-      >
-        <img
-          id="lightbox-image"
-          src=""
-          alt=""
-        />
-      </div>
-      <div id="image-loader">
-        <div id="loader-bar"></div>
-      </div>
-      <div
-        class="header-diary"
+        class="year-link"
         style="opacity: 0"
+        data-year="2025"
       >
-        <img
-          id="header-img"
-          src="images/Archive/Dairy.png"
-        />
+        2025
       </div>
       <div
-        class="navigation"
-        id="year-navigation"
+        class="year-link"
+        style="opacity: 0"
+        data-year="2024"
       >
-        <div
-          class="year-link"
-          style="opacity: 0"
-          data-year="2024"
-        >
-          2024
-        </div>
-        <div
-          class="year-link"
-          style="opacity: 0"
-          data-year="2023"
-        >
-          2023
-        </div>
-        <div
-          class="year-link"
-          style="opacity: 0"
-          data-year="2022"
-        >
-          2022
-        </div>
-        <div
-          class="year-link"
-          style="opacity: 0"
-          data-year="2021"
-        >
-          2021
-        </div>
-        <div
-          class="year-link"
-          style="opacity: 0"
-          data-year="2020"
-        >
-          2020
-        </div>
-        <div
-          class="year-link"
-          style="opacity: 0"
-          data-year="2019"
-        >
-          2019
-        </div>
-        <div
-          class="year-link"
-          style="opacity: 0"
-          data-year="2018"
-        >
-          2018
-        </div>
-        <div
-          class="year-link"
-          style="opacity: 0"
-          data-year="2017"
-        >
-          2017
-        </div>
-        <div
-          class="year-link"
-          style="opacity: 0"
-          data-year="2016"
-        >
-          2016
-        </div>
-        <div
-          class="year-link"
-          style="opacity: 0"
-          data-year="2015"
-        >
-          2015
-        </div>
+        2024
       </div>
       <div
-        id="section-2024"
-        class="year-section"
+        class="year-link"
+        style="opacity: 0"
+        data-year="2023"
+      >
+        2023
+      </div>
+      <div
+        class="year-link"
+        style="opacity: 0"
+        data-year="2022"
+      >
+        2022
+      </div>
+      <div
+        class="year-link"
+        style="opacity: 0"
+        data-year="2021"
+      >
+        2021
+      </div>
+      <div
+        class="year-link"
+        style="opacity: 0"
+        data-year="2020"
+      >
+        2020
+      </div>
+      <div
+        class="year-link"
+        style="opacity: 0"
+        data-year="2019"
+      >
+        2019
+      </div>
+      <div
+        class="year-link"
+        style="opacity: 0"
+        data-year="2018"
+      >
+        2018
+      </div>
+      <div
+        class="year-link"
+        style="opacity: 0"
+        data-year="2017"
+      >
+        2017
+      </div>
+      <div
+        class="year-link"
+        style="opacity: 0"
+        data-year="2016"
+      >
+        2016
+      </div>
+      <div
+        class="year-link"
+        style="opacity: 0"
+        data-year="2015"
+      >
+        2015
+      </div>
+    </div>
+    <div
+      id="section-2025"
+      class="year-section"
+    >
+      <div
+        class="month-navigation"
+        id="month-navigation"
       >
         <div
-          class="month-navigation"
-          id="month-navigation"
+          class="month-link"
+          data-year="2025"
+          data-month="Jan"
         >
-          <div
-            class="month-link"
-            data-year="2024"
-            data-month="Jan"
-          >
-            Jan
-          </div>
-          <div
-            class="month-link"
-            data-year="2024"
-            data-month="Feb"
-          >
-            Feb
-          </div>
-          <div
-            class="month-link"
-            data-year="2024"
-            data-month="March"
-          >
-            March
-          </div>
-          <div
-            class="month-link"
-            data-year="2024"
-            data-month="April"
-          >
-            April
-          </div>
-          <div
-            class="month-link"
-            data-year="2024"
-            data-month="May"
-          >
-            May
-          </div>
-          <div
-            class="month-link"
-            data-year="2024"
-            data-month="June"
-          >
-            June
-          </div>
-          <div
-            class="month-link"
-            data-year="2024"
-            data-month="August"
-          >
-            August
-          </div>
-          <div
-            class="month-link"
-            data-year="2024"
-            data-month="Sept"
-          >
-            Sept
-          </div>
-          <div
-            class="month-link"
-            data-year="2024"
-            data-month="Oct"
-          >
-            Oct
-          </div>
-          <div
-            class="month-link"
-            data-year="2024"
-            data-month="Dec"
-          >
-            Dec
-          </div>
+          Jan
         </div>
         <div
-          id="month-2024-Jan"
-          class="month-section"
+          class="month-link"
+          data-year="2025"
+          data-month="Feb"
         >
-          <div class="image-container">
-            <img src="images/Archive/2024/Jan/2024-jan-1.jpg" />
-            <img src="images/Archive/2024/Jan/2024-jan-2.jpg" />
-            <img src="images/Archive/2024/Jan/2024-jan-3.jpg" />
-            <img src="images/Archive/2024/Jan/2024-jan-4.jpg" />
-            <img src="images/Archive/2024/Jan/2024-jan-5.jpg" />
-            <img src="images/Archive/2024/Jan/2024-jan-6.jpg" />
-            <img src="images/Archive/2024/Jan/2024-jan-7.jpg" />
-            <img src="images/Archive/2024/Jan/2024-jan-8.jpg" />
-            <img src="images/Archive/2024/Jan/2024-jan-9.jpg" />
-            <img src="images/Archive/2024/Jan/2024-jan-10.jpg" />
-            <img src="images/Archive/2024/Jan/2024-jan-11.jpg" />
-            <img src="images/Archive/2024/Jan/2024-jan-12.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2024-Feb"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2024/Feb/2024-feb-1.jpg" />
-            <img src="images/Archive/2024/Feb/2024-feb-2.jpg" />
-            <img src="images/Archive/2024/Feb/2024-feb-3.jpg" />
-            <img src="images/Archive/2024/Feb/2024-feb-4.jpg" />
-            <img src="images/Archive/2024/Feb/2024-feb-5.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2024-March"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2024/March/2024-march-1.jpg" />
-            <img src="images/Archive/2024/March/2024-march-2.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2024-April"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2024/April/2024-april-1.jpg" />
-            <img src="images/Archive/2024/April/2024-april-2.jpg" />
-            <img src="images/Archive/2024/April/2024-april-3.jpg" />
-            <img src="images/Archive/2024/April/2024-april-4.jpg" />
-            <img src="images/Archive/2024/April/2024-april-5.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2024-May"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2024/May/2024-May-1.jpg" />
-            <img src="images/Archive/2024/May/2024-May-2.jpg" />
-            <img src="images/Archive/2024/May/2024-May-3.jpg" />
-            <img src="images/Archive/2024/May/2024-May-4.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2024-June"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2024/June/2024-June-1.jpg" />
-            <img src="images/Archive/2024/June/2024-June-2.jpg" />
-            <img src="images/Archive/2024/June/2024-June-3.jpg" />
-            <img src="images/Archive/2024/June/2024-June-4.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2024-August"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2024/August/2024-August-1.jpg" />
-            <img src="images/Archive/2024/August/2024-August-2.jpg" />
-            <img src="images/Archive/2024/August/2024-August-3.jpg" />
-            <img src="images/Archive/2024/August/2024-August-4.jpg" />
-            <img src="images/Archive/2024/August/2024-August-5.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2024-Sept"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2024/Sept/2024-Sept-1.jpg" />
-            <img src="images/Archive/2024/Sept/2024-Sept-2.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2024-Oct"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2024/Oct/2024-Oct-1.jpg" />
-            <img src="images/Archive/2024/Oct/2024-Oct-2.jpg" />
-            <img src="images/Archive/2024/Oct/2024-Oct-3.jpg" />
-            <img src="images/Archive/2024/Oct/2024-Oct-4.jpg" />
-            <img src="images/Archive/2024/Oct/2024-Oct-5.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2024-Dec"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2024/Dec/2024-Dec-1.jpg" />
-            <img src="images/Archive/2024/Dec/2024-Dec-2.jpg" />
-            <img src="images/Archive/2024/Dec/2024-Dec-3.jpg" />
-          </div>
+          Feb
         </div>
       </div>
       <div
-        id="section-2023"
-        class="year-section"
+        id="month-2025-Jan"
+        class="month-section"
       >
-        <div class="month-navigation">
-          <div
-            class="month-link"
-            data-year="2023"
-            data-month="Jan"
-          >
-            Jan
-          </div>
-          <div
-            class="month-link"
-            data-year="2023"
-            data-month="Feb"
-          >
-            Feb-June
-          </div>
-          <div
-            class="month-link"
-            data-year="2023"
-            data-month="July"
-          >
-            July
-          </div>
-          <div
-            class="month-link"
-            data-year="2023"
-            data-month="August"
-          >
-            August
-          </div>
-          <div
-            class="month-link"
-            data-year="2023"
-            data-month="Sept"
-          >
-            Sept
-          </div>
-          <div
-            class="month-link"
-            data-year="2023"
-            data-month="Nov"
-          >
-            Nov
-          </div>
-          <div
-            class="month-link"
-            data-year="2023"
-            data-month="Dec"
-          >
-            Dec
-          </div>
-        </div>
-        <div
-          id="month-2023-Jan"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2023/Jan/2023-jan-1.jpg" />
-            <img src="images/Archive/2023/Jan/2023-jan-2.jpg" />
-            <img src="images/Archive/2023/Jan/2023-jan-3.jpg" />
-            <img src="images/Archive/2023/Jan/2023-jan-4.jpg" />
-            <img src="images/Archive/2023/Jan/2023-jan-5.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2023-Feb"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2023/Feb/2023-feb-1.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2023-July"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2023/July/2023-july-1.jpg" />
-            <img src="images/Archive/2023/July/2023-july-2.jpg" />
-            <img src="images/Archive/2023/July/2023-july-3.jpg" />
-            <img src="images/Archive/2023/July/2023-july-4.jpg" />
-            <img src="images/Archive/2023/July/2023-july-5.jpg" />
-            <img src="images/Archive/2023/July/2023-july-6.jpg" />
-            <img src="images/Archive/2023/July/2023-july-7.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2023-August"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2023/August/2023-august-1.jpg" />
-            <img src="images/Archive/2023/August/2023-august-2.jpg" />
-            <img src="images/Archive/2023/August/2023-august-3.jpg" />
-            <img src="images/Archive/2023/August/2023-august-4.jpg" />
-            <img src="images/Archive/2023/August/2023-august-5.jpg" />
-            <img src="images/Archive/2023/August/2023-august-6.jpg" />
-            <img src="images/Archive/2023/August/2023-august-7.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2023-Sept"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2023/Sept/2023-sept-1.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-2.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-3.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-4.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-5.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-6.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-7.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-8.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-9.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-10.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-11.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-12.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-13.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-14.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-15.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-16.jpg" />
-            <img src="images/Archive/2023/Sept/2023-sept-17.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2023-Nov"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2023/Nov/2023-nov-1.jpg" />
-            <img src="images/Archive/2023/Nov/2023-nov-2.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2023-Dec"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2023/Dec/2023-dec-1.jpg" />
-            <img src="images/Archive/2023/Dec/2023-dec-2.jpg" />
-            <img src="images/Archive/2023/Dec/2023-dec-3.jpg" />
-            <img src="images/Archive/2023/Dec/2023-dec-4.jpg" />
-            <img src="images/Archive/2023/Dec/2023-dec-5.jpg" />
-            <img src="images/Archive/2023/Dec/2023-dec-6.jpg" />
-            <img src="images/Archive/2023/Dec/2023-dec-7.jpg" />
-            <img src="images/Archive/2023/Dec/2023-dec-8.jpg" />
-          </div>
+        <div class="image-container">
+          <img src="images/Archive/2025/Jan/2025-jan-1.jpg" />
+          <img src="images/Archive/2025/Jan/2025-jan-2.jpg" />
+          <img src="images/Archive/2025/Jan/2025-jan-3.jpg" />
+          <img src="images/Archive/2025/Jan/2025-jan-4.jpg" />
         </div>
       </div>
       <div
-        id="section-2022"
-        class="year-section"
+        id="month-2025-Feb"
+        class="month-section"
       >
-        <div class="month-navigation">
-          <div
-            class="month-link"
-            data-year="2022"
-            data-month="Jan"
-          >
-            Jan
-          </div>
-          <div
-            class="month-link"
-            data-year="2022"
-            data-month="Feb"
-          >
-            Feb
-          </div>
-          <div
-            class="month-link"
-            data-year="2022"
-            data-month="March"
-          >
-            March
-          </div>
-          <div
-            class="month-link"
-            data-year="2022"
-            data-month="April"
-          >
-            April
-          </div>
-          <div
-            class="month-link"
-            data-year="2022"
-            data-month="May"
-          >
-            May
-          </div>
-          <div
-            class="month-link"
-            data-year="2022"
-            data-month="June"
-          >
-            June
-          </div>
-          <div
-            class="month-link"
-            data-year="2022"
-            data-month="July"
-          >
-            July
-          </div>
-          <div
-            class="month-link"
-            data-year="2022"
-            data-month="August"
-          >
-            August
-          </div>
-          <div
-            class="month-link"
-            data-year="2022"
-            data-month="Sept"
-          >
-            Sept
-          </div>
-          <div
-            class="month-link"
-            data-year="2022"
-            data-month="Oct"
-          >
-            Oct
-          </div>
-          <div
-            class="month-link"
-            data-year="2022"
-            data-month="Dec"
-          >
-            Dec
-          </div>
-        </div>
-        <div
-          id="month-2022-Jan"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2022/Jan/2022-jan-1.jpg" />
-            <img src="images/Archive/2022/Jan/2022-jan-2.jpg" />
-            <img src="images/Archive/2022/Jan/2022-jan-3.jpg" />
-            <img src="images/Archive/2022/Jan/2022-jan-4.jpg" />
-            <img src="images/Archive/2022/Jan/2022-jan-5.jpg" />
-            <img src="images/Archive/2022/Jan/2022-jan-6.jpg" />
-            <img src="images/Archive/2022/Jan/2022-jan-7.jpg" />
-            <img src="images/Archive/2022/Jan/2022-jan-8.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2022-Feb"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2022/Feb/2022-feb-1.jpg" />
-            <img src="images/Archive/2022/Feb/2022-feb-2.jpg" />
-            <img src="images/Archive/2022/Feb/2022-feb-3.jpg" />
-            <img src="images/Archive/2022/Feb/2022-feb-4.jpg" />
-            <img src="images/Archive/2022/Feb/2022-feb-5.jpg" />
-            <img src="images/Archive/2022/Feb/2022-feb-6.jpg" />
-            <img src="images/Archive/2022/Feb/2022-feb-7.jpg" />
-            <img src="images/Archive/2022/Feb/2022-feb-8.jpg" />
-            <img src="images/Archive/2022/Feb/2022-feb-9.jpg" />
-            <img src="images/Archive/2022/Feb/2022-feb-10.jpg" />
-            <img src="images/Archive/2022/Feb/2022-feb-11.jpg" />
-            <img src="images/Archive/2022/Feb/2022-feb-12.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2022-March"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2022/March/2022-march-1.jpg" />
-            <img src="images/Archive/2022/March/2022-march-2.jpg" />
-            <img src="images/Archive/2022/March/2022-march-3.jpg" />
-            <img src="images/Archive/2022/March/2022-march-4.jpg" />
-            <img src="images/Archive/2022/March/2022-march-5.jpg" />
-            <img src="images/Archive/2022/March/2022-march-6.jpg" />
-            <img src="images/Archive/2022/March/2022-march-7.jpg" />
-            <img src="images/Archive/2022/March/2022-march-8.jpg" />
-            <img src="images/Archive/2022/March/2022-march-9.jpg" />
-            <img src="images/Archive/2022/March/2022-march-10.jpg" />
-            <img src="images/Archive/2022/March/2022-march-11.jpg" />
-            <img src="images/Archive/2022/March/2022-march-12.jpg" />
-            <img src="images/Archive/2022/March/2022-march-13.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2022-April"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2022/April/2022-april-1.jpg" />
-            <img src="images/Archive/2022/April/2022-april-2.jpg" />
-            <img src="images/Archive/2022/April/2022-april-3.jpg" />
-            <img src="images/Archive/2022/April/2022-april-4.jpg" />
-            <img src="images/Archive/2022/April/2022-april-5.jpg" />
-            <img src="images/Archive/2022/April/2022-april-6.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2022-May"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2022/May/2022-may-1.jpg" />
-            <img src="images/Archive/2022/May/2022-may-2.jpg" />
-            <img src="images/Archive/2022/May/2022-may-3.jpg" />
-            <img src="images/Archive/2022/May/2022-may-4.jpg" />
-            <img src="images/Archive/2022/May/2022-may-5.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2022-June"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2022/June/2022-june-1.jpg" />
-            <img src="images/Archive/2022/June/2022-june-2.jpg" />
-            <img src="images/Archive/2022/June/2022-june-3.jpg" />
-            <img src="images/Archive/2022/June/2022-june-4.jpg" />
-            <img src="images/Archive/2022/June/2022-june-5.jpg" />
-            <img src="images/Archive/2022/June/2022-june-6.jpg" />
-            <img src="images/Archive/2022/June/2022-june-7.jpg" />
-            <img src="images/Archive/2022/June/2022-june-8.jpg" />
-            <img src="images/Archive/2022/June/2022-june-9.jpg" />
-            <img src="images/Archive/2022/June/2022-june-10.jpg" />
-            <img src="images/Archive/2022/June/2022-june-11.jpg" />
-            <img src="images/Archive/2022/June/2022-june-12.jpg" />
-            <img src="images/Archive/2022/June/2022-june-13.jpg" />
-            <img src="images/Archive/2022/June/2022-june-14.jpg" />
-            <img src="images/Archive/2022/June/2022-june-15.jpg" />
-            <img src="images/Archive/2022/June/2022-june-16.jpg" />
-            <img src="images/Archive/2022/June/2022-june-17.jpg" />
-            <img src="images/Archive/2022/June/2022-june-18.jpg" />
-            <img src="images/Archive/2022/June/2022-june-19.jpg" />
-            <img src="images/Archive/2022/June/2022-june-20.jpg" />
-            <img src="images/Archive/2022/June/2022-june-21.jpg" />
-            <img src="images/Archive/2022/June/2022-june-22.jpg" />
-            <img src="images/Archive/2022/June/2022-june-23.jpg" />
-            <img src="images/Archive/2022/June/2022-june-24.jpg" />
-            <img src="images/Archive/2022/June/2022-june-25.jpg" />
-            <img src="images/Archive/2022/June/2022-june-26.jpg" />
-            <img src="images/Archive/2022/June/2022-june-27.jpg" />
-            <img src="images/Archive/2022/June/2022-june-28.jpg" />
-            <img src="images/Archive/2022/June/2022-june-29.jpg" />
-            <img src="images/Archive/2022/June/2022-june-30.jpg" />
-            <img src="images/Archive/2022/June/2022-june-31.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2022-July"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2022/July/2022-July-1.jpg" />
-            <img src="images/Archive/2022/July/2022-July-2.jpg" />
-            <img src="images/Archive/2022/July/2022-July-3.jpg" />
-            <img src="images/Archive/2022/July/2022-July-4.jpg" />
-            <img src="images/Archive/2022/July/2022-July-5.jpg" />
-            <img src="images/Archive/2022/July/2022-July-6.jpg" />
-            <img src="images/Archive/2022/July/2022-July-7.jpg" />
-            <img src="images/Archive/2022/July/2022-July-8.jpg" />
-            <img src="images/Archive/2022/July/2022-July-9.jpg" />
-            <img src="images/Archive/2022/July/2022-July-10.jpg" />
-            <img src="images/Archive/2022/July/2022-July-11.jpg" />
-            <img src="images/Archive/2022/July/2022-July-12.jpg" />
-            <img src="images/Archive/2022/July/2022-July-13.jpg" />
-            <img src="images/Archive/2022/July/2022-July-14.jpg" />
-            <img src="images/Archive/2022/July/2022-July-15.jpg" />
-            <img src="images/Archive/2022/July/2022-July-16.jpg" />
-            <img src="images/Archive/2022/July/2022-July-17.jpg" />
-            <img src="images/Archive/2022/July/2022-July-18.jpg" />
-            <img src="images/Archive/2022/July/2022-July-19.jpg" />
-            <img src="images/Archive/2022/July/2022-July-20.jpg" />
-            <img src="images/Archive/2022/July/2022-July-21.jpg" />
-            <img src="images/Archive/2022/July/2022-July-22.jpg" />
-            <img src="images/Archive/2022/July/2022-July-23.jpg" />
-            <img src="images/Archive/2022/July/2022-July-24.jpg" />
-            <img src="images/Archive/2022/July/2022-July-25.jpg" />
-            <img src="images/Archive/2022/July/2022-July-26.jpg" />
-            <img src="images/Archive/2022/July/2022-July-27.jpg" />
-            <img src="images/Archive/2022/July/2022-July-28.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2022-August"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2022/August/2022-August-1.jpg" />
-            <img src="images/Archive/2022/August/2022-August-2.jpg" />
-            <img src="images/Archive/2022/August/2022-August-3.jpg" />
-            <img src="images/Archive/2022/August/2022-August-4.jpg" />
-            <img src="images/Archive/2022/August/2022-August-5.jpg" />
-            <img src="images/Archive/2022/August/2022-August-6.jpg" />
-            <img src="images/Archive/2022/August/2022-August-7.jpg" />
-            <img src="images/Archive/2022/August/2022-August-8.jpg" />
-            <img src="images/Archive/2022/August/2022-August-9.jpg" />
-            <img src="images/Archive/2022/August/2022-August-10.jpg" />
-            <img src="images/Archive/2022/August/2022-August-11.jpg" />
-            <img src="images/Archive/2022/August/2022-August-12.jpg" />
-            <img src="images/Archive/2022/August/2022-August-13.jpg" />
-            <img src="images/Archive/2022/August/2022-August-14.jpg" />
-            <img src="images/Archive/2022/August/2022-August-15.jpg" />
-            <img src="images/Archive/2022/August/2022-August-16.jpg" />
-            <img src="images/Archive/2022/August/2022-August-17.jpg" />
-            <img src="images/Archive/2022/August/2022-August-18.jpg" />
-            <img src="images/Archive/2022/August/2022-August-19.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2022-Sept"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2022/Sept/2022-Sept-1.jpg" />
-            <img src="images/Archive/2022/Sept/2022-Sept-2.jpg" />
-            <img src="images/Archive/2022/Sept/2022-Sept-3.jpg" />
-            <img src="images/Archive/2022/Sept/2022-Sept-4.jpg" />
-            <img src="images/Archive/2022/Sept/2022-Sept-5.jpg" />
-            <img src="images/Archive/2022/Sept/2022-Sept-6.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2022-Oct"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2022/Oct/2022-Oct-1.jpg" />
-            <img src="images/Archive/2022/Oct/2022-Oct-2.jpg" />
-            <img src="images/Archive/2022/Oct/2022-Oct-3.jpg" />
-            <img src="images/Archive/2022/Oct/2022-Oct-4.jpg" />
-            <img src="images/Archive/2022/Oct/2022-Oct-5.jpg" />
-          </div>
-        </div>
-        <div
-          id="month-2022-Dec"
-          class="month-section"
-        >
-          <div class="image-container">
-            <img src="images/Archive/2022/Dec/2022-Dec-1.jpg" />
-            <img src="images/Archive/2022/Dec/2022-Dec-2.jpg" />
-            <img src="images/Archive/2022/Dec/2022-Dec-3.jpg" />
-          </div>
+        <div class="image-container">
+          <img src="images/Archive/2025/Feb/2025-feb-1.jpg" />
+          <img src="images/Archive/2025/Feb/2025-feb-2.jpg" />
+          <img src="images/Archive/2025/Feb/2025-feb-3.jpg" />
         </div>
       </div>
     </div>
-    <div class="diary-embed-2021 w-embed">
+    <div
+      id="section-2024"
+      class="year-section"
+    >
+      <div
+        class="month-navigation"
+        id="month-navigation"
+      >
+        <div
+          class="month-link"
+          data-year="2024"
+          data-month="Jan"
+        >
+          Jan
+        </div>
+        <div
+          class="month-link"
+          data-year="2024"
+          data-month="Feb"
+        >
+          Feb
+        </div>
+        <div
+          class="month-link"
+          data-year="2024"
+          data-month="March"
+        >
+          March
+        </div>
+        <div
+          class="month-link"
+          data-year="2024"
+          data-month="April"
+        >
+          April
+        </div>
+        <div
+          class="month-link"
+          data-year="2024"
+          data-month="May"
+        >
+          May
+        </div>
+        <div
+          class="month-link"
+          data-year="2024"
+          data-month="June"
+        >
+          June
+        </div>
+        <div
+          class="month-link"
+          data-year="2024"
+          data-month="August"
+        >
+          August
+        </div>
+        <div
+          class="month-link"
+          data-year="2024"
+          data-month="Sept"
+        >
+          Sept
+        </div>
+        <div
+          class="month-link"
+          data-year="2024"
+          data-month="Oct"
+        >
+          Oct
+        </div>
+        <div
+          class="month-link"
+          data-year="2024"
+          data-month="Nov"
+        >
+          Nov
+        </div>
+        <div
+          class="month-link"
+          data-year="2024"
+          data-month="Dec"
+        >
+          Dec
+        </div>
+      </div>
+
+      <div
+        id="month-2024-Jan"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2024/Jan/2024-jan-1.jpg" />
+          <img src="images/Archive/2024/Jan/2024-jan-2.jpg" />
+          <img src="images/Archive/2024/Jan/2024-jan-3.jpg" />
+          <img src="images/Archive/2024/Jan/2024-jan-4.jpg" />
+          <img src="images/Archive/2024/Jan/2024-jan-5.jpg" />
+          <img src="images/Archive/2024/Jan/2024-jan-6.jpg" />
+          <img src="images/Archive/2024/Jan/2024-jan-7.jpg" />
+          <img src="images/Archive/2024/Jan/2024-jan-8.jpg" />
+          <img src="images/Archive/2024/Jan/2024-jan-9.jpg" />
+          <img src="images/Archive/2024/Jan/2024-jan-10.jpg" />
+          <img src="images/Archive/2024/Jan/2024-jan-11.jpg" />
+          <img src="images/Archive/2024/Jan/2024-jan-12.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2024-Feb"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2024/Feb/2024-feb-1.jpg" />
+          <img src="images/Archive/2024/Feb/2024-feb-2.jpg" />
+          <img src="images/Archive/2024/Feb/2024-feb-3.jpg" />
+          <img src="images/Archive/2024/Feb/2024-feb-4.jpg" />
+          <img src="images/Archive/2024/Feb/2024-feb-5.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2024-March"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2024/March/2024-march-1.jpg" />
+          <img src="images/Archive/2024/March/2024-march-2.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2024-April"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2024/April/2024-april-1.jpg" />
+          <img src="images/Archive/2024/April/2024-april-2.jpg" />
+          <img src="images/Archive/2024/April/2024-april-3.jpg" />
+          <img src="images/Archive/2024/April/2024-april-4.jpg" />
+          <img src="images/Archive/2024/April/2024-april-5.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2024-May"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2024/May/2024-May-1.jpg" />
+          <img src="images/Archive/2024/May/2024-May-2.jpg" />
+          <img src="images/Archive/2024/May/2024-May-3.jpg" />
+          <img src="images/Archive/2024/May/2024-May-4.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2024-June"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2024/June/2024-June-1.jpg" />
+          <img src="images/Archive/2024/June/2024-June-2.jpg" />
+          <img src="images/Archive/2024/June/2024-June-3.jpg" />
+          <img src="images/Archive/2024/June/2024-June-4.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2024-August"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2024/August/2024-August-1.jpg" />
+          <img src="images/Archive/2024/August/2024-August-2.jpg" />
+          <img src="images/Archive/2024/August/2024-August-3.jpg" />
+          <img src="images/Archive/2024/August/2024-August-4.jpg" />
+          <img src="images/Archive/2024/August/2024-August-5.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2024-Sept"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2024/Sept/2024-Sept-1.jpg" />
+          <img src="images/Archive/2024/Sept/2024-Sept-2.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2024-Oct"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2024/Oct/2024-Oct-1.jpg" />
+          <img src="images/Archive/2024/Oct/2024-Oct-2.jpg" />
+          <img src="images/Archive/2024/Oct/2024-Oct-3.jpg" />
+          <img src="images/Archive/2024/Oct/2024-Oct-4.jpg" />
+          <img src="images/Archive/2024/Oct/2024-Oct-5.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2024-Nov"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2024/Nov/2024-Nov-1.jpg" />
+          <img src="images/Archive/2024/Nov/2024-Nov-2.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2024-Dec"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2024/Dec/2024-Dec-1.jpg" />
+          <img src="images/Archive/2024/Dec/2024-Dec-2.jpg" />
+          <img src="images/Archive/2024/Dec/2024-Dec-3.jpg" />
+        </div>
+      </div>
+    </div>
+    <div
+      id="section-2023"
+      class="year-section"
+    >
+      <div class="month-navigation">
+        <div
+          class="month-link"
+          data-year="2023"
+          data-month="Jan"
+        >
+          Jan
+        </div>
+        <div
+          class="month-link"
+          data-year="2023"
+          data-month="Feb"
+        >
+          Feb-June
+        </div>
+        <div
+          class="month-link"
+          data-year="2023"
+          data-month="July"
+        >
+          July
+        </div>
+        <div
+          class="month-link"
+          data-year="2023"
+          data-month="August"
+        >
+          August
+        </div>
+        <div
+          class="month-link"
+          data-year="2023"
+          data-month="Sept"
+        >
+          Sept
+        </div>
+        <div
+          class="month-link"
+          data-year="2023"
+          data-month="Nov"
+        >
+          Nov
+        </div>
+        <div
+          class="month-link"
+          data-year="2023"
+          data-month="Dec"
+        >
+          Dec
+        </div>
+      </div>
+      <div
+        id="month-2023-Jan"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2023/Jan/2023-jan-1.jpg" />
+          <img src="images/Archive/2023/Jan/2023-jan-2.jpg" />
+          <img src="images/Archive/2023/Jan/2023-jan-3.jpg" />
+          <img src="images/Archive/2023/Jan/2023-jan-4.jpg" />
+          <img src="images/Archive/2023/Jan/2023-jan-5.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2023-Feb"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2023/Feb/2023-feb-1.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2023-July"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2023/July/2023-july-1.jpg" />
+          <img src="images/Archive/2023/July/2023-july-2.jpg" />
+          <img src="images/Archive/2023/July/2023-july-3.jpg" />
+          <img src="images/Archive/2023/July/2023-july-4.jpg" />
+          <img src="images/Archive/2023/July/2023-july-5.jpg" />
+          <img src="images/Archive/2023/July/2023-july-6.jpg" />
+          <img src="images/Archive/2023/July/2023-july-7.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2023-August"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2023/August/2023-august-1.jpg" />
+          <img src="images/Archive/2023/August/2023-august-2.jpg" />
+          <img src="images/Archive/2023/August/2023-august-3.jpg" />
+          <img src="images/Archive/2023/August/2023-august-4.jpg" />
+          <img src="images/Archive/2023/August/2023-august-5.jpg" />
+          <img src="images/Archive/2023/August/2023-august-6.jpg" />
+          <img src="images/Archive/2023/August/2023-august-7.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2023-Sept"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2023/Sept/2023-sept-1.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-2.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-3.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-4.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-5.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-6.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-7.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-8.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-9.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-10.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-11.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-12.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-13.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-14.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-15.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-16.jpg" />
+          <img src="images/Archive/2023/Sept/2023-sept-17.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2023-Nov"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2023/Nov/2023-nov-1.jpg" />
+          <img src="images/Archive/2023/Nov/2023-nov-2.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2023-Dec"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2023/Dec/2023-dec-1.jpg" />
+          <img src="images/Archive/2023/Dec/2023-dec-2.jpg" />
+          <img src="images/Archive/2023/Dec/2023-dec-3.jpg" />
+          <img src="images/Archive/2023/Dec/2023-dec-4.jpg" />
+          <img src="images/Archive/2023/Dec/2023-dec-5.jpg" />
+          <img src="images/Archive/2023/Dec/2023-dec-6.jpg" />
+          <img src="images/Archive/2023/Dec/2023-dec-7.jpg" />
+          <img src="images/Archive/2023/Dec/2023-dec-8.jpg" />
+        </div>
+      </div>
+    </div>
+    <div
+      id="section-2022"
+      class="year-section"
+    >
+      <div class="month-navigation">
+        <div
+          class="month-link"
+          data-year="2022"
+          data-month="Jan"
+        >
+          Jan
+        </div>
+        <div
+          class="month-link"
+          data-year="2022"
+          data-month="Feb"
+        >
+          Feb
+        </div>
+        <div
+          class="month-link"
+          data-year="2022"
+          data-month="March"
+        >
+          March
+        </div>
+        <div
+          class="month-link"
+          data-year="2022"
+          data-month="April"
+        >
+          April
+        </div>
+        <div
+          class="month-link"
+          data-year="2022"
+          data-month="May"
+        >
+          May
+        </div>
+        <div
+          class="month-link"
+          data-year="2022"
+          data-month="June"
+        >
+          June
+        </div>
+        <div
+          class="month-link"
+          data-year="2022"
+          data-month="July"
+        >
+          July
+        </div>
+        <div
+          class="month-link"
+          data-year="2022"
+          data-month="August"
+        >
+          August
+        </div>
+        <div
+          class="month-link"
+          data-year="2022"
+          data-month="Sept"
+        >
+          Sept
+        </div>
+        <div
+          class="month-link"
+          data-year="2022"
+          data-month="Oct"
+        >
+          Oct
+        </div>
+        <div
+          class="month-link"
+          data-year="2022"
+          data-month="Dec"
+        >
+          Dec
+        </div>
+      </div>
+      <div
+        id="month-2022-Jan"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2022/Jan/2022-jan-1.jpg" />
+          <img src="images/Archive/2022/Jan/2022-jan-2.jpg" />
+          <img src="images/Archive/2022/Jan/2022-jan-3.jpg" />
+          <img src="images/Archive/2022/Jan/2022-jan-4.jpg" />
+          <img src="images/Archive/2022/Jan/2022-jan-5.jpg" />
+          <img src="images/Archive/2022/Jan/2022-jan-6.jpg" />
+          <img src="images/Archive/2022/Jan/2022-jan-7.jpg" />
+          <img src="images/Archive/2022/Jan/2022-jan-8.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2022-Feb"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2022/Feb/2022-feb-1.jpg" />
+          <img src="images/Archive/2022/Feb/2022-feb-2.jpg" />
+          <img src="images/Archive/2022/Feb/2022-feb-3.jpg" />
+          <img src="images/Archive/2022/Feb/2022-feb-4.jpg" />
+          <img src="images/Archive/2022/Feb/2022-feb-5.jpg" />
+          <img src="images/Archive/2022/Feb/2022-feb-6.jpg" />
+          <img src="images/Archive/2022/Feb/2022-feb-7.jpg" />
+          <img src="images/Archive/2022/Feb/2022-feb-8.jpg" />
+          <img src="images/Archive/2022/Feb/2022-feb-9.jpg" />
+          <img src="images/Archive/2022/Feb/2022-feb-10.jpg" />
+          <img src="images/Archive/2022/Feb/2022-feb-11.jpg" />
+          <img src="images/Archive/2022/Feb/2022-feb-12.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2022-March"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2022/March/2022-march-1.jpg" />
+          <img src="images/Archive/2022/March/2022-march-2.jpg" />
+          <img src="images/Archive/2022/March/2022-march-3.jpg" />
+          <img src="images/Archive/2022/March/2022-march-4.jpg" />
+          <img src="images/Archive/2022/March/2022-march-5.jpg" />
+          <img src="images/Archive/2022/March/2022-march-6.jpg" />
+          <img src="images/Archive/2022/March/2022-march-7.jpg" />
+          <img src="images/Archive/2022/March/2022-march-8.jpg" />
+          <img src="images/Archive/2022/March/2022-march-9.jpg" />
+          <img src="images/Archive/2022/March/2022-march-10.jpg" />
+          <img src="images/Archive/2022/March/2022-march-11.jpg" />
+          <img src="images/Archive/2022/March/2022-march-12.jpg" />
+          <img src="images/Archive/2022/March/2022-march-13.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2022-April"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2022/April/2022-april-1.jpg" />
+          <img src="images/Archive/2022/April/2022-april-2.jpg" />
+          <img src="images/Archive/2022/April/2022-april-3.jpg" />
+          <img src="images/Archive/2022/April/2022-april-4.jpg" />
+          <img src="images/Archive/2022/April/2022-april-5.jpg" />
+          <img src="images/Archive/2022/April/2022-april-6.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2022-May"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2022/May/2022-may-1.jpg" />
+          <img src="images/Archive/2022/May/2022-may-2.jpg" />
+          <img src="images/Archive/2022/May/2022-may-3.jpg" />
+          <img src="images/Archive/2022/May/2022-may-4.jpg" />
+          <img src="images/Archive/2022/May/2022-may-5.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2022-June"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2022/June/2022-june-1.jpg" />
+          <img src="images/Archive/2022/June/2022-june-2.jpg" />
+          <img src="images/Archive/2022/June/2022-june-3.jpg" />
+          <img src="images/Archive/2022/June/2022-june-4.jpg" />
+          <img src="images/Archive/2022/June/2022-june-5.jpg" />
+          <img src="images/Archive/2022/June/2022-june-6.jpg" />
+          <img src="images/Archive/2022/June/2022-june-7.jpg" />
+          <img src="images/Archive/2022/June/2022-june-8.jpg" />
+          <img src="images/Archive/2022/June/2022-june-9.jpg" />
+          <img src="images/Archive/2022/June/2022-june-10.jpg" />
+          <img src="images/Archive/2022/June/2022-june-11.jpg" />
+          <img src="images/Archive/2022/June/2022-june-12.jpg" />
+          <img src="images/Archive/2022/June/2022-june-13.jpg" />
+          <img src="images/Archive/2022/June/2022-june-14.jpg" />
+          <img src="images/Archive/2022/June/2022-june-15.jpg" />
+          <img src="images/Archive/2022/June/2022-june-16.jpg" />
+          <img src="images/Archive/2022/June/2022-june-17.jpg" />
+          <img src="images/Archive/2022/June/2022-june-18.jpg" />
+          <img src="images/Archive/2022/June/2022-june-19.jpg" />
+          <img src="images/Archive/2022/June/2022-june-20.jpg" />
+          <img src="images/Archive/2022/June/2022-june-21.jpg" />
+          <img src="images/Archive/2022/June/2022-june-22.jpg" />
+          <img src="images/Archive/2022/June/2022-june-23.jpg" />
+          <img src="images/Archive/2022/June/2022-june-24.jpg" />
+          <img src="images/Archive/2022/June/2022-june-25.jpg" />
+          <img src="images/Archive/2022/June/2022-june-26.jpg" />
+          <img src="images/Archive/2022/June/2022-june-27.jpg" />
+          <img src="images/Archive/2022/June/2022-june-28.jpg" />
+          <img src="images/Archive/2022/June/2022-june-29.jpg" />
+          <img src="images/Archive/2022/June/2022-june-30.jpg" />
+          <img src="images/Archive/2022/June/2022-june-31.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2022-July"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2022/July/2022-July-1.jpg" />
+          <img src="images/Archive/2022/July/2022-July-2.jpg" />
+          <img src="images/Archive/2022/July/2022-July-3.jpg" />
+          <img src="images/Archive/2022/July/2022-July-4.jpg" />
+          <img src="images/Archive/2022/July/2022-July-5.jpg" />
+          <img src="images/Archive/2022/July/2022-July-6.jpg" />
+          <img src="images/Archive/2022/July/2022-July-7.jpg" />
+          <img src="images/Archive/2022/July/2022-July-8.jpg" />
+          <img src="images/Archive/2022/July/2022-July-9.jpg" />
+          <img src="images/Archive/2022/July/2022-July-10.jpg" />
+          <img src="images/Archive/2022/July/2022-July-11.jpg" />
+          <img src="images/Archive/2022/July/2022-July-12.jpg" />
+          <img src="images/Archive/2022/July/2022-July-13.jpg" />
+          <img src="images/Archive/2022/July/2022-July-14.jpg" />
+          <img src="images/Archive/2022/July/2022-July-15.jpg" />
+          <img src="images/Archive/2022/July/2022-July-16.jpg" />
+          <img src="images/Archive/2022/July/2022-July-17.jpg" />
+          <img src="images/Archive/2022/July/2022-July-18.jpg" />
+          <img src="images/Archive/2022/July/2022-July-19.jpg" />
+          <img src="images/Archive/2022/July/2022-July-20.jpg" />
+          <img src="images/Archive/2022/July/2022-July-21.jpg" />
+          <img src="images/Archive/2022/July/2022-July-22.jpg" />
+          <img src="images/Archive/2022/July/2022-July-23.jpg" />
+          <img src="images/Archive/2022/July/2022-July-24.jpg" />
+          <img src="images/Archive/2022/July/2022-July-25.jpg" />
+          <img src="images/Archive/2022/July/2022-July-26.jpg" />
+          <img src="images/Archive/2022/July/2022-July-27.jpg" />
+          <img src="images/Archive/2022/July/2022-July-28.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2022-August"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2022/August/2022-August-1.jpg" />
+          <img src="images/Archive/2022/August/2022-August-2.jpg" />
+          <img src="images/Archive/2022/August/2022-August-3.jpg" />
+          <img src="images/Archive/2022/August/2022-August-4.jpg" />
+          <img src="images/Archive/2022/August/2022-August-5.jpg" />
+          <img src="images/Archive/2022/August/2022-August-6.jpg" />
+          <img src="images/Archive/2022/August/2022-August-7.jpg" />
+          <img src="images/Archive/2022/August/2022-August-8.jpg" />
+          <img src="images/Archive/2022/August/2022-August-9.jpg" />
+          <img src="images/Archive/2022/August/2022-August-10.jpg" />
+          <img src="images/Archive/2022/August/2022-August-11.jpg" />
+          <img src="images/Archive/2022/August/2022-August-12.jpg" />
+          <img src="images/Archive/2022/August/2022-August-13.jpg" />
+          <img src="images/Archive/2022/August/2022-August-14.jpg" />
+          <img src="images/Archive/2022/August/2022-August-15.jpg" />
+          <img src="images/Archive/2022/August/2022-August-16.jpg" />
+          <img src="images/Archive/2022/August/2022-August-17.jpg" />
+          <img src="images/Archive/2022/August/2022-August-18.jpg" />
+          <img src="images/Archive/2022/August/2022-August-19.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2022-Sept"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2022/Sept/2022-Sept-1.jpg" />
+          <img src="images/Archive/2022/Sept/2022-Sept-2.jpg" />
+          <img src="images/Archive/2022/Sept/2022-Sept-3.jpg" />
+          <img src="images/Archive/2022/Sept/2022-Sept-4.jpg" />
+          <img src="images/Archive/2022/Sept/2022-Sept-5.jpg" />
+          <img src="images/Archive/2022/Sept/2022-Sept-6.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2022-Oct"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2022/Oct/2022-Oct-1.jpg" />
+          <img src="images/Archive/2022/Oct/2022-Oct-2.jpg" />
+          <img src="images/Archive/2022/Oct/2022-Oct-3.jpg" />
+          <img src="images/Archive/2022/Oct/2022-Oct-4.jpg" />
+          <img src="images/Archive/2022/Oct/2022-Oct-5.jpg" />
+        </div>
+      </div>
+      <div
+        id="month-2022-Dec"
+        class="month-section"
+      >
+        <div class="image-container">
+          <img src="images/Archive/2022/Dec/2022-Dec-1.jpg" />
+          <img src="images/Archive/2022/Dec/2022-Dec-2.jpg" />
+          <img src="images/Archive/2022/Dec/2022-Dec-3.jpg" />
+        </div>
+      </div>
+    </div>
       <div
         id="section-2021"
         class="year-section"
@@ -1158,8 +1225,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="diary-embed-2020 w-embed">
       <div
         id="section-2020"
         class="year-section"
@@ -1449,8 +1514,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="diary-embed-2019 w-embed">
       <div
         id="section-2019"
         class="year-section"
@@ -1859,8 +1922,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="diary-embed-2018 w-embed">
       <div
         id="section-2018"
         class="year-section"
@@ -2189,8 +2250,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="diary-embed-2017-2016-2015 w-embed">
       <div
         id="section-2017"
         class="year-section"
@@ -2369,24 +2428,6 @@
           </svg>
         </div>
       </div>
-    </div>
-
-    <div class="code-embed-16 w-embed">
-      <div
-        style="
-          background-image: url(public/images/Random/noiseeee.gif);
-          background-size: 300px;
-          opacity: calc(8 / 100);
-          height: 100%;
-          width: 100%;
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 99999999999999;
-          pointer-events: none;
-        "
-      ></div>
-    </div>
     <script
       type="module"
       src="src/js/diary.js"

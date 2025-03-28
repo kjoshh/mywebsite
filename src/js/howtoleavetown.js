@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const loaderImg = document.querySelectorAll('.bookim');
   const textBlock = document.querySelector('#text-block');
   const backRound = document.querySelector('._100wrap');
-  const grainiwrapppp = document.getElementById('grainiwrapppp');
+  const grainiwrapppp = document.querySelector('.global-noise');
   const menuoverlay = document.getElementById('menuoverlay');
   const interfaceElement = document.getElementById('interface');
   const links = document.querySelectorAll('a');
