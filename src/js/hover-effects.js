@@ -1,8 +1,6 @@
 let monitorTerminalState;
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('hover-effects.js: DOMContentLoaded');
-
   const hoverDelay = 750;
   const hoverStayDuration = 120;
 
@@ -35,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function initializeHoverScript() {
-    console.log('hover-effects.js: initializeHoverScript() called');
     if (!hoverEffectActive) return;
 
     updateLinksCache();
@@ -150,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   document.addEventListener('hoverEffectsReady', function () {
-    console.log('hover-effects.js: hoverEffectsReady event received');
     hoverEffectActive = true;
     initializeHoverScript();
   });

@@ -1,7 +1,6 @@
 class AudioPlayer {
   constructor(containerSelector, trackList, bodymovin) {
     this.musicPlayer = document.querySelector(containerSelector);
-    console.log('musicPlayer:', this.musicPlayer);
 
     if (!this.musicPlayer) {
       console.error('Error: .music-player-container not found in the DOM.');

@@ -2,8 +2,6 @@ import gsap from 'gsap';
 import { isInternalNavigation } from './index.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('home-loading-animations.js: DOMContentLoaded');
-
   const loaderText = document.querySelectorAll('.linkwrap');
   const loaderImg = document.querySelectorAll('.imgbghome');
   const textBlock = document.querySelector('#text-block');
@@ -13,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const outbutton = document.querySelector('.outsidebutton');
   const menuoverlay = document.getElementById('menuoverlay');
   const pathsvg = document.getElementById('path-svg');
-  const noisi = document.getElementById('grainiwrapppp');
+  const noisi = document.querySelector('.global-noise');
   const beforeAllEmbed = document.querySelector('.before-all');
   const path = document.getElementById('animatedpath');
 
@@ -92,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
             ease: 'power1.inOut',
             willChange: 'transform, opacity',
             onComplete: () => {
-              // Set internal navigation to false here
               sessionStorage.setItem('isInternalNavigation', 'false');
             },
           });
@@ -148,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     gsap.to(noisi, {
-      opacity: 1,
+      opacity: 0.07,
       duration: 0.5,
       delay: 0.25,
       ease: 'power2.inOut',
@@ -249,7 +246,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function dispatchHoverEvent() {
-    console.log('home-loading-animations.js: dispatchHoverEvent() called');
     document.dispatchEvent(new CustomEvent('hoverEffectsReady'));
   }
 

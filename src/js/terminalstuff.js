@@ -172,7 +172,6 @@ const commands = {
 const totalCommands = Object.keys(commands).length;
 
 function handleCommand(command) {
-  console.log('Handling command: ', command);
   if (!window.terminalActive) return;
 
   if (command.trim() === 'exit') {
@@ -239,10 +238,9 @@ function getBrowserName() {
 }
 
 export function initializeTerminalScript() {
-  // Check for existing banner
   const existingBanner = outputDiv.querySelector('.terminal-banner');
   if (existingBanner) {
-    return; // Exit if banner already exists
+    return;
   }
 
   window.terminalActive = true;
@@ -268,12 +266,10 @@ export function initializeTerminalScript() {
   });
   terminal.style.display = 'block';
 
-  // Create banner div first
   const bannerDiv = document.createElement('div');
   bannerDiv.classList.add('terminal-banner');
   outputDiv.appendChild(bannerDiv);
 
-  // Use appendOutputWithTyping with the banner div
   const initialMessage =
     "\nLast login: 17th Mar 2025, 14:03 CET\n\n**********************************************************\n*****  Type 'help' for a list of available commands  *****\n*****  Type 'exit' to return to the previous screen  *****\n**********************************************************\n\n";
 
@@ -403,7 +399,6 @@ function startGlitchEffect() {
       opacitititi.kill();
       window.terminalActive = false;
 
-      console.log('Dispatching terminalecitit e');
       const terminalEvent = new Event('terminalecitit');
       document.dispatchEvent(terminalEvent);
 

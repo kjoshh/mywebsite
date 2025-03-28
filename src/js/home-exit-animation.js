@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const texts = document.querySelectorAll('.linkwrap');
 
   function resetAnimation() {
-    console.log('Resetting animation');
-
     fixedWrap.style.display = 'none';
     if (interfi2) interfi2.style.opacity = '1';
     if (menuovvv) menuovvv.style.height = '22.5px';
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'visible') {
-      console.log('Page is now visible (back button navigation?)');
       resetAnimation();
     }
   });
@@ -48,11 +45,50 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
       fixedWrap.style.display = 'block';
 
-      fetch(href)
-        .then((response) => response.text())
-        .catch((error) => {
-          console.error('Error loading page:', error);
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', href);
+      xhr.onload = function () {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(xhr.responseText, 'text/html');
+
+        doc.querySelectorAll('script[src]').forEach((script) => {
+          const request = new XMLHttpRequest();
+          request.open('GET', script.src);
+          request.send();
         });
+
+        doc.querySelectorAll('link[rel="stylesheet"]').forEach((stylesheet) => {
+          const request = new XMLHttpRequest();
+          request.open('GET', stylesheet.href);
+          request.send();
+
+          fetch(stylesheet.href)
+            .then((response) => response.text())
+            .then((css) => {
+              const urlPattern = /url\(['"]?([^'"()]+)['"]?\)/g;
+              let match;
+              while ((match = urlPattern.exec(css)) !== null) {
+                const imageUrl = match[1];
+                if (!imageUrl.includes('/Archive/')) {
+                  fetch(imageUrl);
+                }
+              }
+            });
+        });
+
+        doc
+          .querySelectorAll('img[src]:not(.lazy-image):not([data-src])')
+          .forEach((img) => {
+            if (img.src.includes('/Archive/')) {
+              return;
+            }
+
+            const request = new XMLHttpRequest();
+            request.open('GET', img.src);
+            request.send();
+          });
+      };
+      xhr.send();
 
       gsap.to(texts, {
         opacity: 0,

@@ -28,8 +28,6 @@ export function isInternalNavigation() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('index.js: DOMContentLoaded');
   const internal = isInternalNavigation();
-  console.log('Is internal navigation:', internal);
   setupTerminalActivation();
 });

@@ -25,21 +25,17 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (isMobileDevice()) {
-    console.log('ismobileeee');
     message.textContent =
       'oh no, you are using a phone :( you need a larger device, like a laptop in order to enter this page. also pls dont use safariiii';
     overlay.classList.remove('hidden');
     mobileWhyLink.classList.remove('hidden');
     content.classList.add('mobile');
   } else if (isDesktopSafari()) {
-    console.log('issafariiiiii');
     message.textContent =
       'oh no, you are using safari :( you need a different browser like chrome in order to enter this page.';
     overlay.classList.remove('hidden');
     whyLink.classList.remove('hidden');
   } else {
-    console.log('isnohtinginging');
-
     overlay.classList.add('hidden');
   }
 
@@ -57,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const crossi = document.getElementById('cross');
   const headerImg = document.getElementById('header-img');
   const yearNavvv = document.getElementById('year-navigation');
+  const monthSectionnn = document.querySelectorAll('.month-navigation');
   const links = document.querySelectorAll('a');
   const hoverButtons = document.querySelectorAll('.crosslink');
   const interfaceElement = document.getElementById('interface');
@@ -88,12 +85,76 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('mouseleave', hoverOut);
   });
 
+  function handleNavigation(event, href) {
+    event.preventDefault();
+
+    sessionStorage.setItem('isInternalNavigation', 'true');
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', href);
+    xhr.onload = function () {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(xhr.responseText, 'text/html');
+
+      doc.querySelectorAll('script[src]').forEach((script) => {
+        const request = new XMLHttpRequest();
+        request.open('GET', script.src);
+        request.send();
+      });
+
+      doc.querySelectorAll('link[rel="stylesheet"]').forEach((stylesheet) => {
+        const request = new XMLHttpRequest();
+        request.open('GET', stylesheet.href);
+        request.send();
+      });
+
+      doc
+        .querySelectorAll('img[src]:not(.lazy-image):not([data-src])')
+        .forEach((img) => {
+          const request = new XMLHttpRequest();
+          request.open('GET', img.src);
+          request.send();
+        });
+    };
+    xhr.send();
+
+    crossi.style.pointerEvents = 'none';
+
+    gsap.to(crossi, {
+      y: 0,
+      opacity: 0,
+      duration: 0.15,
+      ease: 'power3.inOut',
+      onComplete: () => {
+        links.forEach((btn) => {
+          btn.style.display = 'none';
+        });
+        if (crossi) {
+          crossi.style.display = 'none';
+        }
+      },
+    });
+    gsap.to(imgContainers, {
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power4.inOut',
+    });
+    gsap.to([yearNavvv, monthSectionnn, headerImg], {
+      y: -50,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power4.inOut',
+      onComplete: () => {
+        setTimeout(() => {
+          window.location.href = href;
+        }, 500);
+      },
+    });
+  }
+
   links.forEach(function (link) {
     link.addEventListener('click', function (event) {
       const href = this.getAttribute('href');
-      const monthSectionnn = document.querySelectorAll('.year-section');
-      const imgContainer = document.querySelectorAll('.image-container');
-
       const isHashLink = href.startsWith('#');
       const isJavaScriptLink = href.startsWith('javascript:');
       const hasTargetBlank = this.getAttribute('target') === '_blank';
@@ -103,33 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      event.preventDefault();
-      const destination = this.href;
-
-      gsap.to([headerImg, yearNavvv, monthSectionnn], {
-        y: -50,
-        opacity: 0,
-        duration: 0.5,
-        ease: 'power4.inOut',
-        onComplete: () => {
-          window.location.href = destination;
-        },
-      });
-
-      gsap.to(crossi, {
-        y: 0,
-        opacity: 0,
-        duration: 0.15,
-        ease: 'power3.inOut',
-        onComplete: () => {
-          links.forEach((btn) => {
-            btn.style.display = 'none';
-          });
-          if (crossi) {
-            crossi.style.display = 'none';
-          }
-        },
-      });
+      handleNavigation(event, href);
     });
   });
 
@@ -420,22 +455,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const cross = document.getElementById('cross');
 
-cross.addEventListener('click', function (e) {
-  e.preventDefault();
-
-  const href = '/';
-  sessionStorage.setItem('isInternalNavigation', 'true');
-
-  fetch(href, { mode: 'no-cors' })
-    .then(() => console.log('Page preloaded:', href))
-    .catch(() => console.warn('Failed to preload page:', href));
-
-  cross.style.pointerEvents = 'none';
-});
-
-if (sessionStorage.getItem('isInternalNavigation') === 'true') {
-}
-
 const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightbox-image');
 const interfaceElement = document.getElementById('interface');
@@ -667,19 +686,5 @@ lightbox.addEventListener('click', (e) => {
   }
 });
 
-cross.addEventListener('click', function (e) {
-  e.preventDefault();
-
-  const href = '/';
-  sessionStorage.setItem('isInternalNavigation', 'true');
-
-  fetch(href, { mode: 'no-cors' })
-    .then(() => console.log('Page preloaded:', href))
-    .catch(() => console.warn('Failed to preload page:', href));
-
-  cross.style.pointerEvents = 'none';
-});
-
 if (sessionStorage.getItem('isInternalNavigation') === 'true') {
-  // Add any internal navigation handling here if needed
 }

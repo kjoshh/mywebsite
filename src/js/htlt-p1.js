@@ -194,7 +194,6 @@ document.addEventListener('DOMContentLoaded', function () {
     trigger: '.home-scroll_text-item._1',
     start: 'top 155%',
     end: 'top 155%',
-    // scrub: true,
     onEnter: () => gsap.to(newpinleipzig, { autoAlpha: 1 }),
     onEnterBack: () => gsap.to(newpinleipzig, { autoAlpha: 0 }),
   });
@@ -205,7 +204,6 @@ document.addEventListener('DOMContentLoaded', function () {
     trigger: '.home-scroll_text-item._1',
     start: 'top 155%',
     end: 'top 155%',
-    // scrub: true,
     onEnter: () => gsap.to(leipzigtarget, { opacity: 0 }),
     onEnterBack: () => gsap.to(leipzigtarget, { opacity: 1 }),
   });

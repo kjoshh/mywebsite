@@ -779,12 +779,54 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     const href = '/';
     sessionStorage.setItem('isInternalNavigation', 'true');
-    console.log('Internal navigation state set in sessionStorage.');
-    fetch(href, {
-      mode: 'no-cors',
-    })
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', href);
+    xhr.onload = function () {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(xhr.responseText, 'text/html');
+
+      doc.querySelectorAll('script[src]').forEach((script) => {
+        const request = new XMLHttpRequest();
+        request.open('GET', script.src);
+        request.send();
+      });
+
+      doc.querySelectorAll('link[rel="stylesheet"]').forEach((stylesheet) => {
+        const request = new XMLHttpRequest();
+        request.open('GET', stylesheet.href);
+        request.send();
+
+        fetch(stylesheet.href)
+          .then((response) => response.text())
+          .then((css) => {
+            const urlPattern = /url\(['"]?([^'"()]+)['"]?\)/g;
+            let match;
+            while ((match = urlPattern.exec(css)) !== null) {
+              const imageUrl = match[1];
+              if (!imageUrl.includes('/Archive/')) {
+                fetch(imageUrl);
+              }
+            }
+          });
+      });
+
+      doc
+        .querySelectorAll('img[src]:not(.lazy-image):not([data-src])')
+        .forEach((img) => {
+          if (!img.src.includes('/Archive/')) {
+            const request = new XMLHttpRequest();
+            request.open('GET', img.src);
+            request.send();
+          }
+        });
+    };
+    xhr.send();
+
+    fetch(href, { mode: 'no-cors' })
       .then(() => console.log('Page preloaded:', href))
       .catch(() => console.warn('Failed to preload page:', href));
+
     cross.style.pointerEvents = 'none';
     onloadDiv.style.display = 'block';
     gsap.set(onloadDiv, {

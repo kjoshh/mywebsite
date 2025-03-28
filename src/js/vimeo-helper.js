@@ -1,4 +1,4 @@
-import { handleVideoStateChange } from '../../src/js/video-state-manager.js'; // Import handleVideoStateChange
+import { handleVideoStateChange } from '../../src/js/video-state-manager.js';
 
 function initializeVimeoPlayer(iframeId, closeButtonId) {
   const videoIframe = document.getElementById(iframeId);

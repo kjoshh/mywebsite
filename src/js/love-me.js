@@ -2,7 +2,6 @@ import gsap from 'gsap';
 import { initializeVimeoPlayer } from './vimeo-helper.js';
 import './browser-detect.js';
 import './applystuff.js';
-import './backnav.js';
 import AudioPlayer from './audio.js';
 import { initializeFirstSlider } from './slider.js';
 import {
@@ -849,7 +848,6 @@ document.addEventListener('DOMContentLoaded', function () {
   let sceneInitialized = false;
 
   openModalBtn.addEventListener('click', () => {
-    console.log('Opening modal...');
     modal.style.display = 'flex';
 
     import('three')
@@ -903,8 +901,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   openModalBtn.addEventListener('click', () => {
-    console.log('Opening modal...');
-
     import('three')
       .then((THREE) => {
         return Promise.all([
@@ -919,7 +915,6 @@ document.addEventListener('DOMContentLoaded', function () {
           function initializeScene() {
             if (sceneInitialized) return;
             sceneInitialized = true;
-            console.log('Initializing scene...');
             preloaderThree.style.display = 'flex';
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(
@@ -952,7 +947,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 model.position.sub(center);
                 model.scale.set(1, 1, 1);
                 scene.add(model);
-                console.log('Model loaded ssss!');
                 gsap.to(preloaderThree, {
                   opacity: 0,
                   duration: 0.5,
@@ -1003,12 +997,54 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     const href = '/';
     sessionStorage.setItem('isInternalNavigation', 'true');
-    console.log('Internal navigation state set in sessionStorage.');
-    fetch(href, {
-      mode: 'no-cors',
-    })
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', href);
+    xhr.onload = function () {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(xhr.responseText, 'text/html');
+
+      doc.querySelectorAll('script[src]').forEach((script) => {
+        const request = new XMLHttpRequest();
+        request.open('GET', script.src);
+        request.send();
+      });
+
+      doc.querySelectorAll('link[rel="stylesheet"]').forEach((stylesheet) => {
+        const request = new XMLHttpRequest();
+        request.open('GET', stylesheet.href);
+        request.send();
+
+        fetch(stylesheet.href)
+          .then((response) => response.text())
+          .then((css) => {
+            const urlPattern = /url\(['"]?([^'"()]+)['"]?\)/g;
+            let match;
+            while ((match = urlPattern.exec(css)) !== null) {
+              const imageUrl = match[1];
+              if (!imageUrl.includes('/Archive/')) {
+                fetch(imageUrl);
+              }
+            }
+          });
+      });
+
+      doc
+        .querySelectorAll('img[src]:not(.lazy-image):not([data-src])')
+        .forEach((img) => {
+          if (!img.src.includes('/Archive/')) {
+            const request = new XMLHttpRequest();
+            request.open('GET', img.src);
+            request.send();
+          }
+        });
+    };
+    xhr.send();
+
+    fetch(href, { mode: 'no-cors' })
       .then(() => console.log('Page preloaded:', href))
       .catch(() => console.warn('Failed to preload page:', href));
+
     cross.style.pointerEvents = 'none';
     onloadDiv.style.display = 'block';
     gsap.set(onloadDiv, {
@@ -1052,7 +1088,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
   if (sessionStorage.getItem('isInternalNavigation') === 'true') {
-    console.log('Page loaded via internal navigation.');
   }
 });
 

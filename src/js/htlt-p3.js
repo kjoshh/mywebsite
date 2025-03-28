@@ -8,16 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(() => {
     newpinleipzig.style.visibility = 'visible';
   }, 5500);
-  // const fixedcontent = document.querySelector('.fixed-content._2.p3');
-  // gsap.set(fixedcontent, {
-  //   opacity: 0,
-  // });
-  // gsap.to(fixedcontent, {
-  //   opacity: 1,
-  //   duration: 0.5,
-  //   delay: 5,
-  //   ease: 'power2.inOut',
-  // });
   const targetValue = 100;
   const duration = 3000;
   const delay = 500;

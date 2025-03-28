@@ -373,7 +373,7 @@ th {
 
 @font-face {
   font-family: 'Neueeigene';
-  src: url('../../public/fonts/Neueeigene-Regular.ttf') format('truetype');
+  src: url('/fonts/Neueeigene-Regular.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -5349,7 +5349,7 @@ th {
 }
 
 .intro.nje {
-  z-index: 2147483647;
+  z-index: 1000000;
   cursor: auto;
   background-color: #0000;
   border-radius: 0;
@@ -5523,7 +5523,7 @@ th {
 }
 
 .textwrr {
-  z-index: 2147483647;
+  z-index: 1000000;
   background-color: #0000;
   flex-flow: column;
   justify-content: flex-start;
@@ -5627,7 +5627,7 @@ th {
 }
 
 .leftoverzz {
-  z-index: 2147483647;
+  z-index: 1000000;
   background-color: linen;
   width: 100vw;
   height: 100vh;
@@ -6356,7 +6356,7 @@ th {
 }
 
 .dexribi {
-  z-index: 2147483647;
+  z-index: 1000000;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -6604,7 +6604,7 @@ th {
 }
 
 .blurbackstuff {
-  z-index: 10000000;
+  z-index: 1000000;
   opacity: 0;
   backdrop-filter: blur(10px);
   pointer-events: none;
@@ -6617,7 +6617,7 @@ th {
 }
 
 .jaschaimgdiv {
-  z-index: 2147483647;
+  z-index: 1000000;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -7155,7 +7155,7 @@ th {
 }
 
 .info-page {
-  z-index: 2147483647;
+  z-index: 1000000;
   pointer-events: none;
   background-color: #0000;
   flex-flow: column;

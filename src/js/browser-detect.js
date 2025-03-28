@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (isMobileDevice()) {
-    console.log('ismobileeee');
     const mobileBrowserText =
       'oh no, you are using a phone :( you need a larger device, like a laptop with chrome in order to enter this page';
     overlay.classList.remove('hidden');
@@ -36,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 200);
     }, 10);
   } else if (isNotChromeOrFirefox()) {
-    console.log('isnotchromeorfirefox');
     const browserText =
       'oh no, you are using safari :( you need chrome or firefox in order to enter this page.';
     overlay.classList.remove('hidden');
@@ -57,8 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 200);
     }, 3700);
   } else {
-    console.log('isnohtinginging');
-
     overlay.classList.add('hidden');
   }
 
@@ -75,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (browserdevicecheckoverlay.classList.contains('show')) {
       const bexplanationText = browserExplanation.textContent;
-      console.log('Explanation text:', bexplanationText);
       browserExplanation.innerHTML = '';
 
       new Typed(browserExplanation, {

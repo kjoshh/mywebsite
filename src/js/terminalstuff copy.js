@@ -230,10 +230,9 @@ function getBrowserName() {
 }
 
 export function initializeTerminalScript() {
-  // Add a check for existing banner
   const existingBanner = outputDiv.querySelector('.terminal-banner');
   if (existingBanner) {
-    return; // Exit if banner already exists
+    return;
   }
 
   window.terminalActive = true;
@@ -260,7 +259,6 @@ export function initializeTerminalScript() {
   appendOutputWithTyping(banner, () => {
     const initialMessage =
       "\nLast login by kernjosh.com: 10th Mar 2025, 15:33 CET\n\n**********************************************************\n*****  Type 'help' for a list of available commands  *****\n*****  Type 'exit' to return to the previous screen  *****\n**********************************************************\n\n";
-    // Add a class to the banner message
     const bannerDiv = document.createElement('div');
     bannerDiv.classList.add('terminal-banner');
     bannerDiv.textContent = initialMessage;

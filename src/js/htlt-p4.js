@@ -1101,12 +1101,6 @@ document.addEventListener('DOMContentLoaded', function () {
       gsap.set(fixedcontent, {
         opacity: 0,
       });
-      // gsap.to(fixedcontent, {
-      //   opacity: 1,
-      //   delay: 4.5,
-      //   duration: 0.5,
-      //   ease: 'power2.inOut',
-      // });
     };
   };
   document.querySelectorAll('s').forEach(function (strikethrough) {
