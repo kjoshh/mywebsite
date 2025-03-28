@@ -28,7 +28,10 @@ canvas {
 canvas:active {
   cursor: grabbing;
 }
-
+#threemodal {
+  opacity: 0;
+  background-color: black;
+}
 #threemodal.show {
   display: flex;
   opacity: 1;
@@ -134,12 +137,13 @@ input:focus {
 }
 
 #preloader-three {
+  opacity: 0;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgb(0 0 0 / 80%);
+  background: black;
   color: white;
   font-family: Neueeigene, sans-serif;
   letter-spacing: -1.5px;

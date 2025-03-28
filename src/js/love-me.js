@@ -544,7 +544,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const mainInterface = document.getElementById('naviga');
   const grainiwrapppp = document.querySelector('.global-noise');
   const closeThreeJs = document.getElementById('closeModal');
-  const openThreeJs = document.getElementById('openModal');
+  const openModalBtn = document.getElementById('openModal');
   const backStuff = document.querySelector('.blurbackstuff');
   const divsixfive = document.querySelector('.div-block-65');
   const lovemeembbbb = document.querySelector('.lovemeembbbb');
@@ -571,14 +571,14 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: 'power2.inOut',
     });
   });
-  openThreeJs.addEventListener('mouseover', () => {
+  openModalBtn.addEventListener('mouseover', () => {
     gsap.to(turimg, {
       opacity: 0.75,
       duration: 0.4,
       ease: 'power2.inOut',
     });
   });
-  openThreeJs.addEventListener('mouseout', () => {
+  openModalBtn.addEventListener('mouseout', () => {
     gsap.to(turimg, {
       opacity: 0,
       duration: 0.4,
@@ -743,13 +743,6 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: 'power3.inOut',
     });
   });
-  openThreeJs.addEventListener('click', () => {
-    gsap.to(grainiwrapppp, {
-      opacity: 0,
-      duration: 1.5,
-      ease: 'power4.in',
-    });
-  });
   closeThreeJs.addEventListener('click', () => {
     gsap.to(grainiwrapppp, {
       opacity: 0.07,
@@ -840,7 +833,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   const modal = document.getElementById('threeModal');
-  const openModalBtn = document.getElementById('openModal');
   const closeModalBtn = document.getElementById('closeModal');
 
   const loadingPercent = document.getElementById('loadingPercent');
@@ -849,6 +841,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
   openModalBtn.addEventListener('click', () => {
     modal.style.display = 'flex';
+    closeModalBtn.style.opacity = 0;
+    gsap.to(closeModalBtn, {
+      opacity: 1,
+      delay: 0.5,
+      duration: 0.5,
+      ease: 'power4.inOut',
+    });
+    gsap.to(grainiwrapppp, {
+      opacity: 0,
+      duration: 1.5,
+      ease: 'power4.in',
+    });
+    gsap.to(modal, {
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power4.inOut',
+    });
 
     import('three')
       .then((THREE) => {
@@ -860,62 +869,15 @@ document.addEventListener('DOMContentLoaded', function () {
             (module) => module.OrbitControls
           ),
         ]).then(([GLTFLoader, OrbitControls]) => {
-          function initializeScene(THREE, GLTFLoader, OrbitControls) {
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(
-              75,
-              window.innerWidth / window.innerHeight,
-              0.1,
-              1000
-            );
-            const renderer = new THREE.WebGLRenderer();
-
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.body.appendChild(renderer.domElement);
-
-            const geometry = new THREE.BoxGeometry();
-            const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-            const cube = new THREE.Mesh(geometry, material);
-            scene.add(cube);
-
-            camera.position.z = 5;
-
-            const controls = new OrbitControls(camera, renderer.domElement);
-
-            function animate() {
-              requestAnimationFrame(animate);
-              cube.rotation.x += 0.01;
-              cube.rotation.y += 0.01;
-              controls.update();
-              renderer.render(scene, camera);
-            }
-            animate();
-          }
-
-          initializeScene(THREE, GLTFLoader, OrbitControls);
-        });
-      })
-      .catch((err) => {
-        console.error('Error loading Three.js or its moduless:', err);
-      });
-  });
-
-  openModalBtn.addEventListener('click', () => {
-    import('three')
-      .then((THREE) => {
-        return Promise.all([
-          import('three/addons/loaders/GLTFLoader.js').then(
-            (module) => module.GLTFLoader
-          ),
-          import('three/addons/controls/OrbitControls.js').then(
-            (module) => module.OrbitControls
-          ),
-        ]).then(([GLTFLoader, OrbitControls]) => {
-          modal.style.display = 'flex';
           function initializeScene() {
             if (sceneInitialized) return;
             sceneInitialized = true;
             preloaderThree.style.display = 'flex';
+            gsap.to(preloaderThree, {
+              opacity: 1,
+              duration: 0.5,
+              ease: 'power4.inOut',
+            });
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(
               70,
@@ -925,18 +887,22 @@ document.addEventListener('DOMContentLoaded', function () {
             );
             camera.position.set(0, 0.15, 0);
             camera.lookAt(0, 0.15, 0);
+
             const renderer = new THREE.WebGLRenderer();
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setClearColor(0x202020);
             modal.appendChild(renderer.domElement);
+
             const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
             scene.add(ambientLight);
+
             const controls = new OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
             controls.dampingFactor = 0.1;
             controls.target.set(0, 0.15, 0);
             controls.update();
             controls.enableZoom = false;
+
             const loader = new GLTFLoader();
             loader.load(
               '/huetteblender.glb',
@@ -947,6 +913,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 model.position.sub(center);
                 model.scale.set(1, 1, 1);
                 scene.add(model);
+
                 gsap.to(preloaderThree, {
                   opacity: 0,
                   duration: 0.5,
@@ -957,7 +924,7 @@ document.addEventListener('DOMContentLoaded', function () {
               },
               function (xhr) {
                 const percentComplete = Math.round(
-                  (xhr.loaded / xhr.total) * 99
+                  (xhr.loaded / xhr.total) * 100
                 );
                 loadingPercent.textContent = percentComplete;
               },
@@ -966,6 +933,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 preloaderThree.textContent = 'Error loading the model.';
               }
             );
+
             function animate() {
               requestAnimationFrame(animate);
               controls.update();
@@ -974,15 +942,28 @@ document.addEventListener('DOMContentLoaded', function () {
             animate();
           }
 
-          initializeScene(THREE);
+          initializeScene();
         });
       })
       .catch((err) => {
         console.error('Error loading Three.js:', err);
       });
   });
+
   closeModalBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
+    gsap.to(closeModalBtn, {
+      opacity: 0,
+      duration: 0.15,
+      ease: 'power1.inOut',
+    });
+    gsap.to(modal, {
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power4.inOut',
+      onComplete: () => {
+        modal.style.display = 'none';
+      },
+    });
   });
 
   const cross = document.getElementById('cross');
