@@ -129,6 +129,8 @@ input:focus {
 }
 #closetext {
   height: 2.35vh;
+  max-height: 35px;
+  max-width: 35px;
   min-height: 17px;
   width: 2.35vh;
   min-width: 17px;

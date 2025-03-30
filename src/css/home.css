@@ -188,6 +188,7 @@
   font-family: monospace;
   outline: none;
   position: relative;
+  width: 70vw;
   z-index: 1;
   caret-color: transparent;
   text-shadow: 0 0.2rem 1rem #89e142;

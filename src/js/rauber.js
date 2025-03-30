@@ -5,8 +5,6 @@ import './applystuff.js';
 import { initializeFirstSlider } from './slider.js';
 import { initializeSecondSlider } from './rauber-second-slider.js';
 document.addEventListener('DOMContentLoaded', function () {
-  initializeVimeoPlayerNoAudio('lovememvid', 'closevid');
-
   const myVideo = document.getElementById('lovememvid');
   const onloadDiv = document.getElementById('onloaddiv');
   const naviga = document.getElementById('naviga');
@@ -363,8 +361,9 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: 'power3.inOut',
     });
   });
-
+  const vimeoPlayer = initializeVimeoPlayerNoAudio('lovememvid', 'closevid');
   openVid.addEventListener('click', () => {
+    vimeoPlayer.playVideo();
     gsap.to(vidDiv, {
       y: '0vh',
       duration: 0.65,

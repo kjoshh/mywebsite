@@ -10,8 +10,6 @@ import {
 } from './video-state-manager.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-  initializeVimeoPlayer('lovememvid', 'closevid');
-
   const onloadDiv = document.getElementById('onloaddiv');
   const buchDiv = document.getElementById('buchdiv');
   const openBook = document.getElementById('openbook');
@@ -677,9 +675,13 @@ import('lottie-web')
 
     const openVid = document.getElementById('openvid');
     const closeVid = document.getElementById('closevid');
+    const vimeoPlayer = initializeVimeoPlayer('lovememvid', 'closevid');
 
     openVid.addEventListener('click', () => {
       handleVideoStateChange(true);
+      if (vimeoPlayer) {
+        vimeoPlayer.playVideo();
+      }
       gsap.to(vidDiv, {
         y: '0vh',
         duration: 0.65,

@@ -10,8 +10,19 @@ document.addEventListener('DOMContentLoaded', function () {
   const content = document.getElementById('device-check-content');
 
   function isMobileDevice() {
+    const userAgent = navigator.userAgent;
+    console.log('Current User Agent:', userAgent);
+    console.log('Screen Width:', window.innerWidth);
+    console.log('Screen Height:', window.innerHeight);
+
+    const isLargeScreen = window.innerWidth >= 1024;
+
+    if (/Macintosh|Windows|Linux/i.test(userAgent) || isLargeScreen) {
+      return false;
+    }
+
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
+      userAgent
     );
   }
 

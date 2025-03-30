@@ -40,8 +40,8 @@ body {
 }
 
 #closemap {
-  top: 55px;
-  right: 65px;
+  top: 6.2vh;
+  right: 7.2vh;
 }
 
 #closemap,
@@ -55,4 +55,8 @@ body {
 .map:hover,
 .backlink:hover {
   opacity: 1;
+}
+.backlink.yo {
+  opacity: 0;
+  pointer-events: none;
 }

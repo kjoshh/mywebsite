@@ -14,6 +14,10 @@ function initializeVimeoPlayerNoAudio(iframeId, closeButtonId) {
       );
     }
 
+    function playVideo() {
+      postMessageToVimeo('play');
+    }
+
     if (videoCloseButton) {
       videoCloseButton.addEventListener('click', function () {
         postMessageToVimeo('pause');
@@ -21,6 +25,8 @@ function initializeVimeoPlayerNoAudio(iframeId, closeButtonId) {
     } else {
       console.error(`Error: #${closeButtonId} button not found.`);
     }
+
+    return { playVideo };
   } else {
     console.error(`Error: #${iframeId} iframe not found.`);
   }

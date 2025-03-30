@@ -94,8 +94,15 @@
   transition: all 0.5s ease;
 }
 
+@media screen and (min-width: 3000px) {
+  .navigation .year-link,
+  .month-link {
+    font-size: 21px;
+  }
+}
+
 .image-container img {
-  max-height: 150px;
+  max-height: 19.5vh;
   height: auto;
   object-fit: cover;
   border: 1px solid #a7a7a7;

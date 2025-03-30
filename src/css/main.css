@@ -1100,7 +1100,8 @@ th {
 }
 
 .backlink.textneww {
-  height: 18px;
+  min-height: 18px;
+  height: 2.35vh;
   margin-top: 0;
 }
 
@@ -5267,8 +5268,10 @@ th {
   opacity: 1;
   cursor: pointer;
   object-fit: contain;
-  width: 17px;
-  height: 17px;
+  min-width: 17px;
+  width: 2.35vh;
+  min-height: 17px;
+  height: 2.35vh;
   display: block;
   top: 20px;
   left: auto;
@@ -5358,7 +5361,7 @@ th {
   width: 100vw;
   height: 100vh;
   margin: auto;
-  padding: 40px 50px;
+  padding: 5.2vh 6.25vh;
   display: flex;
   position: fixed;
   inset: 0%;
@@ -5489,7 +5492,8 @@ th {
   pointer-events: auto;
   cursor: default;
   object-fit: contain;
-  height: 17px;
+  min-height: 17px;
+  height: 2.35vh;
   margin-top: 1px;
   position: relative;
   top: 0;
@@ -5508,7 +5512,8 @@ th {
 .book.textneww {
   opacity: 0.75;
   cursor: default;
-  height: 18px;
+  min-height: 18px;
+  height: 2.35vh;
 }
 
 .div-block-51 {
@@ -5708,7 +5713,8 @@ th {
 .link-block-5.fewfwfw.aslsal {
   opacity: 0;
   pointer-events: none;
-  height: 15px;
+  min-height: 15px;
+  height: 2vh;
 }
 
 .link-block-5.fewfwfw.aslsal.w--current {
@@ -5744,7 +5750,6 @@ th {
 }
 
 .otherlinks.front.exxxx.ww {
-  /* height: 17px; */
   display: inline-flex;
   height: 2.35vh;
   min-height: 17px;
@@ -5945,7 +5950,12 @@ th {
   top: 20vh;
   left: 25vw;
 }
-
+@media screen and (min-width: 3000px) {
+  .textdivhute {
+    font-size: 22px;
+    line-height: 1.5;
+  }
+}
 .image-42 {
   opacity: 0.75;
   cursor: pointer;
@@ -6375,13 +6385,20 @@ th {
   border-radius: 10px;
   flex-flow: column;
   align-items: center;
-  width: 525px;
+  width: 37%;
   max-height: 75%;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   display: flex;
   position: absolute;
   overflow: hidden;
+}
+@media screen and (min-width: 3000px) {
+  .innerup {
+    width: 25%;
+    font-size: 20px;
+    line-height: 25px;
+  }
 }
 
 .hjandy {
@@ -6767,12 +6784,17 @@ th {
 
 .active-slide.a1,
 .active-slide.a2 {
-  font-size: 17px;
+  font-size: 2.25vh;
   position: absolute;
-  top: 60px;
+  top: 7vh;
   left: 80%;
 }
-
+/* @media screen and (min-width: 3000px) {
+  .active-slide.a1,
+  .active-slide.a2 {
+    font-size: 22px;
+  }
+} */
 .music-player-container {
   position: absolute;
   bottom: 2.5vmin;
@@ -7038,7 +7060,6 @@ th {
   align-items: flex-start;
   width: 100vw;
   height: 10vh;
-  padding-left: 35px;
   display: flex;
 }
 

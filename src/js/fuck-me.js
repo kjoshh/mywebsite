@@ -10,8 +10,6 @@ import {
 } from './video-state-manager.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-  initializeVimeoPlayer('lovememvid', 'closevid');
-
   const imageUrls = Array.from(
     {
       length: 88,
@@ -975,9 +973,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const openVid = document.getElementById('openvid');
       const closeVid = document.getElementById('closevid');
-
+      const vimeoPlayer = initializeVimeoPlayer('lovememvid', 'closevid');
       openVid.addEventListener('click', () => {
         handleVideoStateChange(true);
+        vimeoPlayer.playVideo();
         gsap.to(vidDiv, {
           y: '0vh',
           duration: 0.65,
