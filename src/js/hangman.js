@@ -1,4 +1,3 @@
-// Constants
 export const HANGMAN_STAGES = [
   `
     +---+
@@ -108,27 +107,22 @@ export class HangmanGame {
   }
 
   handleGuess(input) {
-    // Validate input (allow letters only)
     if (input.length !== 1 || !/[a-z]/.test(input)) {
       this.appendOutput('Please enter a single letter:', null);
       return { gameOver: false };
     }
 
-    // Check if letter was already guessed
     if (this.guessed.has(input)) {
       this.appendOutput('You already guessed that letter.', null);
       return { gameOver: false };
     }
 
-    // Add letter to guessed set
     this.guessed.add(input);
 
-    // Check if letter is in word and increment stage if wrong
     if (!this.word.toLowerCase().includes(input)) {
       this.stage++;
     }
 
-    // Create display word with guessed letters and spaces
     const display = this.word
       .split('')
       .map((char) => {
@@ -137,10 +131,8 @@ export class HangmanGame {
       })
       .join(' ');
 
-    // Create guessed letters display
     const guessedLetters = Array.from(this.guessed).sort().join(', ');
 
-    // Check win condition (ignoring spaces)
     if (!display.replace(/ /g, '').includes('_')) {
       this.appendOutput(
         `${HANGMAN_STAGES[this.stage]}\n\nNice. You won. The title was: ${
@@ -151,13 +143,11 @@ export class HangmanGame {
       return { gameOver: true };
     }
 
-    // Check lose condition
     if (this.stage >= 7) {
       this.appendOutput(`${HANGMAN_STAGES[7]}\n\nGame Over.`, null);
       return { gameOver: true };
     }
 
-    // Show current game state
     this.appendOutput(
       `${
         HANGMAN_STAGES[this.stage]

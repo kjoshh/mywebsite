@@ -25,9 +25,7 @@ const firebaseConfig = {
 };
 
 if (!firebaseConfig.projectId) {
-  console.error(
-    'Firebase project ID is missing! Check your environment variables.'
-  );
+  console.error('Firebase project ID is missing.');
   console.log('Available env vars:', {
     apiKey: !!firebaseConfig.apiKey,
     authDomain: !!firebaseConfig.authDomain,
@@ -43,12 +41,10 @@ const db = getFirestore(app);
 
 enableIndexedDbPersistence(db).catch((err) => {
   if (err.code == 'failed-precondition') {
-    console.log(
-      'Multiple tabs open, persistence can only be enabled in one tab at a a time.'
-    );
+    console.log('Multiple tabs open...');
   } else if (err.code == 'unimplemented') {
     console.log(
-      "The current browser doesn't support all of the features required to enable persistence"
+      'browser doesnt support features required to enable persistence'
     );
   }
 });
@@ -249,7 +245,6 @@ const commands = {
       const messages = querySnapshot.docs
         .map((doc) => {
           const entry = doc.data();
-          // Only show ID if in admin mode
           const idPart = isAdminMode ? ` (ID: ${doc.id})` : '';
           return `[${formatDate(entry.date)}] ${entry.name}: ${
             entry.message
@@ -330,13 +325,11 @@ const commands = {
     const banner = document.querySelector('.terminal-banner');
     const output = document.getElementById('output');
 
-    // Clear the terminal but keep the banner
     output.innerHTML = '';
     if (banner) {
       output.appendChild(banner);
     }
 
-    // If we're in a game, reset the game state
     if (currentGame) {
       currentGame = null;
       currentMode = 'normal';
@@ -361,17 +354,14 @@ const commands = {
       return;
     }
 
-    // Keep the original case of the ID
     const messageId = args[0];
     try {
       const docRef = doc(db, 'guestbook', messageId);
 
-      // First check if document exists
       const docSnap = await getDoc(docRef);
       if (!docSnap.exists()) {
         console.log('Document not found. Checking case-sensitivity...');
 
-        // Get all documents to find the correct case
         const q = query(collection(db, 'guestbook'));
         const querySnapshot = await getDocs(q);
 
@@ -381,7 +371,6 @@ const commands = {
 
         if (correctId) {
           console.log('Found correct case:', correctId);
-          // Use the correct case for deletion
           await deleteDoc(doc(db, 'guestbook', correctId));
           appendOutputWithTyping('Message deleted successfully!', null);
         } else {
@@ -389,12 +378,10 @@ const commands = {
           return;
         }
       } else {
-        // Document exists with exact case, delete it
         await deleteDoc(docRef);
         appendOutputWithTyping('Message deleted successfully!', null);
       }
 
-      // Refresh the guestbook after successful deletion
       setTimeout(async () => {
         const q = query(
           collection(db, 'guestbook'),
@@ -412,9 +399,6 @@ const commands = {
             }${idPart}`;
           })
           .join('\n');
-
-        // let helpText =
-        //   '\n\nUse "setname" to set your username and "sign" to leave a message.';
 
         appendOutputWithTyping(
           '=== Updated Guestbook Entries ===\n' + messages,
@@ -593,7 +577,6 @@ inputField.addEventListener('keyup', (event) => {
     } else if (currentMode === 'guestbook') {
       handleGuestbookInput(userInput);
     } else if (currentMode === 'game' && currentGame) {
-      // Handle clear command during game
       if (userInput.trim().toLowerCase() === 'clear') {
         commands.clear();
         inputField.value = '';
@@ -602,11 +585,9 @@ inputField.addEventListener('keyup', (event) => {
       }
 
       const result = currentGame.handleGuess(userInput.toLowerCase());
-      // Clear the input field
       document.getElementById('command-input').value = '';
 
       if (result.gameOver) {
-        // Reset game state
         currentGame = null;
         currentMode = 'normal';
         scrollToBottom();
@@ -614,7 +595,6 @@ inputField.addEventListener('keyup', (event) => {
       return;
     }
 
-    // Clear input field and update cursor position
     inputField.value = '';
     scrollToBottom();
     updateCursorPosition();
@@ -956,19 +936,16 @@ function formatDate(date) {
   });
 }
 
-// Add this function to update all terminal prompts
 function updatePrompt(newUser) {
   currentUser = newUser;
   localStorage.setItem('guestbookUser', currentUser);
 
-  // Update the input line prompt
   const promptSpan = document.querySelector('.input-prompt');
   if (promptSpan) {
     promptSpan.textContent = `${currentUser}@kernjosh.com:~$ `;
   }
 }
 
-// Update the handleGuestbookInput function
 async function handleGuestbookInput(input) {
   if (guestbookState.step === 'name') {
     appendUserInput(input);
@@ -983,7 +960,6 @@ async function handleGuestbookInput(input) {
 
     updatePrompt(sanitizeHTML(input));
 
-    // Reset state
     currentMode = 'normal';
     guestbookState = { step: '', name: '' };
   } else if (guestbookState.step === 'message') {
@@ -1004,13 +980,9 @@ async function handleGuestbookInput(input) {
         date: new Date().toISOString(),
       });
 
-      // appendOutputWithTyping('Thank you for signing the guestbook!', null);
-
-      // Reset state
       currentMode = 'normal';
       guestbookState = { step: '', name: '' };
 
-      // Show updated guestbook entries after a short delay
       setTimeout(async () => {
         try {
           const q = query(

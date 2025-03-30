@@ -9,7 +9,6 @@ import {
   getDocs,
 } from 'firebase/firestore';
 
-// Your Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -19,7 +18,6 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -124,14 +122,14 @@ export const guestbookCommands = {
               null
             );
             inputField.removeEventListener('keyup', messageHandler);
-            onComplete(); // Call the completion callback
+            onComplete();
           } catch (error) {
             console.error('Error adding entry:', error);
             appendOutputWithTyping(
               'Error saving your message. Please try again later.',
               null
             );
-            onComplete(); // Call the completion callback even on error
+            onComplete();
           }
         }
       }
