@@ -2,12 +2,10 @@
 
 The website kind of works right now... but most of the time its very heavy for the browser... I just dont know how to make it more efficient.
 <br/>
-It only works on desktop and Im fine with that. It also only works in Chrome and kind of in Firefox. In Safari for example its lagging the whole time. Would be nice if it would run smoothly in all browsers someday...<br/>
-Also, Im not 100% sure how it feels on a large screen.. Im sitting on a 11" Laptop.
+It only works on desktop and Im fine with that. It also only works in Chrome and kind of in Firefox. In Safari for example its lagging the whole time. Would be nice if it would run smoothly in all browsers someday...<br/
+
 
 ### Contributing
-
-I have have no idea how this conributing stuff exactly works. But if youre here, you probably know better than me. And I would love to hear from you if you have an idea to improve my site :)) <br/>
 
     git clone <this-repo>
     npm install
